@@ -1,0 +1,30 @@
+{% extends "CoreBundle::layout.html.twig" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    Ici se trouvera un formulaire de connexion.
+    <br>
+    Une fois connecté, l'interface d'administration devient accessible : <a href="/admin">Page d'administration</a>
+    <br>
+        Les utilisateurs pourront y modifier leur nom d'utilisateur, mot de passe et photo de profil.
+<hr>
+
+
+    {# First, if we've errors #}
+    {% if error %}
+        <div class="alert alert-danger">{{ error.message }}</div>
+    {% endif %}
+
+    {# Then, we display login form #}
+    <form action="{{ path('login_check') }}" method="post">
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" /><br>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="_password" />
+        <br />
+        <input type="submit" value="Connexion" />
+    </form>
+
+{% endblock %}

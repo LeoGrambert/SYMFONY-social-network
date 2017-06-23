@@ -1,15 +1,23 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - Nos amis les oiseaux</title>
-</head>
-<body>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %} - Nos amis les oiseaux</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    </head>
 
-{% block body %}
-{% endblock %}
-<hr>
-<a href="/">Retour à l'accueil</a>
+    <body>
 
-</body>
+    <div class="container">
+        {% block body %}
+        {% endblock %}
+
+        <hr>
+
+        <a href="/">Retour à l'accueil</a>
+    </div>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </body>
 </html>
