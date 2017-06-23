@@ -4,7 +4,12 @@ namespace CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class FrontController
+ * @package CoreBundle\Controller
+ */
 class FrontController extends Controller
 {
     /**
@@ -44,20 +49,47 @@ class FrontController extends Controller
     }
 
     /**
-     * What do we do if we are on contact page
-     * @route("/contact", name="contactPage")
+     * What do we do if we are on association page
+     * @route("/association", name="associationPage")
      */
-    public function contactAction()
+    public function associationAction()
     {
-        return $this->render('CoreBundle:Front:contact.html.twig');
+        return $this->render('CoreBundle:Front:association.html.twig');
     }
 
     /**
-     * What do we do if we are on connection page
-     * @route("/connection", name="connectionPage")
+     * What do we do if we are on login page
+     * @route("/login", name="loginPage")
      */
-    public function connectionAction()
+    public function loginAction(Request $request)
     {
-        return $this->render('CoreBundle:Front:connection.html.twig');
+        //If user is already logged, he's redirected on homepage
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('homepage');
+        }
+
+        //We use this to get errors
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        return $this->render('CoreBundle:Front:login.html.twig', [
+            'last_username' => $authenticationUtils->getLastUsername(),
+            'error' => $authenticationUtils->getLastAuthenticationError()
+        ]);
+    }
+
+    /**
+     * What do we do when we check login form
+     * @route("/login_check", name="login_check")
+     */
+    public function loginCheckAction()
+    {
+    }
+
+    /**
+     * What do we do if we want to logout
+     * @route("/logout", name="logout")
+     */
+    public function logoutAction()
+    {
     }
 }
