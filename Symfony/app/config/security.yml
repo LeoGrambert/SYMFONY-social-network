@@ -5,6 +5,7 @@ security:
     # Todo : Change 'plaintext' by a real encoder
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        CoreBundle\Entity\User: plaintext
 
     # This part sets the roles hierarchy
     role_hierarchy:
@@ -15,12 +16,10 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     # Todo : to delete when we'll use user entity
     providers:
-        in_memory:
-            memory:
-                users:
-                    amateur:  { password: amateurpass, roles: [ 'ROLE_AMATEUR' ] }
-                    pro:  { password: propass, roles: [ 'ROLE_PRO' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        main:
+            entity:
+                class: CoreBundle\Entity\User
+                property: username
 
     # Firewall check that we are indeed the one we claim to be
     firewalls:

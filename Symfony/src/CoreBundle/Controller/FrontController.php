@@ -31,12 +31,12 @@ class FrontController extends Controller
     }
 
     /**
-     * What do we do if we are on map page
-     * @route("/map", name="mapPage")
+     * What do we do if we are on search page
+     * @route("/search", name="searchPage")
      */
-    public function mapAction()
+    public function searchAction()
     {
-        return $this->render('CoreBundle:Front:map.html.twig');
+        return $this->render('CoreBundle:Front:search.html.twig');
     }
 
     /**
