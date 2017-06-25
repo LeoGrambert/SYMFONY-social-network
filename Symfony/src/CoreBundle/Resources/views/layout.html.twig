@@ -14,7 +14,10 @@
 
         <hr>
 
-        <a href="/">Retour à l'accueil</a>
+        <a href="/">Retour à l'accueil</a><br>
+        {% if is_granted('ROLE_AMATEUR') or is_granted('ROLE_PRO') or is_granted('ROLE_ADMIN') %}
+            <a href="/logout">Se déconnecter</a>
+        {% endif %}
     </div>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

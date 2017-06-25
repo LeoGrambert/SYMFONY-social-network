@@ -4,5 +4,13 @@
 
 {% block body %}
     <h4>Bonjour {{ app.user.username }}</h4>
-    Ici se trouvera la page d'administration (modifier son profil, valider une observation pour un naturaliste, ...)
+    Ici se trouvera la page d'administration :
+    <li><a href="/admin/profile">Modifier mon profil</a></li>
+    <li><a href="/admin/observations">Mes observations</a></li>
+    {% if is_granted('ROLE_PRO') %}
+    <li><a href="/admin/validate/observations">Valider une observation</a></li>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <li><a href="/admin/validate/account">Valider un compte professionnel</a></li>
+    {% endif %}
 {% endblock %}

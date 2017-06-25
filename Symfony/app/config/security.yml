@@ -8,8 +8,9 @@ security:
 
     # This part sets the roles hierarchy
     role_hierarchy:
-        ROLE_PRO:       ROLE_AMATEUR
-        ROLE_ADMIN: [ROLE_AMATEUR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        # Admin inherits amateurs and professionals roles
+        ROLE_ADMIN: [ROLE_AMATEUR, ROLE_PRO]
+        ROLE_SUPER_ADMIN: [ROLE_AMATEUR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     # Todo : to delete when we'll use user entity
@@ -37,4 +38,5 @@ security:
                 target: login
 
     access_control:
+    #Uncomment this before production. We use this to check that login page -> https.
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
