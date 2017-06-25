@@ -63,9 +63,9 @@ class FrontController extends Controller
      */
     public function loginAction(Request $request)
     {
-        //If user is already logged, he's redirected on homepage
+        //If user is already logged, he's redirected on adminPage
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('adminPage');
         }
 
         //We use this to get errors
@@ -75,21 +75,5 @@ class FrontController extends Controller
             'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError()
         ]);
-    }
-
-    /**
-     * What do we do when we check login form
-     * @route("/login_check", name="login_check")
-     */
-    public function loginCheckAction()
-    {
-    }
-
-    /**
-     * What do we do if we want to logout
-     * @route("/logout", name="logout")
-     */
-    public function logoutAction()
-    {
     }
 }

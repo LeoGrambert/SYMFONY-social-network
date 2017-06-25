@@ -13,6 +13,12 @@ class BackController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('CoreBundle:Admin:index.html.twig');
+        $user = $this->getUser();
+
+        if(null === $user){
+            return $this->redirectToRoute('login');
+        } else {
+            return $this->render('CoreBundle:Admin:index.html.twig');
+        }
     }
 }
