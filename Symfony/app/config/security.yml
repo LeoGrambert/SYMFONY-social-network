@@ -8,8 +8,8 @@ security:
     # This part sets the roles hierarchy
     role_hierarchy:
         # Admin inherits amateurs and professionals roles
-        ROLE_ADMIN: [ROLE_AMATEUR, ROLE_PRO]
-        ROLE_SUPER_ADMIN: [ROLE_AMATEUR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN: [ROLE_PRO]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
