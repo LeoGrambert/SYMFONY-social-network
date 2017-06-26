@@ -18,6 +18,7 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('roles', ChoiceType::class, [
+            'label' => 'Vous-êtes un orhnithologue professionnel ? Cochez la case ci-dessous et envoyez un justificatif à contact@nao.fr',
              'choices' => [
                 'Je suis un ornithologue professionnel' => 'ROLE_PRO'
             ],

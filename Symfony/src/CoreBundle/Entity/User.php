@@ -27,4 +27,13 @@ class User extends BaseUser
         parent::__construct();
     }
 
+    public function setEnabled($boolean)
+    {
+        if ($this->getRoles() == ['ROLE_PRO'] ){
+            $this->enabled = false;
+        } else {
+            $this->enabled = true;
+        }
+        return $this->enabled;
+    }
 }
