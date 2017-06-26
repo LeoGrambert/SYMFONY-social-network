@@ -9,13 +9,24 @@
     <body>
 
     <div class="container">
+        {% for key, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="alert alert-{{ key }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+
         {% block body %}
         {% endblock %}
 
         <hr>
 
         <a href="/">Retour à l'accueil</a><br>
-        {% if is_granted('ROLE_AMATEUR') or is_granted('ROLE_PRO') or is_granted('ROLE_ADMIN') %}
+        {% if is_granted('ROLE_AMATEUR') or is_granted('ROLE_USER') or is_granted('ROLE_PRO') or is_granted('ROLE_ADMIN') %}
             <a href="/logout">Se déconnecter</a>
         {% endif %}
     </div>

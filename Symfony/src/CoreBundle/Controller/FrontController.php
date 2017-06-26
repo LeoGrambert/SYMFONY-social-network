@@ -2,6 +2,8 @@
 
 namespace CoreBundle\Controller;
 
+use CoreBundle\Entity\User;
+use CoreBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -73,7 +75,7 @@ class FrontController extends Controller
 
         return $this->render('CoreBundle:Front:login.html.twig', [
             'last_username' => $authenticationUtils->getLastUsername(),
-            'error' => $authenticationUtils->getLastAuthenticationError()
+            'error' => $authenticationUtils->getLastAuthenticationError(),
         ]);
     }
 }
