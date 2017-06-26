@@ -76,9 +76,17 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: CoreBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
     from_email:
         address: "devTestLG@gmail.com"
         sender_name: "Nos amis les oiseaux"
     registration:
         form:
             type: CoreBundle\Form\RegistrationType
+        confirmation:
+            enabled: true
+            template: CoreBundle:Registration:email.txt.twig
+    resetting:
+        email:
+            template: email/password_resetting.email.twig
