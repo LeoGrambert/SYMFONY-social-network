@@ -90,3 +90,25 @@ fos_user:
     resetting:
         email:
             template: FOSUserBundle:Resetting:email.txt.twig
+
+hwi_oauth:
+    connect:
+        confirmation: true
+        registration_form: fos_user.registration.form.factory
+    firewall_names: [main]
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebookID
+            google: googleID
+    resource_owners:
+        facebook:
+            type: facebook
+            client_id: 1865015383825631
+            client_secret: 2a9f91847872eeb0d94e02dd534df436
+            scope: "email"
+        google:
+            type: google
+            client_id: 587723959356-82qeb1oonmh4uol962u8upeq6t77on5m.apps.googleusercontent.com
+            client_secret: 9NOic8LddsQeObY7E_uqcnw7
+            scope: "https://www.googleapis.com/auth/plus.login"
