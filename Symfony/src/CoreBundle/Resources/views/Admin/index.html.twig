@@ -5,7 +5,7 @@
 {% block body %}
     <h4>Bonjour {{ app.user.username }} ({{ dump(app.user.roles) }})</h4>
     Ici se trouvera la page d'administration :
-    <li><a href="/admin/profile">Modifier mon profil</a></li>
+    <li><a href="/profile">Modifier mon profil</a></li>
     <li><a href="/admin/observations">Mes observations</a></li>
     {% if is_granted('ROLE_PRO') %}
     <li><a href="/admin/validate/observations">Valider une observation</a></li>

@@ -14,7 +14,7 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         main:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 
     # Firewall check that we are indeed the one we claim to be
     firewalls:

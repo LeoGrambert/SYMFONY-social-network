@@ -7,11 +7,11 @@
 
     Accéder aux autres pages du site : <br>
     <ul>
-        <li><a href="/search">Rechercher</a></li>
-        <li><a href="/add">Participer</a></li>
-        <li><a href="/login">Se connecter</a></li>
-        <li><a href="/admin">Page d'administration</a></li>
-        <li><a href="/association">Association</a></li>
-        <li><a href="/legal">Mentions légales</a></li>
+        <li><a href="{{ path('searchPage') }}">Rechercher</a></li>
+        <li><a href="{{ path('addPage') }}">Participer</a></li>
+        <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+        <li><a href="{{ path('adminPage') }}">Page d'administration</a></li>
+        <li><a href="{{ path('associationPage') }}">Association</a></li>
+        <li><a href="{{ path('legalPage') }}">Mentions légales</a></li>
     </ul>
 {% endblock %}

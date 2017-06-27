@@ -27,7 +27,7 @@
 
         <a href="/">Retour à l'accueil</a><br>
         {% if is_granted('ROLE_USER') or is_granted('ROLE_PRO') or is_granted('ROLE_ADMIN') %}
-            <a href="/logout">Se déconnecter</a>
+            <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
         {% endif %}
     </div>
 

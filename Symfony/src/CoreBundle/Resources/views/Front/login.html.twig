@@ -26,7 +26,7 @@
         <br />
         <input type="submit" value="Connexion" />
     </form>
-    Pas encore de compte ? <a href="/register">Inscrivez-vous</a><br>
-    Mot de passe oublié ? <a href="/change">Cliquez-Ici</a>
+    Pas encore de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous</a><br>
+    Mot de passe oublié ? <a href="{{ path('fos_user_resetting_request') }}">Cliquez-Ici</a>
 
 {% endblock %}

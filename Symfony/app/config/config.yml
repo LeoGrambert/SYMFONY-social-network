@@ -89,4 +89,4 @@ fos_user:
             template: CoreBundle:Registration:email.txt.twig
     resetting:
         email:
-            template: email/password_resetting.email.twig
+            template: FOSUserBundle:Resetting:email.txt.twig
