@@ -2,8 +2,10 @@
 
 namespace CoreBundle\Controller;
 
+use CoreBundle\Entity\Observation;
 use CoreBundle\Entity\User;
 use CoreBundle\Form\UserType;
+use CoreBundle\Form\ObservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,9 +29,67 @@ class FrontController extends Controller
      * What do we do if we are on add an observation page
      * @route("/add", name="addPage")
      */
-    public function addAction()
+    public function addAction(Request $request)
     {
-        return $this->render('CoreBundle:Front:add.html.twig');
+        $observation = new Observation();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $speciesRepository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('CoreBundle:Species')
+        ;
+
+
+        $form = $this->createForm(ObservationType::class, $observation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $user = $this->getUser();
+            $observation->setUser($user);
+
+            $observation->setDate($observation->getDate() );
+
+            $observation->setStatut("en attente");
+
+            /*$observation->setBird($form->get('bird')->getData());*/
+
+            $getBird = $form->get('bird')->getData();
+
+            var_dump($getBird);
+
+            $bird = $speciesRepository ->findBy(array('lbNom'=> $getBird));
+
+            $bird1 = $speciesRepository ->find(2);
+
+            var_dump($bird1);
+
+            $observation->setBird($bird1);
+
+            $observation->setDescription($form->get('description')->getData());
+
+            $observation->setImage("url image");
+
+            $observation->setLatitude($form->get('latitude')->getData());
+
+            $observation->setLongitude($form->get('longitude')->getData());
+
+
+
+
+            $em->persist($observation);
+            $em->flush();
+
+            $this->addFlash('info', 'Votre observation a été enregistrée, elle est en attente de validation.');
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('CoreBundle:Front:add.html.twig', array(
+            'form' => $form->createView()
+        ));
+
     }
 
     /**
@@ -78,4 +138,5 @@ class FrontController extends Controller
             'error' => $authenticationUtils->getLastAuthenticationError(),
         ]);
     }
+
 }

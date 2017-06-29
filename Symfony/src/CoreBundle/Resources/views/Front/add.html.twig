@@ -3,5 +3,17 @@
 {% block title %}Ajout d'une observation{% endblock %}
 
 {% block body %}
-    Ici se trouvera la page dédiée à l'ajout d'observations.
+    {% for flash_message in app.session.flashBag.get('info') %}
+        <div class="flash-notice alert alert-info">
+            <p>{{ flash_message }}</p>
+        </div>
+    {% endfor %}
+
+    <h1>Saisie d'une observation</h1>
+
+    {{ form_start(form)}}
+
+    {{ form_widget(form) }}
+
+    {{ form_end(form) }}
 {% endblock %}
