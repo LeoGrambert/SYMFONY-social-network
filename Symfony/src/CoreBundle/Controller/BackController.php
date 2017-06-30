@@ -39,21 +39,6 @@ class BackController extends Controller
     }
 
     /**
-     * What do we do if we are on admin observations page
-     * @Route("/admin/observations", name="adminObservationsPage")
-     */
-    public function observationsAction()
-    {
-        $user = $this->getUser();
-
-        if(null === $user){
-            return $this->redirectToRoute('login');
-        } else {
-            return $this->render('CoreBundle:Admin:observations.html.twig');
-        }
-    }
-
-    /**
      * What do we do if we are on admin validate an observation page
      * @Route("/admin/validate/observations", name="adminValidateObservationsPage")
      * @Security("has_role('ROLE_PRO')")

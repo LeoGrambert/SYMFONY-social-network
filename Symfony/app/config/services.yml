@@ -11,3 +11,18 @@ services:
         class: CoreBundle\Form\RegistrationType
         tags:
             - { roles: form.type, name: roles, alias: app_user_registration }
+    core_bundle.password_resetting:
+        class: CoreBundle\EventListener\PasswordResettingListener
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }
+    core_bundle.profile_edit:
+        class: CoreBundle\EventListener\ProfileEditListener
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }
+    core_bundle.change_password:
+        class: CoreBundle\EventListener\ChangePasswordListener
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }

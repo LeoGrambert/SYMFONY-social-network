@@ -3,14 +3,19 @@
 {% block title %}Administration{% endblock %}
 
 {% block body %}
-    <h4>Bonjour {{ app.user.username }} ({{ dump(app.user.roles) }})</h4>
-    Ici se trouvera la page d'administration :
-    <li><a href="/profile">Modifier mon profil</a></li>
-    <li><a href="/admin/observations">Mes observations</a></li>
+    <h4>Bonjour {{ app.user.username }}</h4>
+    <h5><em>{{ app.user.email }}</em></h5>
+    <p>Type de compte : <br>{{ dump(app.user.roles) }})</p>
+    <hr>
+    <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations personnelles</a></li>
+    <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
     {% if is_granted('ROLE_PRO') %}
     <li><a href="/admin/validate/observations">Valider une observation</a></li>
     {% endif %}
     {% if is_granted('ROLE_ADMIN') %}
         <li><a href="/admin/validate/account">Valider un compte professionnel</a></li>
     {% endif %}
+    <hr>
+    <h4>Mes observations</h4>
+    <p>Liste de toutes les observations faites par un utilisateur</p>
 {% endblock %}
