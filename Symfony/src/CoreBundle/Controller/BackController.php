@@ -5,6 +5,7 @@ namespace CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use CoreBundle\Repository\ObservationRepository;
 
 class BackController extends Controller
 {
@@ -16,25 +17,19 @@ class BackController extends Controller
     {
         $user = $this->getUser();
 
-        if(null === $user){
-            return $this->redirectToRoute('login');
-        } else {
-            return $this->render('CoreBundle:Admin:index.html.twig');
-        }
-    }
-
-    /**
-     * What do we do if we are on admin profile page
-     * @Route("/admin/profile", name="adminProfilePage")
-     */
-    public function profileAction()
-    {
-        $user = $this->getUser();
+        $listObservations = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('CoreBundle:Observation')
+            ->findBy(
+                ['user'=>$user->getId()],
+                ['date'=>'desc']
+            );
 
         if(null === $user){
             return $this->redirectToRoute('login');
         } else {
-            return $this->render('CoreBundle:Admin:profile.html.twig');
+            return $this->render('CoreBundle:Admin:index.html.twig', ['listObservations'=>$listObservations]);
         }
     }
 

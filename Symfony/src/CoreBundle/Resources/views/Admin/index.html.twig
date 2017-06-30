@@ -10,12 +10,20 @@
     <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations personnelles</a></li>
     <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
     {% if is_granted('ROLE_PRO') %}
-    <li><a href="/admin/validate/observations">Valider une observation</a></li>
+    <li><a href="{{ path('adminValidateObservationsPage') }}">Valider une observation</a></li>
     {% endif %}
     {% if is_granted('ROLE_ADMIN') %}
-        <li><a href="/admin/validate/account">Valider un compte professionnel</a></li>
+        <li><a href="{{ path('adminValidateAccountPage') }}">Valider un compte professionnel</a></li>
     {% endif %}
     <hr>
     <h4>Mes observations</h4>
     <p>Liste de toutes les observations faites par un utilisateur</p>
+    {{ dump(listObservations) }}
+    {% for listObservation in listObservations %}
+        <li>User : {{ app.user.username }} <br>
+            Date d'ajout : {{ listObservation.date|date('d/m/Y') }} <br>
+            Latitude : {{ listObservation.latitude }} Longitude : {{ listObservation.longitude }}<br>
+            Species : <br>
+            Statut : </li>
+    {% endfor %}
 {% endblock %}
