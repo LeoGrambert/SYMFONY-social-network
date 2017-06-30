@@ -112,3 +112,9 @@ hwi_oauth:
             client_id: 587723959356-82qeb1oonmh4uol962u8upeq6t77on5m.apps.googleusercontent.com
             client_secret: 9NOic8LddsQeObY7E_uqcnw7
             scope: "https://www.googleapis.com/auth/plus.login"
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
