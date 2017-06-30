@@ -3,12 +3,15 @@
 namespace CoreBundle\Controller;
 
 use CoreBundle\Entity\Observation;
+use CoreBundle\Entity\Species;
 use CoreBundle\Entity\User;
 use CoreBundle\Form\UserType;
 use CoreBundle\Form\ObservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
 
 /**
  * Class FrontController
@@ -26,6 +29,17 @@ class FrontController extends Controller
     }
 
     /**
+     * @Route("/search-bird", name="search_bird", defaults={"_format"="json"})
+     * @Method("GET")
+     */
+    public function searchBirdAction(Request $request)
+    {
+        $q = $request->query->get('q', $request->query->get('term', ''));
+        $birds = $this->getDoctrine()->getRepository('CoreBundle:Species')->findLike($q);
+        return $this->render('author/search.json.twig', ['authors' => $birds]);
+    }
+
+    /**
      * What do we do if we are on add an observation page
      * @route("/add", name="addPage")
      */
@@ -40,32 +54,34 @@ class FrontController extends Controller
             ->getRepository('CoreBundle:Species')
         ;
 
-
         $form = $this->createForm(ObservationType::class, $observation);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $user = $this->getUser();
+
             $observation->setUser($user);
 
             $observation->setDate($observation->getDate() );
 
             $observation->setStatut("en attente");
 
-            /*$observation->setBird($form->get('bird')->getData());*/
+            /* $observation->setBird($form->get('bird')->getData());
 
-            $getBird = $form->get('bird')->getData();
+           $getBird = $form->get('bird')->getData();
 
-            var_dump($getBird);
+           var_dump($getBird);
 
+           $bird = $speciesRepository ->findBy(array('lbNom'=> $getBird));
+
+           $bird1 = $speciesRepository ->find(2);
+
+           var_dump($bird1);*/
             $bird = $speciesRepository ->findBy(array('lbNom'=> $getBird));
 
-            $bird1 = $speciesRepository ->find(2);
-
-            var_dump($bird1);
-
-            $observation->setBird($bird1);
+           $observation->setBird($bird);
 
             $observation->setDescription($form->get('description')->getData());
 

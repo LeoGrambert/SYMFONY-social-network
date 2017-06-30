@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 
 class ObservationType extends AbstractType
 {
@@ -25,7 +26,7 @@ class ObservationType extends AbstractType
                     'data' => new \DateTime())
             )
 
-            ->add('bird', TextType::class, array(
+            ->add('bird', AutocompleteType::class, ['class' => 'CoreBundle:Species'], array(
                 'label' => 'Espèce - Nom commun',
                 'required' => false
             ))

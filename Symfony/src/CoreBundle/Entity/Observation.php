@@ -42,7 +42,10 @@ class Observation
     private $statut;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", cascade={"persist"})
+     *
+     * @var Species
+     *
+     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", inversedBy="Observation", cascade={"persist"})
      * @ORM\JoinColumn(name="species_id", referencedColumnName="id")
      */
     private $bird;

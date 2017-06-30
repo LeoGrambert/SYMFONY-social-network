@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new CoreBundle\CoreBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new PUGX\AutocompleterBundle\PUGXAutocompleterBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         ];
 
@@ -51,4 +52,6 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+
 }

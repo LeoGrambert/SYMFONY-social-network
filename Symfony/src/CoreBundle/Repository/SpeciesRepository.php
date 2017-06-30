@@ -10,4 +10,21 @@ namespace CoreBundle\Repository;
  */
 class SpeciesRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param string $bird
+     *
+     * @return array
+     */
+    public function findLike($bird)
+    {
+        return $this
+            ->createQueryBuilder('a')
+            ->where('a.lbNom LIKE :name')
+            ->setParameter('lbNom', "%$bird%")
+            ->orderBy('a.lbNom')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->execute()
+            ;
+    }
 }
