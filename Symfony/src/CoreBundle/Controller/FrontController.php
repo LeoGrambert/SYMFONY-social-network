@@ -114,7 +114,11 @@ class FrontController extends Controller
      */
     public function searchAction()
     {
-        return $this->render('CoreBundle:Front:search.html.twig');
+        $em = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Observation');
+        $listObservations = $em->findAll();
+        return $this->render('CoreBundle:Front:search.html.twig',[
+            'listObservations'=>$listObservations
+        ]);
     }
 
     /**
