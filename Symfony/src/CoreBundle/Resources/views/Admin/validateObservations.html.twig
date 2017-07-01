@@ -3,5 +3,34 @@
 {% block title %}Valider une observation{% endblock %}
 
 {% block body %}
-Ici, l'utilisateur professionnel pourra valider une observation.
+    <p><strong>Liste des observations à valider :</strong></p>
+    <form>
+        <select>
+            <option>Filtre par espèce</option>
+        </select>
+    </form><br>
+        <li>User : app.user.username <br>
+            Date d'ajout : listObservation.date|date('d/m/Y') <br>
+            Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
+            Species : listObservation.bird.nomVern<br>
+            Statut : listObservation.statut
+        </li><br>
+    <li>User : app.user.username <br>
+        Date d'ajout : listObservation.date|date('d/m/Y') <br>
+        Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
+        Species : listObservation.bird.nomVern<br>
+        Statut : listObservation.statut
+    </li><br>
+    <li>User : app.user.username <br>
+        Date d'ajout : listObservation.date|date('d/m/Y') <br>
+        Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
+        Species : listObservation.bird.nomVern<br>
+        Statut : listObservation.statut
+    </li><br>
+    <li>User : app.user.username <br>
+        Date d'ajout : listObservation.date|date('d/m/Y') <br>
+        Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
+        Species : listObservation.bird.nomVern<br>
+        Statut : listObservation.statut
+    </li><br>
 {% endblock %}

@@ -12,6 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * We use this method in order to find all professional users who are not yet accredited to validate amateurs observations
+     * @return array
+     */
     public function findUsersNotAccredit()
     {
         $qb = $this->createQueryBuilder('u');
