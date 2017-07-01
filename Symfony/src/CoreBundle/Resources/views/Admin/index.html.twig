@@ -20,7 +20,12 @@
         <p>Vous n'avez fait aucune observation.</p>
     {% else %}
         <p>Liste de vos observations :</p>
+        {% set months = [] %}
         {% for listObservation in listObservations %}
+            {% if listObservation.date|date('F Y') not in months %}
+                {% set months = months|merge([listObservation.date|date('F Y')]) %}
+                <p><strong>Observations du mois {{ listObservation.date|date('F')|trans }} {{ listObservation.date|date('Y') }} :</strong></p>
+            {% endif %}
             <li>User : {{ app.user.username }} <br>
                 Date d'ajout : {{ listObservation.date|date('d/m/Y') }} <br>
                 Latitude : {{ listObservation.latitude }} Longitude : {{ listObservation.longitude }}<br>
