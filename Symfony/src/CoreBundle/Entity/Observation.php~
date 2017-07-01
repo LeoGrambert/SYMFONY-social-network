@@ -45,7 +45,7 @@ class Observation
      *
      * @var Species
      *
-     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", inversedBy="observations", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", inversedBy="Observation", cascade={"persist"})
      * @ORM\JoinColumn(name="species_id", referencedColumnName="id")
      */
     private $bird;
@@ -281,4 +281,3 @@ class Observation
         return $this->longitude;
     }
 }
-

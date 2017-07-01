@@ -13,6 +13,11 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ObservationRepository extends EntityRepository
 {
+    /**
+     * Method to get all observations (for a user who is logged)
+     * @param $userId
+     * @return array
+     */
     public function findByIdUserWithSpecies($userId)
     {
         $qb = $this->createQueryBuilder('o');
@@ -20,6 +25,7 @@ class ObservationRepository extends EntityRepository
         $qb
             ->where('o.user = :userId')
                 ->setParameter('userId', $userId)
+            ->orderBy('o.date', 'desc')
             ->leftJoin('o.bird', 's')
             ->addSelect('s');
 

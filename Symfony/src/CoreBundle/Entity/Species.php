@@ -2,7 +2,6 @@
 
 namespace CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -80,16 +79,10 @@ class Species
 
     private $status;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Observation", mappedBy="bird")
-     */
-    private $observations;
-
 
     public function __construct()
     {
         $this->status = $this->setStatus($this->statut);
-        $this->observations = new ArrayCollection();
     }
 
 
@@ -330,40 +323,5 @@ class Species
     {
 
         return $this->status;
-    }
-
-
-    /**
-     * Add observation
-     *
-     * @param \CoreBundle\Entity\Observation $observation
-     *
-     * @return Species
-     */
-    public function addObservation(\CoreBundle\Entity\Observation $observation)
-    {
-        $this->observations[] = $observation;
-
-        return $this;
-    }
-
-    /**
-     * Remove observation
-     *
-     * @param \CoreBundle\Entity\Observation $observation
-     */
-    public function removeObservation(\CoreBundle\Entity\Observation $observation)
-    {
-        $this->observations->removeElement($observation);
-    }
-
-    /**
-     * Get observations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getObservations()
-    {
-        return $this->observations;
     }
 }

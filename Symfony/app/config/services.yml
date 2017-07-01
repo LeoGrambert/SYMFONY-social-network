@@ -26,3 +26,7 @@ services:
         arguments: ['@router']
         tags:
             - { name: kernel.event_subscriber }
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

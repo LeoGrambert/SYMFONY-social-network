@@ -5,8 +5,7 @@
 {% block body %}
     <h4>Bonjour {{ app.user.username }}</h4>
     <h5><em>{{ app.user.email }}</em></h5>
-    <p>Type de compte : <br>{{ dump(app.user.roles) }})</p>
-    <hr>
+    <p>Type de compte : {% if is_granted('ROLE_PRO') %}Professionnel{% elseif is_granted('ROLE_ADMIN') %}Administrateur{% else %}Amateur{% endif %}</p>
     <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations personnelles</a></li>
     <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
     {% if is_granted('ROLE_PRO') %}
@@ -17,13 +16,16 @@
     {% endif %}
     <hr>
     <h4>Mes observations</h4>
-    <p>Liste de toutes les observations faites par un utilisateur</p>
-    {{ dump(listObservations) }}
-    {% for listObservation in listObservations %}
-        <li>User : {{ app.user.username }} <br>
-            Date d'ajout : {{ listObservation.date|date('d/m/Y') }} <br>
-            Latitude : {{ listObservation.latitude }} Longitude : {{ listObservation.longitude }}<br>
-            Species : {{ listObservation.bird.lbNom }}<br>
-            Statut : </li>
-    {% endfor %}
+    {% if listObservations == null %}
+        <p>Vous n'avez fait aucune observation.</p>
+    {% else %}
+        <p>Liste de vos observations :</p>
+        {% for listObservation in listObservations %}
+            <li>User : {{ app.user.username }} <br>
+                Date d'ajout : {{ listObservation.date|date('d/m/Y') }} <br>
+                Latitude : {{ listObservation.latitude }} Longitude : {{ listObservation.longitude }}<br>
+                Species : {{ listObservation.bird.nomVern }}<br>
+                Statut : {{ listObservation.statut }}</li><br>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
