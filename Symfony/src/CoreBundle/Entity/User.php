@@ -32,9 +32,15 @@ class User extends BaseUser
      */
     protected $googleID;
 
+    /**
+     * @ORM\Column(name="is_accredit", type="boolean")
+     */
+    protected $isAccredit;
+
     public function __construct()
     {
         parent::__construct();
+        $this->isAccredit = false;
     }
 
     /**
@@ -83,5 +89,29 @@ class User extends BaseUser
     public function getGoogleID()
     {
         return $this->googleID;
+    }
+
+    /**
+     * Set isAccredit
+     *
+     * @param boolean $isAccredit
+     *
+     * @return User
+     */
+    public function setIsAccredit($isAccredit)
+    {
+        $this->isAccredit = $isAccredit;
+
+        return $this;
+    }
+
+    /**
+     * Get isAccredit
+     *
+     * @return boolean
+     */
+    public function getIsAccredit()
+    {
+        return $this->isAccredit;
     }
 }
