@@ -13,4 +13,18 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ObservationRepository extends EntityRepository
 {
+    public function findByIdUserWithSpecies($userId)
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb
+            ->where('o.user = :userId')
+                ->setParameter('userId', $userId)
+            ->leftJoin('o.bird', 's')
+            ->addSelect('s');
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -23,7 +23,7 @@
         <li>User : {{ app.user.username }} <br>
             Date d'ajout : {{ listObservation.date|date('d/m/Y') }} <br>
             Latitude : {{ listObservation.latitude }} Longitude : {{ listObservation.longitude }}<br>
-            Species : <br>
+            Species : {{ listObservation.bird.lbNom }}<br>
             Statut : </li>
     {% endfor %}
 {% endblock %}

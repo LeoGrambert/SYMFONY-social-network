@@ -21,10 +21,7 @@ class BackController extends Controller
             ->getDoctrine()
             ->getManager()
             ->getRepository('CoreBundle:Observation')
-            ->findBy(
-                ['user'=>$user->getId()],
-                ['date'=>'desc']
-            );
+            ->findByIdUserWithSpecies($user->getId());
 
         if(null === $user){
             return $this->redirectToRoute('login');
