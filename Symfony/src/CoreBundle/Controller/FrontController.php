@@ -5,6 +5,7 @@ namespace CoreBundle\Controller;
 use CoreBundle\Entity\Observation;
 use CoreBundle\Entity\Species;
 use CoreBundle\Entity\User;
+use CoreBundle\Form\SpeciesType;
 use CoreBundle\Form\UserType;
 use CoreBundle\Form\ObservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -116,6 +117,8 @@ class FrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Observation');
         $listObservations = $em->findAll();
+
+
         return $this->render('CoreBundle:Front:search.html.twig',[
             'listObservations'=>$listObservations
         ]);
