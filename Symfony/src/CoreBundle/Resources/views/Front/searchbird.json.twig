@@ -1,0 +1,7 @@
+[{% for bird in birds -%}
+    {{ {id: bird.id, text: bird.__toString}|json_encode|raw }}
+    {# use the following for jquery-ui
+    {{ {value: author.id, label: author.__toString}|json_encode|raw }}
+    #}
+    {%- if not loop.last %},{% endif -%}
+    {%- endfor %}]

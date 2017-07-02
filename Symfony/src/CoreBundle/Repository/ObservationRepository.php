@@ -1,6 +1,7 @@
 <?php
 
 namespace CoreBundle\Repository;
+use CoreBundle\Entity\Observation;
 
 /**
  * ObservationRepository
@@ -10,4 +11,15 @@ namespace CoreBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param Observation $observation
+     * @param bool $flush
+     */
+    public function add(Observation $observation, $flush = true)
+    {
+        $this->getEntityManager()->persist($observation);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 }

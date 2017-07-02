@@ -28,16 +28,6 @@ class FrontController extends Controller
         return $this->render('CoreBundle:Front:index.html.twig');
     }
 
-    /**
-     * @Route("/search-bird", name="search_bird", defaults={"_format"="json"})
-     * @Method("GET")
-     */
-    public function searchBirdAction(Request $request)
-    {
-        $q = $request->query->get('q', $request->query->get('term', ''));
-        $birds = $this->getDoctrine()->getRepository('CoreBundle:Species')->findLike($q);
-        return $this->render('author/search.json.twig', ['authors' => $birds]);
-    }
 
     /**
      * What do we do if we are on add an observation page
@@ -47,55 +37,17 @@ class FrontController extends Controller
     {
         $observation = new Observation();
 
-        $em = $this->getDoctrine()->getManager();
-
-        $speciesRepository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('CoreBundle:Species')
-        ;
-
-        $form = $this->createForm(ObservationType::class, $observation);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $user = $this->getUser();
-
-            $observation->setUser($user);
-
-            $observation->setDate($observation->getDate() );
-
-            $observation->setStatut("en attente");
-
-            /* $observation->setBird($form->get('bird')->getData());
-
-           $getBird = $form->get('bird')->getData();
-
-           var_dump($getBird);
-
-           $bird = $speciesRepository ->findBy(array('lbNom'=> $getBird));
-
-           $bird1 = $speciesRepository ->find(2);
-
-           var_dump($bird1);*/
-            $bird = $speciesRepository ->findBy(array('lbNom'=> $getBird));
-
-           $observation->setBird($bird);
-
-            $observation->setDescription($form->get('description')->getData());
-
-            $observation->setImage("url image");
-
-            $observation->setLatitude($form->get('latitude')->getData());
-
-            $observation->setLongitude($form->get('longitude')->getData());
+        $observation->setUser($this->getUser());
 
 
 
+        $observation->setStatut('En_attente_de_validation');
 
-            $em->persist($observation);
-            $em->flush();
+        $form = $this->createForm(ObservationType::class, $observation, ['method'=>'PUT']);
+
+        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
+
+            $this->getDoctrine()->getRepository('CoreBundle:Observation')->add($observation);
 
             $this->addFlash('info', 'Votre observation a été enregistrée, elle est en attente de validation.');
 

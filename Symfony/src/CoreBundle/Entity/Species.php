@@ -80,9 +80,18 @@ class Species
     private $status;
 
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Observation", mappedBy="bird")
+     */
+    /* private $observations;*/
+
+
     public function __construct()
     {
         $this->status = $this->setStatus($this->statut);
+        /*$this->observations = new ArrayCollection();*/
     }
 
 
@@ -323,6 +332,11 @@ class Species
     {
 
         return $this->status;
+    }
+
+    public function __toString()
+    {
+        return $this->nomVern;
     }
 
 }

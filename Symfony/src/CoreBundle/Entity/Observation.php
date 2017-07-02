@@ -30,25 +30,26 @@ class Observation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="statut", type="string", length=64)
+     * @ORM\Column(name="statut", type="string", length=64, nullable=false)
      */
     private $statut;
 
+
     /**
      *
-     * @var Species
-     *
-     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", inversedBy="Observation", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", cascade={"persist"})
      * @ORM\JoinColumn(name="species_id", referencedColumnName="id")
      */
     private $bird;
+
+
 
     /**
      * @var string
@@ -77,6 +78,9 @@ class Observation
      * @ORM\Column(name="longitude", type="float")
      */
     private $longitude;
+
+
+
 
 
     /**
@@ -280,5 +284,8 @@ class Observation
     {
         return $this->longitude;
     }
+
+
+
 }
 
