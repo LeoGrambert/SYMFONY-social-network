@@ -36,6 +36,7 @@
     </nav>
 
     <div class="container" style="margin-top: 7%">
+
         {% for key, messages in app.session.flashbag.all() %}
             {% for message in messages %}
                 <div class="alert alert-{{ key }}">

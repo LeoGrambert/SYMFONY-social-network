@@ -5,8 +5,6 @@ namespace CoreBundle\Controller;
 use CoreBundle\Entity\Observation;
 use CoreBundle\Entity\Species;
 use CoreBundle\Entity\User;
-use CoreBundle\Form\SpeciesType;
-use CoreBundle\Form\UserType;
 use CoreBundle\Form\ObservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -137,9 +135,36 @@ class FrontController extends Controller
      * What do we do if we are on association page
      * @route("/association", name="associationPage")
      */
-    public function associationAction()
+    public function associationAction(Request $request)
     {
-        return $this->render('CoreBundle:Front:association.html.twig');
+        $form = $this->createForm('CoreBundle\Form\ContactType',null,[
+            'action' =>$this->generateUrl('associationPage'),
+            'method'=>'POST'
+        ]);
+
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+
+            if($form->isValid()){
+                $data = $form->getData();
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Nouveau message de '.$data['firstname'].' '.$data['lastname'].' ('.$data['email'].') sur l\'application NAO')
+                    ->setFrom($data['email'])
+                    ->setTo('leogrambert@gmail.com')
+                    ->setBody($form->getData()['message'],
+                        'text/plain'
+                    );
+                $this->get('mailer')->send($message);
+                $flashMsg = $this->addFlash(
+                    'success',
+                    'Votre message a bien été envoyé !'
+                );
+            }
+        }
+
+        return $this->render('CoreBundle:Front:association.html.twig', [
+            'form'=>$form->createView()
+        ]);
     }
 
     /**

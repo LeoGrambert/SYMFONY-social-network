@@ -3,5 +3,41 @@
 {% block title %}Association{% endblock %}
 
 {% block body %}
-    Ici se trouvera la page association avec un formulaire de contact.
+    <h3>L'association Nos amis les oiseaux</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit pulvinar molestie. Donec in malesuada tortor. Duis vel vehicula nisl. Maecenas sem nisl, feugiat vel porta sed, facilisis sollicitudin enim. Aliquam a orci ullamcorper quam bibendum lacinia. Nunc lacinia eros at enim condimentum mattis. Proin ut ante tincidunt lorem suscipit tempus quis vitae dui. Pellentesque vel lacinia turpis. Nunc ut eros accumsan, sollicitudin ante eget, accumsan lectus. Quisque mollis aliquam enim nec pellentesque. Suspendisse volutpat molestie enim, auctor euismod ligula tincidunt eget.</p>
+
+    <p>Phasellus aliquet nulla sed velit pulvinar facilisis. Proin venenatis porta urna ac consectetur. Sed tincidunt auctor sagittis. Donec mauris orci, ornare vel nisl sit amet, pretium iaculis augue. Vivamus in nibh varius, pellentesque eros ut, consectetur leo. Nunc ut auctor ante. Nulla elit felis, convallis sit amet risus non, malesuada tempus erat. Pellentesque in pulvinar ligula. Cras convallis erat at justo consectetur, sollicitudin lacinia nisl convallis. Vestibulum mollis dignissim lectus, sed suscipit lacus pellentesque ac. Duis ac condimentum eros. Aenean a sem eget ipsum mollis bibendum quis quis ligula. Donec laoreet fermentum quam, sit amet fringilla turpis suscipit eget. Nulla facilisi.</p>
+
+    <p>Sed a convallis purus, sit amet elementum neque. Curabitur sollicitudin ipsum eu condimentum gravida. Duis hendrerit, diam et rhoncus mattis, risus enim cursus neque, eu hendrerit ante urna sit amet nisi. Curabitur ut urna eu sem rhoncus congue. Suspendisse id elit sit amet elit eleifend cursus. Vivamus vel rutrum eros. Etiam eu erat facilisis, ultrices nunc sed, facilisis sem. Suspendisse et maximus quam, et elementum odio. Fusce eleifend imperdiet enim, ac imperdiet odio interdum nec. In nec ipsum arcu.</p>
+
+    <div class="well">
+    {{ form_start(form) }}
+
+    <div>
+        {{ form_widget(form.lastname) }}
+        {{ form_errors(form.lastname) }}
+    </div>
+    <div>
+        {{ form_widget(form.firstname) }}
+        {{ form_errors(form.firstname) }}
+    </div>
+    <div>
+        {{ form_widget(form.email) }}
+        {{ form_errors(form.email) }}
+    </div>
+    <div>
+        {{ form_widget(form.message) }}
+        {{ form_errors(form.message) }}
+    </div>
+
+    {# Render CSRF token etc .#}
+    <div style="display:none">
+        {{ form_rest(form) }}
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Envoyer">
+
+    {{ form_end(form) }}
+    </div>
+
 {% endblock %}
