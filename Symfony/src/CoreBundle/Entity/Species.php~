@@ -324,11 +324,4 @@ class Species
 
         return $this->status;
     }
-
-    public function __toString()
-    {
-        return $this->nomVern;
-    }
-
 }
-

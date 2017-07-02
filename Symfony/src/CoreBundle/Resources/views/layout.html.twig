@@ -3,8 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %} - Nos amis les oiseaux</title>
-        <link href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" rel="stylesheet">
-        <link href="//cdn.rawgit.com/t0m/select2-bootstrap-css/bootstrap3/select2-bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     </head>
 
@@ -61,12 +59,12 @@
     </div>
     {% block javascripts %}
 
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
-        <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-select2.js') }}"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
 
     {% endblock %}

@@ -3,5 +3,40 @@
 {% block title %}Valider un compte professionnel{% endblock %}
 
 {% block body %}
-    Ici, l'administrateur pourra valider la nature professionnelle d'un compte.
+
+    {% if listUsers == null %}
+        <p>Vous n'avez plus de nouvelles inscriptions de professionnels à valider.</p>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Nom d'utilisateur</td>
+                        <td>Adresse email</td>
+                        <td>Confirmer compte professionnel</td>
+                        <td>Refuser compte professionnel</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for listUser in listUsers %}
+                        <tr>
+                            <td>{{ listUser.username }}</td>
+                            <td>{{ listUser.email }}</td>
+                            <td>
+                                <form action="{{ path('confirmAccount', {'userId' : listUser.id}) }}" method="post">
+                                    <button class="btn">Valider</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{ path('refuseAccount', {'userId' : listUser.id}) }}" method="post">
+                                    <button class="btn btn-danger">Refuser</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
 {% endblock %}
