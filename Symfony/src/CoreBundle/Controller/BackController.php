@@ -94,6 +94,10 @@ class BackController extends Controller
 
         $user->setIsAccredit(true);
         $em->flush();
+        $this->addFlash(
+            'info',
+            'Le compte professionnel de '.$user->getUsername().' a été confirmé.'
+        );
 
         return $this->redirectToRoute('adminValidateAccountPage');
     }
@@ -118,6 +122,10 @@ class BackController extends Controller
 
         $user->setRoles(['ROLE_USER']);
         $em->flush();
+        $this->addFlash(
+            'warning',
+            'Le compte de '.$user->getUsername().' devient un compte amateur.'
+        );
 
         return $this->redirectToRoute('adminValidateAccountPage');
     }

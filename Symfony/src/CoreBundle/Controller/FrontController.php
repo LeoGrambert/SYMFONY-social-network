@@ -107,7 +107,7 @@ class FrontController extends Controller
                         'text/plain'
                     );
                 $this->get('mailer')->send($message);
-                $flashMsg = $this->addFlash(
+                $this->addFlash(
                     'success',
                     'Votre message a bien été envoyé !'
                 );
