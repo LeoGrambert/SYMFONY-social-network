@@ -59,6 +59,7 @@ class FrontController extends Controller
 
         return $this->render('CoreBundle:Front:add.html.twig', array(
             'form' => $form->createView()
+
         ));
 
     }

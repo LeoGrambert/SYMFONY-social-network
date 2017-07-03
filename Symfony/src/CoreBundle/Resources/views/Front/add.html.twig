@@ -11,11 +11,14 @@
 
     <h1>Saisie d'une observation</h1>
 
+
     {{ form_start(form)}}
 
     {{ form_widget(form) }}
 
     {{ form_end(form) }}
+
+
 
     <a href="{{ path('search_bird') }}" id="url-list" class="hidden"></a>
     <a href="{{ path('get_bird') }}" id ="url-get" class="hidden"></a>
@@ -23,7 +26,64 @@
 
 {% endblock %}
 
+
+
 {% block javascripts %}
+
+
+
+    <script>
+
+        var lat = document.getElementById("observation_latitude");
+        var long = document.getElementById("observation_longitude");
+
+        function getLatitude() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showLatitude, showError);
+            } else {
+                alert ("La geolocation n'est pas supportée par votre navigateur.");
+            }
+        }
+
+        function getLongitude() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showLongitude, showError);
+            } else {
+                alert ("La geolocation n'est pas supportée par votre navigateur.");
+            }
+        }
+
+        function showLatitude(position) {
+            lat.value =  position.coords.latitude;
+
+        }
+
+        function showLongitude(position) {
+            long.value = position.coords.longitude;
+
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert ("L'utilisateur a refusé la demande de géolocalisation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert ("L'information de géolocalisation n'est pas disponible.");
+                    break;
+                case error.TIMEOUT:
+                    alert ("La demande pour obtenir la géolocalisation a expiré");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert ("Une erreur est survenue.");
+                    break;
+            }
+        }
+
+        getLatitude();
+        getLongitude();
+    </script>
+
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-select2.js') }}"></script>
     <script src="{{ asset('bundles/core/js/app.js') }}"></script>
 {% endblock %}
