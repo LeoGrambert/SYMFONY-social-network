@@ -4,6 +4,7 @@ namespace CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use CoreBundle\Entity\Observation;
 
 /**
  * ObservationRepository
@@ -32,5 +33,17 @@ class ObservationRepository extends EntityRepository
         return $qb
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * @param Observation $observation
+     * @param bool $flush
+     */
+    public function add(Observation $observation, $flush = true)
+    {
+        $this->getEntityManager()->persist($observation);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
     }
 }
