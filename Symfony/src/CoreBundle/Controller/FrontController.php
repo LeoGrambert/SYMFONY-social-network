@@ -24,7 +24,11 @@ class FrontController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('CoreBundle:Front:index.html.twig');
+        $em = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Observation');
+        $lastObservations = $em->findLastObservations();
+        return $this->render('CoreBundle:Front:index.html.twig',[
+            'lastObservations'=>$lastObservations
+        ]);
     }
 
 

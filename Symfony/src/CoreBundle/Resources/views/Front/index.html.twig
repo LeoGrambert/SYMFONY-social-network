@@ -3,15 +3,46 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    Ici se trouvera la future page d'accueil.
-
-    Accéder aux autres pages du site : <br>
-    <ul>
-        <li><a href="{{ path('searchPage') }}">Rechercher</a></li>
-        <li><a href="{{ path('addPage') }}">Participer</a></li>
-        <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
-        <li><a href="{{ path('adminPage') }}">Page d'administration</a></li>
-        <li><a href="{{ path('associationPage') }}">Association</a></li>
-        <li><a href="{{ path('legalPage') }}">Mentions légales</a></li>
-    </ul>
+    <h1>Le projet</h1>
+    <p>L’idée animant notre projet est de fournir une application participative aux passionnés d’ornithologie.</p>
+    <p>Vous saisissez une observation d’oiseau sur notre application, et votre observation devient accessible sur notre
+        carte interactive. Sur cette dernière, vous avez également accès aux observations de nos autres membres.</p>
+    <p>En participant, vous prendrez part à un programme de recherche visant à étudier les effets du climat, de
+        l’urbanisation et de l’agriculture sur la biodiversité.</p>
+    <a href="{{ path('addPage') }}" class="btn btn-primary">Participer</a>
+    <hr>
+    <h1>Comment faire ?</h1>
+    <div class="row">
+        <div class="col col-md-6">
+            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
+            <h4>Observez</h4>
+        </div>
+        <div class="col col-md-6">
+            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
+            <h4>Photographiez</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-6">
+            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
+            <h4>Partagez</h4>
+        </div>
+        <div class="col col-md-6">
+            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
+            <h4>Faites valider</h4>
+        </div>
+    </div>
+    <hr>
+    <h1>Dernières observations</h1>
+    {% if lastObservations == null %}
+        <p>Aucune observation n'a été publié. Soyez le premier : <a href="{{ path('addPage') }}">Participez</a> </p>
+    {% else %}
+        {% for lastObservation in lastObservations %}
+            <li>User : {{ lastObservation.user }} <br>
+                Date d'ajout : {{ lastObservation.date|date('d/m/Y') }} <br>
+                Latitude : {{ lastObservation.latitude }} Longitude : {{ lastObservation.longitude }}<br>
+                Species : {{ lastObservation.bird.nomVern }}<br>
+                Statut : {{ lastObservation.statut }}</li><br>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

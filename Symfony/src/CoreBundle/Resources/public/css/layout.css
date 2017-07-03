@@ -1,0 +1,20 @@
+#title{
+    text-align: center;
+    margin-top:8%;
+    margin-bottom: 4%;
+}
+#logo{
+    position: absolute;
+    left: 5%;
+    top:9%;
+    width:6%;
+}
+#user{
+    position: absolute;
+    right: 5%;
+    top:13%;
+    width:6%;
+}
+.containerBody{
+    margin-top: 2%;
+}

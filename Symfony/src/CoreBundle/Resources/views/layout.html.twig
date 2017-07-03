@@ -6,11 +6,12 @@
         <link href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" rel="stylesheet">
         <link href="//cdn.rawgit.com/t0m/select2-bootstrap-css/bootstrap3/select2-bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/core/css/layout.css') }}"/>
+        {% block stylesheet %}{% endblock %}
     </head>
 
     <body>
 
-    <!-- Only for the dev period. To delete. Don't forget to delete style attribute in container. It's only here because of navbar. -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -40,7 +41,16 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 7%">
+    <header>
+        <a href="{{ path('homepage') }}"><img id="logo" src="{{ asset('bundles/core/img/logo.jpg') }}" alt="logo"/></a>
+        <h1 id="title">Nos amis les oiseaux</h1>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('adminPage') }}"><img id="user" src="{{ asset('bundles/core/img/user.png') }}" alt="logo"/></a>
+        {% endif %}
+    </header>
+    <hr>
+
+    <div class="container containerBody">
         {% for key, messages in app.session.flashbag.all() %}
             {% for message in messages %}
                 <div class="alert alert-{{ key }}">
@@ -56,22 +66,19 @@
         {% endblock %}
 
         <hr>
-
-        <a href="/">Retour à l'accueil</a><br>
-        {% if is_granted('ROLE_USER') or is_granted('ROLE_PRO') or is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
-        {% endif %}
+        <footer>
+            <a href="/">Retour à l'accueil</a> | <a href="{{ path('legalPage') }}">Mentions légales</a>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_PRO') or is_granted('ROLE_ADMIN') %}
+                | <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+            {% endif %}
+        </footer>
     </div>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
     {% block javascripts %}
-
-
-
-        <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
-        <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-select2.js') }}"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
-
     {% endblock %}
+
     </body>
 </html>
