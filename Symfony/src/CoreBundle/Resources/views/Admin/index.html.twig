@@ -12,6 +12,7 @@
     {% endif %}
     <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations personnelles</a></li>
     <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+    <li><a href="https://fr.gravatar.com/">Changer votre photo de profil (généré par Gravatar)</a></li>
     {% if is_granted('ROLE_PRO') and app.user.isAccredit == true %}
         <li><a href="{{ path('adminValidateObservationsPage') }}">Valider une observation</a></li>
     {% endif %}

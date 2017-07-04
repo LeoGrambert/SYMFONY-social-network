@@ -46,7 +46,7 @@
         <h1 id="title">Nos amis les oiseaux</h1>
         {% if is_granted('ROLE_USER') %}
            {% if gravatar is defined and gravatar != null %}
-                <a href="{{ path('adminPage') }}"><img id="userGravatar" src="{{ gravatar }}" alt="logo"/></a>
+                <a href="{{ path('adminPage') }}"><img id="userGravatar" src="{{ gravatar }}" alt="profilePicture"/></a>
             {% elseif gravatar is defined %}
                 <a href="{{ path('adminPage') }}"><img id="user" src="{{ asset('bundles/core/img/user.png') }}" alt="logo"/></a>
             {% endif %}
