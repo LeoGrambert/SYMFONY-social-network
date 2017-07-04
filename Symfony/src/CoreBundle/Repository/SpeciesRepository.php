@@ -22,9 +22,9 @@ class SpeciesRepository extends EntityRepository
         return $this
             ->createQueryBuilder('a')
             ->where('a.nomVern LIKE :nomVern')
-            ->setParameter('nomVern', "$bird%")
+            ->setParameter('nomVern', "%$bird%")
             ->orderBy('a.nomVern')
-            ->setMaxResults(10)
+            ->setMaxResults(20)
             ->getQuery()
             ->execute()
             ;

@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
@@ -34,17 +35,9 @@ class ObservationType extends AbstractType
                     'data' => new \DateTime())
             )
 
-            ->add('bird', AutocompleteType::class, ['class' => 'CoreBundle:Species'])
-
-           /*->add('bird', EntityType::class, array(
-               'class'        => 'CoreBundle:Species',
-               'choice_label' => 'nomVern',
-               'multiple'     => false,
-               'query_builder' => function(SpeciesRepository $repository) {
-                   return $repository->createQueryBuilder('s')
-                       ->orderBy('s.nomVern', 'ASC');
-               }
-           ))*/
+            ->add('bird', AutocompleteType::class, array(
+                'class' => 'CoreBundle:Species',
+                'label' => 'Oiseau'))
 
             ->add('description', TextareaType::class, array(
                 'label' => 'Commentaire',
@@ -56,10 +49,10 @@ class ObservationType extends AbstractType
                 'required' => false
             ))
 
-            ->add("latitude", IntegerType::class, array(
+            ->add("latitude", NumberType::class, array(
                 'label' => 'Latitude'
             ))
-            ->add("longitude", IntegerType::class, array(
+            ->add("longitude", NumberType::class, array(
                 'label' => 'Longitude'
             ))
 
