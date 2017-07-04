@@ -6,6 +6,7 @@ use CoreBundle\Entity\Observation;
 use CoreBundle\Entity\Species;
 use CoreBundle\Entity\User;
 use CoreBundle\Form\ObservationType;
+use CoreBundle\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -66,16 +67,14 @@ class FrontController extends Controller
     /**
      * What do we do if we are on search page
      * @route("/search", name="searchPage")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchAction()
+    public function searchAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Observation');
-        $listObservations = $em->findAll();
 
 
-        return $this->render('CoreBundle:Front:search.html.twig',[
-            'listObservations'=>$listObservations
-        ]);
+        return $this->render('CoreBundle:Front:search.html.twig');
     }
 
     /**
