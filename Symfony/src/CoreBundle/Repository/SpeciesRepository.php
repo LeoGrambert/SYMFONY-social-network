@@ -38,4 +38,78 @@ class SpeciesRepository extends EntityRepository
             ->setParameter('pattern', $pattern)
             ;
     }
+
+    /**
+     * Method to get all ordre from Species
+     * @return array
+     */
+    public function getOrdre()
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->select('s.ordre')
+            ->where('s.nomVern != :notnull')
+            ->setParameter('notnull', '')
+            ->distinct(true)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Method to get famille from Species
+     * @param $filter
+     * @return array
+     */
+    public function getFamille()
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->select('s.famille')
+            ->distinct(true)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Method to get all birds from Species
+     * @return array
+     */
+    public function getBirds()
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->select('s.nomVern')
+            ->distinct(true)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Method to get birds from Species by family
+     * @param $family
+     * @return array
+     */
+    public function getBirdsByFamily($family)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->select('s.nomVern')
+            ->where('s.familme = :family')
+            ->setParameter('family', $family)
+            ->distinct(true)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 }

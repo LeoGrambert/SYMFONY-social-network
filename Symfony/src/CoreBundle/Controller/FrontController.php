@@ -6,7 +6,6 @@ use CoreBundle\Entity\Observation;
 use CoreBundle\Entity\Species;
 use CoreBundle\Entity\User;
 use CoreBundle\Form\ObservationType;
-use CoreBundle\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,8 +92,17 @@ class FrontController extends Controller
             $gravatar = null;
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $ordres = $em->getRepository('CoreBundle:Species')->getOrdre();
+        $familles = $em->getRepository('CoreBundle:Species')->getFamille();
+        $birds = $em->getRepository('CoreBundle:Species')->getBirds();
+
         return $this->render('CoreBundle:Front:search.html.twig', [
-            'gravatar'=>$gravatar
+            'gravatar'=>$gravatar,
+            'ordres'=>$ordres,
+            'familles'=>$familles,
+            'birds'=>$birds
+
         ]);
     }
 

@@ -11,7 +11,34 @@
         <link rel="stylesheet" href="{{ asset('bundles/core/css/search.css') }}"/>
     {% endblock %}
 
-    {{ form(form) }}
+    <form method="post">
+        <label>Ordre</label>
+        <input id="orderField" list="ordres">
+        <datalist id="ordres">
+            {% for ordre in ordres %}
+                <option value="{{ ordre.ordre }}">
+            {% endfor %}
+        </datalist>
+
+        <label>Famille</label>
+        <input id="familyField" list="familles">
+        <datalist id="familles">
+            {% for famille in familles %}
+                <option value="{{ famille.famille }}">
+            {% endfor %}
+        </datalist>
+
+        <label>Oiseau</label>
+        <input list="birds">
+        <datalist id="birds">
+            {% for bird in birds %}
+                <option value="{{ bird.nomVern }}">
+            {% endfor %}
+        </datalist>
+
+        <input type="submit" class="btn btn-default" value="Rechercher">
+    </form>
+
 
     <div id="mapid"></div>
 
