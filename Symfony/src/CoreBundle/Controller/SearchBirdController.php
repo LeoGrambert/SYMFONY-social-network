@@ -7,6 +7,7 @@ use CoreBundle\Entity\Observation;
 use CoreBundle\Entity\Species;
 use CoreBundle\Entity\User;
 use CoreBundle\Form\ObservationType;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -50,28 +51,27 @@ class SearchBirdController extends Controller
 
     /**
      * @param Species $species
-     * What do we do if we want to search a bird by knowing his family
+     * What do we do if we want to search a bird by knowing it family
      * @Route("/search/{family}", methods={"POST", "GET"}, name="searchWithFamily")
-     * @ParamConverter("species", options={"repository_method"="getBirdsByFamily"})
+     * @ParamConverter("species", options={"mapping": {"family": "famille"}})
      */
     public function searchWithFamily(Species $species)
     {
         $em = $this->getDoctrine()->getManager();
-        $birds = $em->getRepository('CoreBundle:Species')->getBirdsByFamily();
+        $birds = $em->getRepository('CoreBundle:Species')->getBirdsByFamily($species->getFamille());
         dump($birds);
     }
 
-    /**
-     * What do we do if we want to search a bird by knowing his order
-     * @param $species
-     * @Route("/search/{order}", methods={"GET"}, name="searchWithOrder")
-     * @ParamConverter("species", class="CoreBundle:FrontController")
-     */
-    public function searchWithOrder(Species $species)
-    {
-
-    }
-
-
-
+//    /**
+//     * @param Species $species
+//     * What do we do if we want to search a family by knowing it order
+//     * @Route("/search/{order}", methods={"POST", "GET"}, name="searchWithOrder")
+//     * @ParamConverter("species", options={"mapping": {"order": "ordre"}})
+//     */
+//    public function searchWithOrder(Species $species)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $families = $em->getRepository('CoreBundle:Species')->getFamilyByOrder($species->getOrdre());
+//        dump($families);
+//    }
 }

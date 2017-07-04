@@ -60,7 +60,6 @@ class SpeciesRepository extends EntityRepository
 
     /**
      * Method to get famille from Species
-     * @param $filter
      * @return array
      */
     public function getFamille()
@@ -103,8 +102,28 @@ class SpeciesRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
 
         $qb->select('s.nomVern')
-            ->where('s.familme = :family')
+            ->where('s.famille = :family')
             ->setParameter('family', $family)
+            ->distinct(true)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Method to get families from Species by order
+     * @param $order
+     * @return array
+     */
+    public function getFamilyByOrder($order)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->select('s.famille')
+            ->where('s.ordre = :order')
+            ->setParameter('order', $order)
             ->distinct(true)
         ;
 

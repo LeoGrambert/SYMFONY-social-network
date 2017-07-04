@@ -6,30 +6,36 @@ $(function(){
     var $familyField = $('#familyField');
     var $orderField = $('#orderField');
 
+    // $orderField.on('change', function (e) {
+    //     e.preventDefault();
+    //     var submit = function(){
+    //         var $orderFieldUrl = '/search/'+$orderField.val();
+    //         return $.ajax({
+    //             url: $orderFieldUrl,
+    //             method: 'POST'
+    //         })
+    //     };
+    //     submit();
+    // });
+
     $familyField.on('change', function (e) {
         e.preventDefault();
         var submit = function(){
+
             var $familyFieldUrl = '/search/'+$familyField.val();
+
             return $.ajax({
                 url: $familyFieldUrl,
-                method: 'GET'
+                method: 'POST',
+                success: function(){
+                   $.each(function () {
+                       $('datalist#birds > option').val($(this));
+                   })
+                }
             })
         };
         submit();
     });
-
-    // $orderField.on('change', function (e) {
-    //     e.preventDefault();
-    //     //console.log('test');
-    //     $.ajax({
-    //         url: '/search/'+$orderField,
-    //         method: 'GET'
-    //     }).done(function (response) {
-    //         //feed #birdField
-    //     }).fail(function (response) {
-    //         //Display error
-    //     })
-    //});
 
     // var mymap = L.map('mapid').setView([46.52863469527167, 2.43896484375], 5);
     //
