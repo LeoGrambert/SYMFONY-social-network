@@ -25,10 +25,17 @@ class FrontController extends Controller
      */
     public function indexAction()
     {
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+
         $em = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Observation');
         $lastObservations = $em->findLastObservations();
         return $this->render('CoreBundle:Front:index.html.twig',[
-            'lastObservations'=>$lastObservations
+            'lastObservations'=>$lastObservations,
+            'gravatar'=>$gravatar
         ]);
     }
 
@@ -39,6 +46,12 @@ class FrontController extends Controller
      */
     public function addAction(Request $request)
     {
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+
         $observation = new Observation();
 
         $observation->setUser($this->getUser());
@@ -59,7 +72,8 @@ class FrontController extends Controller
         }
 
         return $this->render('CoreBundle:Front:add.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'gravatar' => $gravatar
 
         ));
 
@@ -73,9 +87,15 @@ class FrontController extends Controller
      */
     public function searchAction(Request $request)
     {
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
 
-
-        return $this->render('CoreBundle:Front:search.html.twig');
+        return $this->render('CoreBundle:Front:search.html.twig', [
+            'gravatar'=>$gravatar
+        ]);
     }
 
     /**
@@ -84,15 +104,30 @@ class FrontController extends Controller
      */
     public function legalAction()
     {
-        return $this->render('CoreBundle:Front:legal.html.twig');
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+        return $this->render('CoreBundle:Front:legal.html.twig', [
+            'gravatar'=>$gravatar
+        ]);
     }
 
     /**
      * What do we do if we are on association page
      * @route("/association", name="associationPage")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function associationAction(Request $request)
     {
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+
         $form = $this->createForm('CoreBundle\Form\ContactType',null,[
             'action' =>$this->generateUrl('associationPage'),
             'method'=>'POST'
@@ -119,16 +154,25 @@ class FrontController extends Controller
         }
 
         return $this->render('CoreBundle:Front:association.html.twig', [
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'gravatar'=>$gravatar
         ]);
     }
 
     /**
      * What do we do if we are on login page
      * @route("/login", name="loginPage")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(Request $request)
     {
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+
         //If user is already logged, he's redirected on adminPage
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('adminPage');
@@ -140,6 +184,7 @@ class FrontController extends Controller
         return $this->render('CoreBundle:Front:login.html.twig', [
             'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError(),
+            'gravatar'=>$gravatar
         ]);
     }
 

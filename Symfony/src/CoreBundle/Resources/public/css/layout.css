@@ -13,7 +13,15 @@
     position: absolute;
     right: 5%;
     top:13%;
-    width:6%;
+    width:8%;
+}
+#userGravatar{
+    position: absolute;
+    right: 5%;
+    top:13%;
+    width:80px;
+    height: 80px;
+    border-radius: 50%;
 }
 .containerBody{
     margin-top: 2%;

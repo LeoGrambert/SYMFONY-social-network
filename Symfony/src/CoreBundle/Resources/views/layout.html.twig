@@ -45,7 +45,13 @@
         <a href="{{ path('homepage') }}"><img id="logo" src="{{ asset('bundles/core/img/logo.jpg') }}" alt="logo"/></a>
         <h1 id="title">Nos amis les oiseaux</h1>
         {% if is_granted('ROLE_USER') %}
-            <a href="{{ path('adminPage') }}"><img id="user" src="{{ asset('bundles/core/img/user.png') }}" alt="logo"/></a>
+           {% if gravatar is defined and gravatar != null %}
+                <a href="{{ path('adminPage') }}"><img id="userGravatar" src="{{ gravatar }}" alt="logo"/></a>
+            {% elseif gravatar is defined %}
+                <a href="{{ path('adminPage') }}"><img id="user" src="{{ asset('bundles/core/img/user.png') }}" alt="logo"/></a>
+            {% endif %}
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}"><img id="user" src="{{ asset('bundles/core/img/login.png') }}" alt="logo"/></a>
         {% endif %}
     </header>
     <hr>

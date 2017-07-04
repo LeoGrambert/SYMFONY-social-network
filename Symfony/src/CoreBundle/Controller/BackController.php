@@ -19,6 +19,12 @@ class BackController extends Controller
     {
         $user = $this->getUser();
 
+        if($user){
+            $gravatar = $user->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+
         $listObservations = $this
             ->getDoctrine()
             ->getManager()
@@ -28,7 +34,10 @@ class BackController extends Controller
         if(null === $user){
             return $this->redirectToRoute('login');
         } else {
-            return $this->render('CoreBundle:Admin:index.html.twig', ['listObservations'=>$listObservations]);
+            return $this->render('CoreBundle:Admin:index.html.twig', [
+                'listObservations'=>$listObservations,
+                'gravatar'=>$gravatar
+            ]);
         }
     }
 
@@ -40,13 +49,20 @@ class BackController extends Controller
     public function validateObservationsAction()
     {
         $user = $this->getUser();
+        if($user){
+            $gravatar = $user->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
 
         if(null === $user){
             return $this->redirectToRoute('login');
         } elseif($user->getIsAccredit() === false){
             return $this->redirectToRoute('adminPage');
         } else {
-            return $this->render('CoreBundle:Admin:validateObservations.html.twig');
+            return $this->render('CoreBundle:Admin:validateObservations.html.twig', [
+                'gravatar'=>$gravatar
+            ]);
         }
     }
 
@@ -58,6 +74,11 @@ class BackController extends Controller
     public function validateAccountAction()
     {
         $user = $this->getUser();
+        if($user){
+            $gravatar = $user->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
 
         $listUsers = $this
             ->getDoctrine()
@@ -69,7 +90,8 @@ class BackController extends Controller
             return $this->redirectToRoute('login');
         } else {
             return $this->render('CoreBundle:Admin:validateAccount.html.twig', [
-                'listUsers'=>$listUsers
+                'listUsers'=>$listUsers,
+                'gravatar'=>$gravatar
             ]);
         }
     }

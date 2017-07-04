@@ -114,4 +114,20 @@ class User extends BaseUser
     {
         return $this->isAccredit;
     }
+
+    /**
+     * Method to get gravatar profile picture
+     * @return null|string
+     */
+    public function getGravatarPicture()
+    {
+        if($this->email != null){
+            $email = md5($this->getEmail());
+            $email = strtolower($email);
+            $gravatar = 'https://www.gravatar.com/avatar/'.$email;
+        } else {
+            $gravatar = null;
+        }
+        return $gravatar;
+    }
 }
