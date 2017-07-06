@@ -12,33 +12,33 @@
     {% endblock %}
 
     <form method="post">
-        <label>Ordre</label>
-        <input id="orderField" list="ordres">
-        <datalist id="ordres">
+        <label for="ordres">Ordre</label>
+        <select id="ordres" >
+            <option></option>
             {% for ordre in ordres %}
-                <option value="{{ ordre.ordre }}">
+                <option value="{{ ordre.ordre }}">{{ ordre.ordre }}</option>
             {% endfor %}
-        </datalist>
+        </select>
 
-        <label>Famille</label>
-        <input id="familyField" list="familles">
-        <datalist id="familles">
+        <label for="familles">Famille</label>
+        <select id="familles">
+            <option></option>
             {% for famille in familles %}
-                <option value="{{ famille.famille }}">
+                <option value="{{ famille.famille }}">{{ famille.famille }}</option>
             {% endfor %}
-        </datalist>
+        </select><br>
 
         <label>Oiseau</label>
-        <input list="birds">
+        <input list="birds" id="birdField" autocomplete="off">
         <datalist id="birds">
             {% for bird in birds %}
                 <option value="{{ bird.nomVern }}">
             {% endfor %}
-        </datalist>
+        </datalist><br>
 
         <input type="submit" class="btn btn-default" value="Rechercher">
     </form>
-
+    <button class="btn btn-info" id="clearForm">Vider le formulaire</button>
 
     <div id="mapid"></div>
 

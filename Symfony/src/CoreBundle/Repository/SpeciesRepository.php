@@ -109,7 +109,7 @@ class SpeciesRepository extends EntityRepository
 
         return $qb
             ->getQuery()
-            ->getResult();
+            ->getArrayResult();
     }
 
     /**
@@ -129,6 +129,6 @@ class SpeciesRepository extends EntityRepository
 
         return $qb
             ->getQuery()
-            ->getResult();
+            ->getArrayResult();
     }
 }
