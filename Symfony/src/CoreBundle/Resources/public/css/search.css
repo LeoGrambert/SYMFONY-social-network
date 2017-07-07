@@ -1,4 +1,10 @@
+select{
+    margin-bottom: 3%;
+}
 #mapid{
     height: 400px;
+}
+#clearMap{
     margin-top: 5%;
+    margin-bottom: 1%;
 }

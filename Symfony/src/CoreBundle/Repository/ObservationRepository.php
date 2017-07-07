@@ -58,4 +58,23 @@ class ObservationRepository extends EntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    /**
+     * Method to get all observations by species
+     * @param $birdId
+     * @return array
+     */
+    public function findWithBirdName($birdId){
+        $qb = $this->createQueryBuilder('o');
+
+        $qb ->where('o.bird = :birdId')
+            ->setParameter('birdId', $birdId)
+            ->leftJoin('o.bird', 's')
+            ->addSelect('s')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

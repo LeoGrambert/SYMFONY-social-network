@@ -87,4 +87,23 @@ class SearchBirdController extends Controller
         }
         return $response;
     }
+
+    /**
+     * @param Species $species
+     * @return \Symfony\Component\HttpFoundation\Response $response
+     * What do we do if we want to find observations with name bird
+     * @Route("/search/bird/{id}", requirements={"id" : "\d+"}, methods={"GET"}, name="searchWithBird")
+     * @ParamConverter("observations", options={"mapping": {"id": "species_id"}})
+     */
+    public function findObservationWithBirds(Species $species)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $observations = $em->getRepository('CoreBundle:Observation')->findWithBirdName($species->getId());
+        if ($observations == null){
+            $response = new JsonResponse([], 422);
+        }else{
+            $response = new JsonResponse(['observations'=>$observations], 200);
+        }
+        return $response;
+    }
 }

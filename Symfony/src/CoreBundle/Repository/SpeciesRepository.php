@@ -83,8 +83,8 @@ class SpeciesRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('s');
 
-        $qb->select('s.nomVern')
-            ->distinct(true)
+        $qb->select('s.nomVern', 's.id')
+            ->distinct('s.nomVern')
         ;
 
         return $qb
@@ -101,7 +101,7 @@ class SpeciesRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('s');
 
-        $qb->select('s.nomVern')
+        $qb->select('s.nomVern', 's.id')
             ->where('s.famille = :family')
             ->setParameter('family', $family)
             ->distinct(true)
