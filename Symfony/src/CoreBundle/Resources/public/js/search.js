@@ -60,10 +60,19 @@ $(function(){
             }).done(function (response) {
                 $('#birds').empty();
                 $('#birdField').val('');
+                var $nameBirds = [];
                 $.each(response.birds, function(key, value){
-                    var $toAdd="<option value='"+value.nomVern+" - "+value.id+"'>";
-                    $('#birds').append($toAdd);
-                })
+                    if(value.nomVern !== ''){
+                        if(jQuery.inArray(value.nomVern, $nameBirds) !== -1){
+                            console.log('Cet oiseau est déjà dans la liste');
+                        } else {
+                            $nameBirds.push(value.nomVern);
+                            var $toAdd="<option value='"+value.nomVern+" - "+value.id+"'>";
+                            $('#birds').append($toAdd);
+                        }
+                    }
+                });
+                console.log($nameBirds);
             }).error(function(){
                 console.log('Erreur ajax appel données table Species');
             })
@@ -83,6 +92,7 @@ $(function(){
                 url: $birdFieldUrl,
                 method: 'GET'
             }).done(function(response){
+                $('#errorMsg').remove();
                 $.each(response.observations, function(key, value){
                     var date = new Date(value.date.date);
                     date = (date.getDay() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
@@ -90,8 +100,19 @@ $(function(){
                     var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
                     marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par (xxx)");
                 })
-            }).error(function(){
-                console.log('Erreur ajax appel données table Observations');
+            }).fail(function(jqXHR, exception){
+                var msg = '';
+                if (jqXHR.status === 404) {
+                    msg = 'Espèce non présente dans le référentiel TAXREF de l\'INPN.';
+                } else if (jqXHR.status === 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (jqXHR.status === 422) {
+                    msg = 'Cette espèce n\'a pas encore été observée.';
+                } else {
+                    msg = 'Une erreur s\'est produite. Veuillez réessayer.';
+                }
+                $('#errorMsg').remove();
+                $('form').append('<div id="errorMsg" class="alert alert-warning">'+msg+'</div>');
             })
         };
         submit();
