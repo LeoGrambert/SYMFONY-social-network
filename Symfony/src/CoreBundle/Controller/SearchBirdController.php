@@ -93,7 +93,7 @@ class SearchBirdController extends Controller
      * @param Species $species
      * @return \Symfony\Component\HttpFoundation\Response $response
      * What do we do if we want to find observations with name bird
-     * @Route("/search/bird/{id}", requirements={"id" : "\d+"}, methods={"GET"}, name="searchWithBird")
+     * @Route("/search/bird/{id}", requirements={"id" : "\d+"}, methods={"POST", "GET"}, name="searchWithBird")
      * @ParamConverter("observations", options={"mapping": {"id": "species_id"}})
      */
     public function findObservationWithBirds(Species $species)

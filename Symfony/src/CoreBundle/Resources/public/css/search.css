@@ -3,8 +3,12 @@ select{
 }
 #mapid{
     height: 400px;
+    margin-top: 8.5%;
 }
 #clearMap{
     margin-top: 5%;
-    margin-bottom: 1%;
+    margin-bottom: 8%;
+    right: 5%;
+    width: 20%;
+    position: absolute;
 }
