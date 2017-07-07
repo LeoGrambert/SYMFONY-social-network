@@ -60,9 +60,9 @@ class FrontController extends Controller
 
         // Grant status of the observation  according to ROLE
         if ($this->isGranted('ROLE_ADMIN') || ($this->isGranted('ROLE_PRO') && $user->getIsAccredit())) {
-            $observation->setStatut("accepted");
+            $observation->setStatut('accepted');
         } else {
-            $observation->setStatut("untreated");
+            $observation->setStatut('untreated');
         }
 
         $form = $this->createForm(ObservationType::class, $observation, ['method'=>'PUT']);
@@ -72,7 +72,11 @@ class FrontController extends Controller
 
             $this->getDoctrine()->getRepository('CoreBundle:Observation')->add($observation);
 
-            $this->addFlash('info', 'Votre observation a été enregistrée, elle est en attente de validation.');
+            if ($observation->getStatut() === 'accepted'){
+                $this->addFlash('info', 'Votre observation a été enregistrée.');
+            } elseif ($observation->getStatut() === 'untreated'){
+                $this->addFlash('info', 'Votre observation a été enregistrée, elle est en attente de validation.');
+            }
 
             return $this->redirectToRoute('homepage');
         }

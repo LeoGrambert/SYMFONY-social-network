@@ -37,8 +37,11 @@ class ObservationRepository extends EntityRepository
 
     public function findLastObservations(){
         $qd = $this->createQueryBuilder('o');
+        $statut = 'accepted';
 
         $qd
+            ->where('o.statut = :statut')
+            ->setParameter('statut',$statut)
             ->orderBy('o.date', 'desc')
             ->setMaxResults(3);
 
