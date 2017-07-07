@@ -53,6 +53,7 @@ class ObservationRepository extends EntityRepository
      */
     public function add(Observation $observation, $flush = true)
     {
+
         $this->getEntityManager()->persist($observation);
         if ($flush) {
             $this->getEntityManager()->flush();

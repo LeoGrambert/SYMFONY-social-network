@@ -3,6 +3,7 @@
 namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observation
@@ -12,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Observation
 {
+    const STATUS_UNTREATED = 'untreated';
+    const STATUS_ACCEPTED = 'accepted';
+    const STATUS_REJECTED = 'rejected';
+
     /**
      * @var int
      *
@@ -31,13 +36,14 @@ class Observation
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @Assert\DateTime()
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="statut", type="string", length=64, nullable=false)
+     * @ORM\Column(name="statut", type="string", length=64, nullable=false, columnDefinition="ENUM('untreated', 'accepted', 'rejected')", options={"default":"untreated"})
      */
     private $statut;
 
@@ -45,7 +51,7 @@ class Observation
     /**
      *
      * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", cascade={"persist"})
-     * @ORM\JoinColumn(name="species_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="species_id", referencedColumnName="id", nullable=false)
      */
     private $bird;
 
@@ -55,15 +61,15 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\Type("string")
      */
     private $description;
 
     /**
-     * @var string
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Picture", cascade={"persist", "remove"})
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
-    private $image;
+    private $picture;
 
     /**
      * @var float
@@ -213,28 +219,18 @@ class Observation
         return $this->description;
     }
 
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Observation
-     */
-    public function setImage($image)
+
+    public function setPicture(Picture $picture = null)
     {
-        $this->image = $image;
+        $this->picture = $picture;
 
         return $this;
     }
 
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
+
+    public function getPicture()
     {
-        return $this->image;
+        return $this->picture;
     }
 
     /**

@@ -23,6 +23,11 @@
     height: 80px;
     border-radius: 50%;
 }
+
+.input {
+background: red;
+}
 .containerBody{
     margin-top: 2%;
 }
+
