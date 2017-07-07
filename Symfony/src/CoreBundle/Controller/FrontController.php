@@ -45,7 +45,10 @@ class FrontController extends Controller
      */
     public function addAction(Request $request)
     {
-        if($this->getUser()){
+
+        $user = $this->getUser();
+
+        if($user){
             $gravatar = $this->getUser()->getGravatarPicture();
         } else {
             $gravatar = null;
@@ -53,21 +56,29 @@ class FrontController extends Controller
 
         $observation = new Observation();
 
-        $observation->setUser($this->getUser());
+        $observation->setUser($user);
 
-
-
-        $observation->setStatut('En_attente_de_validation');
+        // Grant status of the observation  according to ROLE
+        if ($this->isGranted('ROLE_ADMIN') || ($this->isGranted('ROLE_PRO') && $user->getIsAccredit())) {
+            $observation->setStatut("accepted");
+        } else {
+            $observation->setStatut("untreated");
+        }
 
         $form = $this->createForm(ObservationType::class, $observation, ['method'=>'PUT']);
 
-        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
+        if ($form->handleRequest($request)->isSubmitted() && $form->isValid() && ($form->get('bird')->getData()!= null)){
+
 
             $this->getDoctrine()->getRepository('CoreBundle:Observation')->add($observation);
 
             $this->addFlash('info', 'Votre observation a été enregistrée, elle est en attente de validation.');
 
             return $this->redirectToRoute('homepage');
+        }
+
+        elseif ($form->handleRequest($request)->isSubmitted() && $form->get('bird')->getData()==null){
+            $this->addFlash('info', 'Vous devez renseigner un nom d\'oiseau en utilisant le moteur de recherche !');
         }
 
         return $this->render('CoreBundle:Front:add.html.twig', array(

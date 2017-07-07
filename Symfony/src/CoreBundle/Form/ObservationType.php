@@ -17,6 +17,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class ObservationType extends AbstractType
 {
@@ -31,23 +33,27 @@ class ObservationType extends AbstractType
             ->add('date',  DateTimeType::class,
                 array(
                     'label'=> 'Date d\'observation',
-                    'model_timezone' => 'Europe/Paris',
-                    'data' => new \DateTime())
+                    'view_timezone' => 'Europe/Paris',
+                    'date_widget' => "single_text", 'time_widget' => "single_text",
+                    'data' => new \DateTime('now'))
             )
 
             ->add('bird', AutocompleteType::class, array(
                 'class' => 'CoreBundle:Species',
-                'label' => 'Oiseau'))
+                'label' => 'Nom de l\'oiseau',
+                'required' => true
+            ))
 
             ->add('description', TextareaType::class, array(
                 'label' => 'Commentaire',
                 'required' => false
             ))
 
-            ->add('image', FileType::class, array(
-                'label' => 'Image',
+            ->add('picture',     PictureType::class, array(
+                'label' => 'Photo',
                 'required' => false
             ))
+
 
             ->add("latitude", NumberType::class, array(
                 'label' => 'Latitude'
@@ -60,6 +66,7 @@ class ObservationType extends AbstractType
                 'label' => 'Soumettre'
             ))
         ;
+
 
     }
 

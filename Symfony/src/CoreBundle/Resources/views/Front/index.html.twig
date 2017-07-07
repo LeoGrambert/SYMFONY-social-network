@@ -43,6 +43,13 @@
                 Latitude : {{ lastObservation.latitude }} Longitude : {{ lastObservation.longitude }}<br>
                 Species : {{ lastObservation.bird.nomVern }}<br>
                 Statut : {{ lastObservation.statut }}</li><br>
+            {% if lastObservation.picture is not null %}
+                <img
+                        src="{{ asset(lastObservation.picture.webPath) }}"
+                        alt="{{ lastObservation.picture.alt }}"
+                        height="200"
+                />
+            {% endif %}
         {% endfor %}
     {% endif %}
 {% endblock %}

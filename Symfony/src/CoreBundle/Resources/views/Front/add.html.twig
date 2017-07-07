@@ -3,18 +3,13 @@
 {% block title %}Ajout d'une observation{% endblock %}
 
 {% block body %}
-    {% for flash_message in app.session.flashBag.get('info') %}
-        <div class="flash-notice alert alert-info">
-            <p>{{ flash_message }}</p>
-        </div>
-    {% endfor %}
 
     <h1>Saisie d'une observation</h1>
 
 
     {{ form_start(form)}}
 
-    {{ form_widget(form) }}
+    {{ form_widget(form)}}
 
     {{ form_end(form) }}
 
@@ -33,6 +28,8 @@
 
 
     <script>
+
+
 
         var lat = document.getElementById("observation_latitude");
         var long = document.getElementById("observation_longitude");
@@ -82,6 +79,7 @@
 
         getLatitude();
         getLongitude();
+        document.getElementById("observation_bird").add('required');
     </script>
 
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-select2.js') }}"></script>

@@ -32,7 +32,8 @@ class SearchBirdController extends Controller
     {
         $q = $request->query->get('q', $request->query->get('term', ''));
         $birds = $this->getDoctrine()->getRepository('CoreBundle:Species')->findLike($q);
-        return $this->render('CoreBundle:Front:searchbird.json.twig', ['birds' => $birds]);
+        $results = array_unique($birds);
+        return $this->render('CoreBundle:Front:searchbird.json.twig', ['birds' => $results]);
     }
 
     /**
