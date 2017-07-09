@@ -81,4 +81,22 @@ class ObservationRepository extends EntityRepository
             ->getQuery()
             ->getArrayResult();
     }
+
+    /**
+     * Method to get all amateur observations to validate
+     * @return QueryBuilder
+     */
+    public function findObservationsToValidate(){
+        $qb = $this->createQueryBuilder('o');
+
+        $toValidate = "untreated";
+
+        $qb
+            ->where('o.statut = :toValidate')
+            ->setParameter('toValidate', $toValidate)
+            ->orderBy('o.date', 'desc')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

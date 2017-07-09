@@ -85,11 +85,14 @@ class FrontController extends Controller
             $this->addFlash('info', 'Vous devez renseigner un nom d\'oiseau en utilisant le moteur de recherche !');
         }
 
-        return $this->render('CoreBundle:Front:add.html.twig', array(
-            'form' => $form->createView(),
-            'gravatar' => $gravatar
-
-        ));
+        if(null === $user) {
+            return $this->redirectToRoute('login');
+        } else {
+            return $this->render('CoreBundle:Front:add.html.twig', array(
+                'form' => $form->createView(),
+                'gravatar' => $gravatar
+            ));
+        }
 
     }
 

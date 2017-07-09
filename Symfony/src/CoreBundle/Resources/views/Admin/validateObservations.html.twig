@@ -3,34 +3,32 @@
 {% block title %}Valider une observation{% endblock %}
 
 {% block body %}
-    <p><strong>Liste des observations à valider :</strong></p>
-    <form>
-        <select>
-            <option>Filtre par espèce</option>
-        </select>
+    <h3><strong>Liste des observations à valider</strong></h3>
+    <form method="get" onsubmit="return false">
+        <label>Filtre par espèce</label>
+        <input list="birds" id="birdField" autocomplete="off">
+        <datalist id="birds">
+            {% set birdsName = [] %}
+            {% for bird in birds %}
+                {% if bird.nomVern in birdsName %}
+                {% else %}
+                    {% if bird.nomVern != "" %}
+                        {% set birdsName = birdsName|merge([bird.nomVern]) %}
+                            <option class="birdOption" value="{{ bird.nomVern }} - {{ bird.id }}">
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </datalist>
     </form><br>
-        <li>User : app.user.username <br>
-            Date d'ajout : listObservation.date|date('d/m/Y') <br>
-            Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
-            Species : listObservation.bird.nomVern<br>
-            Statut : listObservation.statut
-        </li><br>
-    <li>User : app.user.username <br>
-        Date d'ajout : listObservation.date|date('d/m/Y') <br>
-        Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
-        Species : listObservation.bird.nomVern<br>
-        Statut : listObservation.statut
-    </li><br>
-    <li>User : app.user.username <br>
-        Date d'ajout : listObservation.date|date('d/m/Y') <br>
-        Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
-        Species : listObservation.bird.nomVern<br>
-        Statut : listObservation.statut
-    </li><br>
-    <li>User : app.user.username <br>
-        Date d'ajout : listObservation.date|date('d/m/Y') <br>
-        Latitude : listObservation.latitude Longitude : listObservation.longitude<br>
-        Species : listObservation.bird.nomVern<br>
-        Statut : listObservation.statut
-    </li><br>
+
+        {% for observationToValidate in observationsToValidate %}
+            <p>{{ observationToValidate.user.username }} a observé "{{ observationToValidate.bird.nomVern }}" le {{ observationToValidate.date|date('d/m/Y') }} aux coordonnées suivantes : {{ observationToValidate.latitude }}, {{ observationToValidate.longitude }}</p>
+            {% if observationToValidate.picture != null  %}
+                <img src="{{ observationToValidate.picture.id }}.{{ observationToValidate.picture.ext }}" alt="{{ observationToValidate.picture.alt }}">
+            {% endif %}
+            <form>
+                <input type="submit" class="btn btn-warning" value="Confirmer">
+                <input type="submit" class="btn btn-danger" value="Supprimer">
+            </form>
+        {% endfor %}
 {% endblock %}

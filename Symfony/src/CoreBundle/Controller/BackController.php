@@ -55,13 +55,19 @@ class BackController extends Controller
             $gravatar = null;
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $observationsToValidate = $em->getRepository('CoreBundle:Observation')->findObservationsToValidate();
+        $birds = $em->getRepository('CoreBundle:Species')->getBirds();
+
         if(null === $user){
             return $this->redirectToRoute('login');
         } elseif($user->getIsAccredit() === false){
             return $this->redirectToRoute('adminPage');
         } else {
             return $this->render('CoreBundle:Admin:validateObservations.html.twig', [
-                'gravatar'=>$gravatar
+                'gravatar'=>$gravatar,
+                'observationsToValidate'=>$observationsToValidate,
+                'birds'=>$birds
             ]);
         }
     }
