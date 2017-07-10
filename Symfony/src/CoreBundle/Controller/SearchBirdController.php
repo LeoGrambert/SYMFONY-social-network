@@ -92,14 +92,33 @@ class SearchBirdController extends Controller
     /**
      * @param Species $species
      * @return \Symfony\Component\HttpFoundation\Response $response
-     * What do we do if we want to find observations with name bird
-     * @Route("/search/bird/{id}", requirements={"id" : "\d+"}, methods={"POST", "GET"}, name="searchWithBird")
+     * What do we do if we want to find accepted observations with name bird
+     * @Route("/search/bird/accepted/{id}", requirements={"id" : "\d+"}, methods={"POST", "GET"}, name="searchWithBird")
      * @ParamConverter("observations", options={"mapping": {"id": "species_id"}})
      */
-    public function findObservationWithBirds(Species $species)
+    public function findAcceptedObservationWithBirds(Species $species)
     {
         $em = $this->getDoctrine()->getManager();
-        $observations = $em->getRepository('CoreBundle:Observation')->findWithBirdName($species->getId());
+        $observations = $em->getRepository('CoreBundle:Observation')->findWithBirdName($species->getId(), 'accepted');
+        if ($observations == null){
+            $response = new JsonResponse([], 422);
+        }else{
+            $response = new JsonResponse(['observations'=>$observations], 200);
+        }
+        return $response;
+    }
+
+    /**
+     * @param Species $species
+     * @return \Symfony\Component\HttpFoundation\Response $response
+     * What do we do if we want to find untreated observations with name bird
+     * @Route("/search/bird/untreated/{id}", requirements={"id" : "\d+"}, methods={"POST", "GET"}, name="searchWithBirdUntreated")
+     * @ParamConverter("observations", options={"mapping": {"id": "species_id"}})
+     */
+    public function findObservationUntreatedWithBirds(Species $species)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $observations = $em->getRepository('CoreBundle:Observation')->findWithBirdName($species->getId(), 'untreated');
         if ($observations == null){
             $response = new JsonResponse([], 422);
         }else{

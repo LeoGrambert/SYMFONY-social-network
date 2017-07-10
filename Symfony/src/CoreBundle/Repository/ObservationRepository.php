@@ -68,13 +68,19 @@ class ObservationRepository extends EntityRepository
      * @param $birdId
      * @return array
      */
-    public function findWithBirdName($birdId){
+    public function findWithBirdName($birdId, $statut){
         $qb = $this->createQueryBuilder('o');
 
         $qb ->where('o.bird = :birdId')
             ->setParameter('birdId', $birdId)
+            ->andWhere('o.statut = :statut')
+            ->setParameter('statut', $statut)
             ->leftJoin('o.bird', 's')
             ->addSelect('s')
+            ->leftJoin('o.user', 'u')
+            ->addSelect('u')
+            ->leftJoin('o.picture', 'p')
+            ->addSelect('p')
         ;
 
         return $qb

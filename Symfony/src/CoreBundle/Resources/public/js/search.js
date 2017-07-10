@@ -87,7 +87,7 @@ $(function(){
         var $birdFieldSplit = $birdField.val().split('- ');
         //Call ajax
         var submit = function(){
-            var $birdFieldUrl = '/search/bird/'+$birdFieldSplit[1];
+            var $birdFieldUrl = '/search/bird/accepted/'+$birdFieldSplit[1];
             return $.ajax({
                 url: $birdFieldUrl,
                 method: 'GET'
@@ -95,10 +95,10 @@ $(function(){
                 $('#errorMsg').remove();
                 $.each(response.observations, function(key, value){
                     var date = new Date(value.date.date);
-                    date = (date.getDay() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
+                    date = (date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
                     $('#mapid').after('<p>Observation faite le <span id="date'+value.id+'">'+date+'</span> par (xxx) aux coordonnées suivantes : <span id="lat'+value.id+'">' + value.latitude+'</span> - <span id="lat'+value.id+'">'+value.longitude+'</span></p>')
                     var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
-                    marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par (xxx)</b><img>+value.picture.alt+</img>");
+                    marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par "+value.user.username+"</b>");
                 })
             }).fail(function(jqXHR, exception){
                 var msg = '';
