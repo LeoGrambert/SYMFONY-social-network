@@ -120,14 +120,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/public/js/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="72" column="21" lean-forward="false" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+            <state relative-caret-position="248">
+              <caret line="116" column="51" lean-forward="false" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
               <folding>
-                <marker date="1499695959130" expanded="true" signature="283:289" ph="©" />
+                <marker date="1499697225933" expanded="true" signature="283:289" ph="©" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrontController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/FrontController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="115" column="63" lean-forward="false" selection-start-line="115" selection-start-column="63" selection-end-line="115" selection-end-column="63" />
+              <folding>
+                <element signature="e#4079#4384#0#PHP" expanded="false" />
+                <element signature="e#4600#5948#0#PHP" expanded="false" />
+                <element signature="e#6197#7014#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpeciesRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Repository/SpeciesRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="90" column="24" lean-forward="false" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nos_amis_les_oiseaux.species" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/b1a980d5/3f2961db-e0d4-4f21-a24a-aaddd76a1fee/nos_amis_les_oiseaux.species">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,14 +174,14 @@
       <file leaf-file-name="search.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/search.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="24" />
+            <state relative-caret-position="239">
+              <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/public/css/search.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -201,7 +240,6 @@
         <option value="$PROJECT_DIR$/src/CoreBundle/Form/SearchType.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/public/js/app.js" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/public/js/autocompleter-select2.js" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Repository/SpeciesRepository.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/searchbird.json.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Entity/Species.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/add.html.twig" />
@@ -228,9 +266,10 @@
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/public/js/validateObservation.js" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Admin/index.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Admin/validateObservations.html.twig" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/public/js/search.js" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/search.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/public/css/search.css" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Repository/SpeciesRepository.php" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/search.html.twig" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/public/js/search.js" />
       </list>
     </option>
   </component>
@@ -830,7 +869,7 @@
       <workItem from="1499551442254" duration="42000" />
       <workItem from="1499613375570" duration="2667000" />
       <workItem from="1499623131474" duration="2568000" />
-      <workItem from="1499669462100" duration="18301000" />
+      <workItem from="1499669462100" duration="19166000" />
     </task>
     <task id="LOCAL-00001" summary="Observation form is completed - Not yet visual formatting">
       <created>1499420934878</created>
@@ -843,7 +882,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228867000" />
+    <option name="totallyTimeSpent" value="229732000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -856,6 +895,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="37" y="-14" width="1244" height="735" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -864,7 +904,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40065682" sideWeight="0.79833335" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40065682" sideWeight="0.79833335" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1118,14 +1158,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Repository/SpeciesRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-531">
-          <caret line="50" column="10" lean-forward="false" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/b1a980d5/3f2961db-e0d4-4f21-a24a-aaddd76a1fee/nos_amis_les_oiseaux.user">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1166,18 +1198,6 @@
         <state relative-caret-position="21">
           <caret line="1" column="25" lean-forward="false" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/FrontController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="216" column="61" lean-forward="false" selection-start-line="216" selection-start-column="61" selection-end-line="216" selection-end-column="61" />
-          <folding>
-            <element signature="e#4079#4384#0#PHP" expanded="false" />
-            <element signature="e#4600#5948#0#PHP" expanded="false" />
-            <element signature="e#6197#7014#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1266,19 +1286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/b1a980d5/3f2961db-e0d4-4f21-a24a-aaddd76a1fee/nos_amis_les_oiseaux.species">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Admin/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -1305,29 +1312,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/public/js/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="72" column="21" lean-forward="false" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
-          <folding>
-            <marker date="1499695959130" expanded="true" signature="283:289" ph="©" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/search.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/public/css/search.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/FrontController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="115" column="63" lean-forward="false" selection-start-line="115" selection-start-column="63" selection-end-line="115" selection-end-column="63" />
+          <folding>
+            <element signature="e#4079#4384#0#PHP" expanded="false" />
+            <element signature="e#4600#5948#0#PHP" expanded="false" />
+            <element signature="e#6197#7014#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Repository/SpeciesRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="90" column="24" lean-forward="false" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/b1a980d5/3f2961db-e0d4-4f21-a24a-aaddd76a1fee/nos_amis_les_oiseaux.species">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/search.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/public/js/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="116" column="51" lean-forward="false" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
+          <folding>
+            <marker date="1499697225933" expanded="true" signature="283:289" ph="©" />
+          </folding>
         </state>
       </provider>
     </entry>

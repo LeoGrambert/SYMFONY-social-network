@@ -83,7 +83,7 @@ class SpeciesRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('s');
 
-        $qb->select('s.nomVern', 's.id')
+        $qb->select('s.nomVern', 's.id', 's.url')
             ->distinct('s.nomVern')
         ;
 

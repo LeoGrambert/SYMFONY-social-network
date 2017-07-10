@@ -84,7 +84,6 @@ $(function(){
     $birdField.on('change', function(e){
         e.preventDefault();
         //Get bird id
-        //var $birdFieldSplit = $birdField.val().split('- ');
         var $input = $birdField.val();
         var $datalist = $('#birds');
         var $val = $($datalist).find('option[value="'+$input+'"]');
@@ -115,7 +114,8 @@ $(function(){
                 } else if (jqXHR.status === 500) {
                     msg = 'Internal Server Error [500].';
                 } else if (jqXHR.status === 422) {
-                    msg = 'Cette espèce n\'a pas encore été observée.';
+                    var $url = $('#getUrl-'+$endval).val();
+                    msg = 'Cette espèce n\'a pas encore été observée. <a href="'+$url+'">Consultez sa fiche INPN</a>';
                 } else {
                     msg = 'Une erreur s\'est produite. Veuillez réessayer.';
                 }

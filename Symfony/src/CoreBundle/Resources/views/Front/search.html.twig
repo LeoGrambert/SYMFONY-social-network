@@ -38,6 +38,7 @@
                     {% if bird.nomVern != "" %}
                         {% set birdsName = birdsName|merge([bird.nomVern]) %}
                         <option class="birdOption" value="{{ bird.nomVern }}" id="{{ bird.id }}">
+                        <input id="getUrl-{{ bird.id }}" type="hidden" value="{{ bird.url }}"/>
                     {% endif %}
                 {% endif %}
             {% endfor %}
