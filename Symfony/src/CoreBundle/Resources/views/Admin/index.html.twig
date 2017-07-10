@@ -31,10 +31,10 @@
                 {% set months = months|merge([listObservation.date|date('F Y')]) %}
                 <p><strong>Observations du mois {% if listObservation.date|date('F')|trans == "Avril" or listObservation.date|date('F')|trans == 'Août' or listObservation.date|date('F')|trans == 'Octobre' %}d'{% else %}de {% endif %}{{ listObservation.date|date('F')|trans }} {{ listObservation.date|date('Y') }} :</strong></p>
             {% endif %}
-            <li>User : {{ app.user.username }} <br>
+            <li>Nom d'utilisateur : {{ app.user.username }} <br>
                 Date d'ajout : {{ listObservation.date|date('d/m/Y') }} <br>
-                Latitude : {{ listObservation.latitude }} Longitude : {{ listObservation.longitude }}<br>
-                Species : {{ listObservation.bird.nomVern }}<br>
+                Coordonnées : <a title="Cliquez pour accéder à la carte" href="{{ path('SearchGpsCoordinates', {'lat':listObservation.latitude, 'lon':listObservation.longitude}) }}">{{ listObservation.latitude }}, {{ listObservation.longitude }}</a><br>
+                Espèce : {{ listObservation.bird.nomVern }}<br>
                 Statut : {{ listObservation.statut }}</li><br>
         {% endfor %}
     {% endif %}

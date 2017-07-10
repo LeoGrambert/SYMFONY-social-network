@@ -13,7 +13,7 @@
 
     <form method="get" onsubmit="return false">
         <label for="ordres">Ordre</label>
-        <select id="ordres" >
+        <select class="form-control" id="ordres" >
             <option></option>
             {% for ordre in ordres %}
                 <option value="{{ ordre.ordre }}">{{ ordre.ordre }}</option>
@@ -21,7 +21,7 @@
         </select>
 
         <label for="familles">Famille</label>
-        <select id="familles">
+        <select class="form-control" id="familles">
             <option></option>
             {% for famille in familles %}
                 <option value="{{ famille.famille }}">{{ famille.famille }}</option>
@@ -29,7 +29,7 @@
         </select><br>
 
         <label>Oiseau</label>
-        <input list="birds" id="birdField" autocomplete="off">
+        <input class="form-control" list="birds" id="birdField" autocomplete="off">
         <datalist id="birds">
             {% set birdsName = [] %}
             {% for bird in birds %}
@@ -37,16 +37,18 @@
                 {% else %}
                     {% if bird.nomVern != "" %}
                         {% set birdsName = birdsName|merge([bird.nomVern]) %}
-                        <option class="birdOption" value="{{ bird.nomVern }} - {{ bird.id }}">
+                        <option class="birdOption" value="{{ bird.nomVern }}" id="{{ bird.id }}">
                     {% endif %}
                 {% endif %}
             {% endfor %}
         </datalist>
     </form>
-    <button class="btn btn-info">Rechercher</button>
-
-    <button id="clearMap" class="btn btn-default">Réinitialiser la carte</button>
-
+    <div>
+        <button id="searchButton" class="btn btn-info">Rechercher</button>
+    </div>
+    <div>
+        <button id="clearMap" class="btn btn-default">Réinitialiser la carte</button>
+    </div>
     <div id="mapid"></div>
 
 {% endblock %}

@@ -13,7 +13,7 @@
     {% else %}
         <form method="get" onsubmit="return false">
             <label>Filtre par espèce</label>
-            <input list="birds" id="birdField" autocomplete="off">
+            <input class="form-control" list="birds" id="birdField" autocomplete="off">
             <datalist id="birds">
                 {% set birdsName = [] %}
                 {% for bird in birds %}

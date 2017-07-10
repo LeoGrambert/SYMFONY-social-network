@@ -1,16 +1,17 @@
 select{
-    margin-bottom: 3%;
+    margin-bottom: 2%;
 }
 #mapid{
     height: 400px;
-    margin-top: 11%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 #clearMap{
-    margin-top: 5%;
-    margin-bottom: 8%;
-    right: 5%;
     width: 20%;
-    position: absolute;
+    margin-top: 1%;
+}
+#searchButton{
+    margin-top:1%;
 }
 .alert-success_lat, .alert-success_lon{
     display: none;

@@ -67,7 +67,7 @@ $(function(){
                             console.log('Cet oiseau est déjà dans la liste');
                         } else {
                             $nameBirds.push(value.nomVern);
-                            var $toAdd="<option value='"+value.nomVern+" - "+value.id+"'>";
+                            var $toAdd="<option class='birdOption' value='"+value.nomVern+"'  id='"+value.id+"'>";
                             $('#birds').append($toAdd);
                         }
                     }
@@ -84,10 +84,14 @@ $(function(){
     $birdField.on('change', function(e){
         e.preventDefault();
         //Get bird id
-        var $birdFieldSplit = $birdField.val().split('- ');
+        //var $birdFieldSplit = $birdField.val().split('- ');
+        var $input = $birdField.val();
+        var $datalist = $('#birds');
+        var $val = $($datalist).find('option[value="'+$input+'"]');
+        var $endval = $val.attr('id');
         //Call ajax
         var submit = function(){
-            var $birdFieldUrl = '/search/bird/accepted/'+$birdFieldSplit[1];
+            var $birdFieldUrl = '/search/bird/accepted/'+$endval;
             return $.ajax({
                 url: $birdFieldUrl,
                 method: 'GET'
@@ -96,7 +100,11 @@ $(function(){
                 $.each(response.observations, function(key, value){
                     var date = new Date(value.date.date);
                     date = (date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
-                    $('#mapid').after('<p>Observation faite le <span id="date'+value.id+'">'+date+'</span> par (xxx) aux coordonnées suivantes : <span id="lat'+value.id+'">' + value.latitude+'</span> - <span id="lat'+value.id+'">'+value.longitude+'</span></p>')
+                    if(value.picture !== null) {
+                        $('#mapid').after('<p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p><img src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" height="200"/>');
+                    } else {
+                        $('#mapid').after('<p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p>');
+                    }
                     var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
                     marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par "+value.user.username+"</b>");
                 })
@@ -123,6 +131,5 @@ $(function(){
     var $lonGPS = $('.alert-success_lon').html();
     if ($latGPS !== "" && $lonGPS !== ""){
         var marker = L.marker([$latGPS, $lonGPS]).addTo(mymap);
-        marker.bindPopup("<b>Observation non publiée, en attente de validation");
     }
 });
