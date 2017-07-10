@@ -99,4 +99,18 @@ class ObservationRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * Method to delete an observation
+     * @param $observationId
+     */
+    public function deleteAnObservation($observationId){
+        $qb = $this->createQueryBuilder('o');
+        $qb
+            ->delete()
+            ->where('o.id = :observationId')
+            ->setParameter('observationId', $observationId);
+
+        $qb->getQuery()->getResult();
+    }
 }

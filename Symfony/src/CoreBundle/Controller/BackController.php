@@ -157,4 +157,58 @@ class BackController extends Controller
 
         return $this->redirectToRoute('adminValidateAccountPage');
     }
+
+    /**
+     * What do we do if we want to confirm an observation
+     * @param $observationId
+     * @Route("/admin/validate/observations/confirm/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="confirmObservation")
+     * @Security("has_role('ROLE_PRO')")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function confirmObservation($observationId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $observation = $em->getRepository('CoreBundle:Observation')->find($observationId);
+
+        if(!$observation){
+            throw $this->createNotFoundException(
+                'L\'observation d\'id '.$observationId.' n\'a pas été trouvée.'
+            );
+        }
+
+        $observation->setStatut("accepted");
+        $em->flush();
+        $this->addFlash(
+            'info',
+            'L\'observation a été validée et publiée.'
+        );
+
+        return $this->redirectToRoute('adminValidateObservationsPage');
+    }
+
+    /**
+     * What do we do if we want to refuse an observation
+     * @param $observationId
+     * @Route("/admin/validate/account/observations/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="refuseObservation")
+     * @Security("has_role('ROLE_PRO')")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function refuseObservation($observationId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if(!$observationId){
+            throw $this->createNotFoundException(
+                'L\'observation d\'id '.$observationId.' n\'a pas été trouvée.'
+            );
+        }
+
+        $em->getRepository('CoreBundle:Observation')->deleteAnObservation($observationId);
+
+        $this->addFlash(
+            'warning',
+            'L\'observation a été supprimée et ne sera pas publiée.'
+        );
+
+        return $this->redirectToRoute('adminValidateObservationsPage');
+    }
 }
