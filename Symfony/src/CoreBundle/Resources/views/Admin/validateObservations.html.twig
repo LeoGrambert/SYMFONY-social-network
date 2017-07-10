@@ -21,7 +21,7 @@
                     {% else %}
                         {% if bird.nomVern != "" %}
                             {% set birdsName = birdsName|merge([bird.nomVern]) %}
-                                <option class="birdOption" value="{{ bird.nomVern }} - {{ bird.id }}">
+                                <option class="birdOption" value="{{ bird.nomVern }}" id="{{ bird.id }}">
                         {% endif %}
                     {% endif %}
                 {% endfor %}

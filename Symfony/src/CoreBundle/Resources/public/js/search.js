@@ -99,13 +99,22 @@ $(function(){
                 $.each(response.observations, function(key, value){
                     var date = new Date(value.date.date);
                     date = (date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
-                    if(value.picture !== null) {
-                        $('#mapid').after('<p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p><img src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" height="200"/>');
+                    if($('#isLogged').val() === "true"){
+                        if(value.picture !== null) {
+                            $('#mapid').after('<p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p><img src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" height="200"/>');
+                        } else {
+                            $('#mapid').after('<p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p>');
+                        }
+                        var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
+                        marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par "+value.user.username+"</b>");
                     } else {
-                        $('#mapid').after('<p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p>');
+                        var circle = L.circle([value.latitude, value.longitude], {
+                                color: 'red',
+                                fillColor: '#f03',
+                                fillOpacity: 0.5,
+                                radius: 5000
+                            }).addTo(mymap);
                     }
-                    var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
-                    marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par "+value.user.username+"</b>");
                 })
             }).fail(function(jqXHR, exception){
                 var msg = '';

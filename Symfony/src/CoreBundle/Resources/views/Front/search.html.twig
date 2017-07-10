@@ -50,6 +50,11 @@
     <div>
         <button id="clearMap" class="btn btn-default">Réinitialiser la carte</button>
     </div>
+    {% if app.user %}
+        <input type="hidden" id="isLogged" value="true">
+    {% else %}
+        <div class="alert alert-info">Vous n'êtes pas connecté, les résultats de recherche sont affichés par secteur géographique. Pour un résultat précis (coordonnées GPS), veuillez-vous connecter.</div>
+    {% endif %}
     <div id="mapid"></div>
 
 {% endblock %}

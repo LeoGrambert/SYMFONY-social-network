@@ -14,10 +14,13 @@ $(function(){
     $birdField.on('change', function(e){
         e.preventDefault();
         //Get bird id
-        var $birdFieldSplit = $birdField.val().split('- ');
+        var $input = $birdField.val();
+        var $datalist = $('#birds');
+        var $val = $($datalist).find('option[value="'+$input+'"]');
+        var $endval = $val.attr('id');
         //Call ajax
         var submit = function(){
-            var $birdFieldUrl = '/search/bird/untreated/'+$birdFieldSplit[1];
+            var $birdFieldUrl = '/search/bird/untreated/'+$endval;
             return $.ajax({
                 url: $birdFieldUrl,
                 method: 'GET'
