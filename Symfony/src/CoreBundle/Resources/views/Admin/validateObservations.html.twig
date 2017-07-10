@@ -22,12 +22,16 @@
     </form><br>
 
         {% for observationToValidate in observationsToValidate %}
-            <p>{{ observationToValidate.user.username }} a observé "{{ observationToValidate.bird.nomVern }}" le {{ observationToValidate.date|date('d/m/Y') }} aux coordonnées suivantes : {{ observationToValidate.latitude }}, {{ observationToValidate.longitude }}</p>
-            {% if observationToValidate.picture != null  %}
-                <img src="{{ observationToValidate.picture.id }}.{{ observationToValidate.picture.ext }}" alt="{{ observationToValidate.picture.alt }}">
+            <p>{{ observationToValidate.user.username }} a observé "{{ observationToValidate.bird.nomVern }}" le {{ observationToValidate.date|date('d/m/Y') }} aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="{{ path('SearchGpsCoordinates', {'lat':observationToValidate.latitude, 'lon':observationToValidate.longitude}) }}">{{ observationToValidate.latitude }}, {{ observationToValidate.longitude }}</a></p>
+            {% if observationToValidate.picture is not null %}
+                <img
+                        src="{{ asset(observationToValidate.picture.webPath) }}"
+                        alt="{{ observationToValidate.picture.alt }}"
+                        height="200"
+                />
             {% endif %}
             <form>
-                <input type="submit" class="btn btn-warning" value="Confirmer">
+                <input type="submit" class="btn btn-primary" value="Confirmer">
                 <input type="submit" class="btn btn-danger" value="Supprimer">
             </form>
         {% endfor %}

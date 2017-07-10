@@ -3,7 +3,7 @@ select{
 }
 #mapid{
     height: 400px;
-    margin-top: 8.5%;
+    margin-top: 11%;
 }
 #clearMap{
     margin-top: 5%;
@@ -11,4 +11,7 @@ select{
     right: 5%;
     width: 20%;
     position: absolute;
+}
+.alert-success_lat, .alert-success_lon{
+    display: none;
 }

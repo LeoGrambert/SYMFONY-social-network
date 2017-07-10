@@ -120,7 +120,6 @@ class FrontController extends Controller
             'ordres'=>$ordres,
             'familles'=>$familles,
             'birds'=>$birds
-
         ]);
     }
 
@@ -212,6 +211,20 @@ class FrontController extends Controller
             'error' => $authenticationUtils->getLastAuthenticationError(),
             'gravatar'=>$gravatar
         ]);
+    }
+
+    /**
+     * What do we do if we want to search coordinates in map.
+     * @param Request $request
+     * @route("/search/gps/{lat}/{lon}", methods={"GET"}, name="SearchGpsCoordinates")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function searchGpsCoordinates(Request $request){
+        $lat = $request->get('lat');
+        $lon = $request->get('lon');
+        $this->addFlash('success_lat', $lat);
+        $this->addFlash('success_lon', $lon);
+        return $this->redirectToRoute('searchPage');
     }
 
 }

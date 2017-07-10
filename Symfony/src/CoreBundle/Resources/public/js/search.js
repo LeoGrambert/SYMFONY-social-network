@@ -98,7 +98,7 @@ $(function(){
                     date = (date.getDay() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
                     $('#mapid').after('<p>Observation faite le <span id="date'+value.id+'">'+date+'</span> par (xxx) aux coordonnées suivantes : <span id="lat'+value.id+'">' + value.latitude+'</span> - <span id="lat'+value.id+'">'+value.longitude+'</span></p>')
                     var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
-                    marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par (xxx)");
+                    marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par (xxx)</b><img>+value.picture.alt+</img>");
                 })
             }).fail(function(jqXHR, exception){
                 var msg = '';
@@ -117,4 +117,12 @@ $(function(){
         };
         submit();
     });
+
+    //Get gps coordinates from controller to display marker for an untreated observation
+    var $latGPS = $('.alert-success_lat').html();
+    var $lonGPS = $('.alert-success_lon').html();
+    if ($latGPS !== "" && $lonGPS !== ""){
+        var marker = L.marker([$latGPS, $lonGPS]).addTo(mymap);
+        marker.bindPopup("<b>Observation non publiée, en attente de validation");
+    }
 });

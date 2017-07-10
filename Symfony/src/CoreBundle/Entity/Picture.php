@@ -120,7 +120,7 @@ class Picture
     protected function getUploadRootDir()
     {
         // We return the relative path to the image
-        return __DIR__.'%kernel.root_dir%/../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
     public function getWebPath()
     {
