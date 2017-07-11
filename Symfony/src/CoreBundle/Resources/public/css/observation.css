@@ -2,3 +2,68 @@ body{
     background-color: #f3d6a8;
 }
 
+.select2-container, .select2-drop, .select2-default, .select2-choice, .select2-no-results, .select2-search, .select2-search input {
+    background-color: #f3d6a8;
+}
+
+
+
+#submitButton{
+    text-align: center;
+    margin:2% 0 2% 0;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    background:url('../img/prendre-une-photo.png') no-repeat;
+    width: 122px;
+    height: 122px;
+    text-decoration:none;
+    border-style: hidden;
+    background-color: #f3d6a8;
+}
+
+.btn-file:hover{
+    background-color: #f3d6a8;
+}
+
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}
+
+.btnSubmit{
+    background-color: #7ebea5;
+    border-color: #7ebea5;
+    color: white;
+    font-family: "ComfortaaB", Arial;
+}
+
+
+@media screen and (min-width: 800px){
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+        background:url('../img/importer-une-photo.png') no-repeat;
+        width: 122px;
+        height: 122px;
+        text-decoration:none;
+        border-style: hidden;
+        background-color: #f3d6a8;
+    }
+    .btn-file:hover{
+        background-color: #f3d6a8;
+    }
+}

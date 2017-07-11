@@ -7,25 +7,33 @@
         <link rel="stylesheet" href="{{ asset('bundles/core/css/observation.css') }}"/>
     {% endblock %}
 
-    <div class="container containerAdd">
+
 
     {{ form_start(form)}}
 
+<label class="btn btn-default btn-file center-block">
         {{ form_row(form.picture) }}
+</label>
 
+<p></p>
         {{ form_row(form.bird) }}
-
-        {{ form_row(form.latitude) }}
-
-        {{ form_row(form.longitude) }}
-
+     <div class="row">
+        <div class="col col-xs-6">
+            {{ form_row(form.latitude) }}
+        </div>
+        <div class="col col-xs-6">
+            {{ form_row(form.longitude) }}
+        </div>
+     </div>
         {{ form_row(form.date) }}
 
         {{ form_row(form.description) }}
-
+    <div class="row" id="submitButton">
+        {{ form_row(form.save) }}
+    </div>
     {{ form_end(form) }}
 
-    </div>
+
 
     <a href="{{ path('search_bird') }}" id="url-list" class="hidden"></a>
     <a href="{{ path('get_bird') }}" id ="url-get" class="hidden"></a>

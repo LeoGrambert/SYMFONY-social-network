@@ -40,17 +40,23 @@ class ObservationType extends AbstractType
 
             ->add('bird', AutocompleteType::class, array(
                 'class' => 'CoreBundle:Species',
-                'label' => 'Nom de l\'oiseau',
-                'required' => true
+                'required' => true,
+                'label'=> false,
+                'attr'=> array(
+                    'placeholder' => 'Nom de l\'oiseau',
+                    )
             ))
 
             ->add('description', TextareaType::class, array(
-                'label' => 'Commentaire',
-                'required' => false
+                'label' => false,
+                'required' => false,
+                'attr'=> array(
+                    'placeholder' => 'Description',
+                  )
             ))
 
             ->add('picture',     PictureType::class, array(
-                'label' => 'Photo',
+                'label' => false,
                 'required' => false
             ))
 
@@ -63,7 +69,11 @@ class ObservationType extends AbstractType
             ))
 
             ->add('save', SubmitType::class, array(
-                'label' => 'Soumettre'
+                'label' => 'Soumettre',
+                'attr'=> array(
+                    'class' => 'btnSubmit',
+                )
+
             ))
         ;
 
