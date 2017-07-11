@@ -25,18 +25,24 @@ class BackController extends Controller
             $gravatar = null;
         }
 
-        $listObservations = $this
-            ->getDoctrine()
-            ->getManager()
+        $em = $this->getDoctrine()->getManager();
+
+        $listObservations = $em
             ->getRepository('CoreBundle:Observation')
             ->findByIdUserWithSpecies($user->getId());
+
+        $observationsToValidate = $em
+            ->getRepository('CoreBundle:Observation')
+            ->findObservationsToValidate();
+        $howManyObservationToValidate = count($observationsToValidate);
 
         if(null === $user){
             return $this->redirectToRoute('login');
         } else {
             return $this->render('CoreBundle:Admin:index.html.twig', [
                 'listObservations'=>$listObservations,
-                'gravatar'=>$gravatar
+                'gravatar'=>$gravatar,
+                'howManyObservationToValidate'=>$howManyObservationToValidate
             ]);
         }
     }

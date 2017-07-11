@@ -28,7 +28,9 @@ class ObservationRepository extends EntityRepository
                 ->setParameter('userId', $userId)
             ->orderBy('o.date', 'desc')
             ->leftJoin('o.bird', 's')
-            ->addSelect('s');
+            ->addSelect('s')
+            ->leftJoin('o.picture', 'p')
+            ->addSelect('p');
 
         return $qb
             ->getQuery()

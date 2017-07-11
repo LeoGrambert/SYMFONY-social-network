@@ -2,41 +2,52 @@
 
 {% block title %}Administration{% endblock %}
 
+{% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/adminIndex.css') }}">{% endblock %}
+
 {% block body %}
-    <h4>Bonjour {{ app.user.username }}</h4>
-    <h5><em>{{ app.user.email }}</em></h5>
-    <p>Type de compte : {% if is_granted('ROLE_ADMIN') %}Administrateur{% elseif is_granted('ROLE_PRO') %}Professionnel{% else %}Amateur{% endif %}</p>
-    {% if is_granted('ROLE_PRO') and app.user.isAccredit == false %}
-        <div class="alert alert-warning">Veuillez faire confirmer votre compte professionnel en envoyant un justificatif (ex : contrat de travail) à <a href="mailto:contact@nao.fr">contact@nao.fr</a>.
-        <br>En attente de confirmation, vous pouvez utiliser votre compte pour faire des observations. Mais vous ne pouvez pas valider les observations des profils amateurs.</div>
+    {% if is_granted('ROLE_PRO') %}
+        <h1 id="observationToValidateTitle">Observations à valider</h1>
+        <p>Il y a <span id="howMany">{{ howManyObservationToValidate }} observation{% if howManyObservationToValidate > 1 %}s{% endif %}</span> en attente de validation.</p>
+        <hr>
     {% endif %}
-    <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations personnelles</a></li>
-    <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
-    <li><a href="https://fr.gravatar.com/">Changer votre photo de profil (généré par Gravatar)</a></li>
-    {% if is_granted('ROLE_PRO') and app.user.isAccredit == true %}
-        <li><a href="{{ path('adminValidateObservationsPage') }}">Valider une observation</a></li>
-    {% endif %}
-    {% if is_granted('ROLE_ADMIN') %}
-        <li><a href="{{ path('adminValidateAccountPage') }}">Valider un compte professionnel</a></li>
-    {% endif %}
-    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+    <div id="infos">
+        <h1 id="welcomeMsg">Bonjour {{ app.user.username }}</h1>
+        <h2 id="subInfos">{{ app.user.email }} - {% if is_granted('ROLE_ADMIN') %}Administrateur{% elseif is_granted('ROLE_PRO') %}Professionnel{% else %}Amateur{% endif %}</h2>
+        {% if is_granted('ROLE_PRO') and app.user.isAccredit == false %}
+            <div class="alert alert-warning">Veuillez faire confirmer votre compte professionnel en envoyant un justificatif (ex : contrat de travail) à <a href="mailto:contact@nao.fr">contact@nao.fr</a>.
+            <br>En attente de confirmation, vous pouvez utiliser votre compte pour faire des observations. Mais vous ne pouvez pas valider les observations des profils amateurs.</div>
+        {% endif %}
+        <p><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations personnelles</a></p>
+        <p><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></p>
+        <p><a href="https://fr.gravatar.com/">Changer votre photo de profil (généré par Gravatar)</a></p>
+        {% if is_granted('ROLE_PRO') and app.user.isAccredit == true %}
+            <p><a href="{{ path('adminValidateObservationsPage') }}">Valider une observation</a></p>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <p><a href="{{ path('adminValidateAccountPage') }}">Valider un compte professionnel</a></p>
+        {% endif %}
+        <p><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></p>
+    </div>
     <hr>
-    <h4>Mes observations</h4>
+    <h1 id="myMsg">Mes observations</h1>
     {% if listObservations == null %}
         <p>Vous n'avez fait aucune observation.</p>
     {% else %}
-        <p>Liste de vos observations :</p>
         {% set months = [] %}
         {% for listObservation in listObservations %}
             {% if listObservation.date|date('F Y') not in months %}
                 {% set months = months|merge([listObservation.date|date('F Y')]) %}
-                <p><strong>Observations du mois {% if listObservation.date|date('F')|trans == "Avril" or listObservation.date|date('F')|trans == 'Août' or listObservation.date|date('F')|trans == 'Octobre' %}d'{% else %}de {% endif %}{{ listObservation.date|date('F')|trans }} {{ listObservation.date|date('Y') }} :</strong></p>
+                <p class="month"><strong>Observations du mois {% if listObservation.date|date('F')|trans == "Avril" or listObservation.date|date('F')|trans == 'Août' or listObservation.date|date('F')|trans == 'Octobre' %}d'{% else %}de {% endif %}{{ listObservation.date|date('F')|trans }} {{ listObservation.date|date('Y') }}</strong></p>
             {% endif %}
-            <li>Nom d'utilisateur : {{ app.user.username }} <br>
-                Date d'ajout : {{ listObservation.date|date('d/m/Y') }} <br>
+            <p>Nom d'utilisateur : {{ app.user.username }} <br>
+                Date d'observation : {{ listObservation.date|date('d/m/Y') }} <br>
                 Coordonnées : <a title="Cliquez pour accéder à la carte" href="{{ path('SearchGpsCoordinates', {'lat':listObservation.latitude, 'lon':listObservation.longitude}) }}">{{ listObservation.latitude }}, {{ listObservation.longitude }}</a><br>
                 Espèce : {{ listObservation.bird.nomVern }}<br>
-                Statut : {{ listObservation.statut }}</li><br>
+                Statut : {% if listObservation.statut == 'accepted' %}Publié{% else %}En attente{% endif %}<br>
+                {% if listObservation.picture != null %}
+                    <img src="/uploads/img/{{ listObservation.picture.id }}.{{ listObservation.picture.ext }}" alt="{{ listObservation.picture.alt }}" height="200">
+                {% endif %}
+            </p><br>
         {% endfor %}
     {% endif %}
 {% endblock %}

@@ -1,0 +1,12 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<link href="{{ asset('bundles/core/css/adminIndex.css') }}" rel="stylesheet">
+
+<div id="modificationInfos">
+    <h1 id="modificationTitle">Informations personnelles</h1>
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        {{ form_widget(form) }}
+        <div id="btnModification">
+            <input class="btn btn-default" type="submit" value="Modifier" />
+        </div>
+    {{ form_end(form) }}
+</div>
