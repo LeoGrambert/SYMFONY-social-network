@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a62a31da-5b2d-4ebd-9185-26af68d2c83e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/public/img/prendre-une-photo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/public/img/importer-une-photo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Form/ObservationType.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Form/ObservationType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/public/css/observation.css" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/public/css/observation.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/add.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/add.html.twig" />
     </list>
     <ignored path="Symfony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/add.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
-              <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+              <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -1042,10 +1039,11 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/css/home.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/css/layout.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/index.html.twig</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/layout.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/css/search.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/js/search.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Admin/index.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/login.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/search.html.twig</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -1053,10 +1051,14 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/img/add.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/img/img.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/img/share.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/img/validate.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/css/registration.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/img/facebook-log.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/img/login.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/public/img/mesange.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Registration/check_email.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Registration/confirmed.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Registration/register.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CoreBundle/Resources/views/Registration/register_content.html.twig</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -1262,7 +1264,7 @@
       <workItem from="1499153774901" duration="26581000" />
       <workItem from="1499200774084" duration="3843000" />
       <workItem from="1499326269430" duration="34543000" />
-      <workItem from="1499758628611" duration="23427000" />
+      <workItem from="1499758628611" duration="24808000" />
     </task>
     <task id="LOCAL-00001" summary="Observation form is completed - Not yet visual formatting">
       <created>1499420934878</created>
@@ -1285,11 +1287,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499770102838</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Integration observation page">
+      <created>1499789754453</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1499789754454</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224498000" />
+    <option name="totallyTimeSpent" value="225879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1308,9 +1317,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13464697" sideWeight="0.20166667" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20558739" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2166891" sideWeight="0.79833335" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2166891" sideWeight="0.79833335" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1371,7 +1380,8 @@
     <MESSAGE value="Observation form is completed - Not yet visual formatting" />
     <MESSAGE value="Observation form is completed - Flash message updated" />
     <MESSAGE value="add observation stylesheet" />
-    <option name="LAST_COMMIT_MESSAGE" value="add observation stylesheet" />
+    <MESSAGE value="Integration observation page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integration observation page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1757,7 +1767,7 @@
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Front/add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
-          <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
           <folding />
         </state>
       </provider>
