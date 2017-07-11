@@ -1,26 +1,27 @@
+header img{
+    /*background-size: cover;*/
+    width: 100%;
+    top:0;
+    left:0;
+}
 #title{
     text-align: center;
     margin-top:8%;
     margin-bottom: 4%;
 }
 #logo{
-    position: absolute;
-    left: 5%;
-    top:9%;
-    width:6%;
+    position:absolute;
+    top:3%;
+    left:39%;
+    width:20%;
 }
-#user{
+#user, #userGravatar{
     position: absolute;
-    right: 5%;
-    top:13%;
-    width:8%;
+    left:85%;
+    top:4%;
+    width:13%;
 }
 #userGravatar{
-    position: absolute;
-    right: 5%;
-    top:13%;
-    width:80px;
-    height: 80px;
     border-radius: 50%;
 }
 

@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}{% endblock %} - Nos amis les oiseaux</title>
         <link href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" rel="stylesheet">
         <link href="//cdn.rawgit.com/t0m/select2-bootstrap-css/bootstrap3/select2-bootstrap.css" rel="stylesheet">
@@ -12,7 +14,7 @@
 
     <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -42,7 +44,8 @@
     </nav>
 
     <header>
-        <a href="{{ path('homepage') }}"><img id="logo" src="{{ asset('bundles/core/img/logo.jpg') }}" alt="logo"/></a>
+        <img src="{{ asset('/bundles/core/img/background-header.png') }}" alt="header"/>
+        <a href="{{ path('homepage') }}"><img id="logo" src="{{ asset('bundles/core/img/logo.png') }}" alt="logo"/></a>
         <h1 id="title">Nos amis les oiseaux</h1>
         {% if is_granted('ROLE_USER') %}
            {% if gravatar is defined and gravatar != null %}
@@ -51,7 +54,7 @@
                 <a href="{{ path('adminPage') }}"><img id="user" src="{{ asset('bundles/core/img/user.png') }}" alt="logo"/></a>
             {% endif %}
         {% else %}
-            <a href="{{ path('fos_user_security_login') }}"><img id="user" src="{{ asset('bundles/core/img/login.png') }}" alt="logo"/></a>
+            <a href="{{ path('fos_user_security_login') }}"><img id="user" src="{{ asset('bundles/core/img/user.png') }}" alt="logo"/></a>
         {% endif %}
     </header>
     <hr>
