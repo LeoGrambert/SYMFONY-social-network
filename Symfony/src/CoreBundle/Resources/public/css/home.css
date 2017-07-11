@@ -1,0 +1,10 @@
+#project{
+    font-family: "comfortaa", Arial;
+}
+#btnProject{
+    text-align: center;
+}
+#btnProject a{
+    background-color: #7EBEA5;
+    border-color: #7EBEA5;
+}
