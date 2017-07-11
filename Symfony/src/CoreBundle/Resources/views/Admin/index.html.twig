@@ -19,6 +19,7 @@
     {% if is_granted('ROLE_ADMIN') %}
         <li><a href="{{ path('adminValidateAccountPage') }}">Valider un compte professionnel</a></li>
     {% endif %}
+    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
     <hr>
     <h4>Mes observations</h4>
     {% if listObservations == null %}

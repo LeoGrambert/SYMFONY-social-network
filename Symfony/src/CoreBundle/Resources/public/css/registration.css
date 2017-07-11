@@ -1,0 +1,52 @@
+body{
+    background: url("../img/login.png") fixed no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+form label{
+    color:#1C5F83;
+    font-family: "ComfortaaB", Arial;
+}
+#registrationContainer{
+    background-color: rgba(126, 190, 165, 0.8);
+    padding: 6%;
+    margin:12% 2% 12% 2%;
+    border-radius: 3%;
+}
+#registrationSocialMedia{
+    margin-top: 15%;
+}
+#registrationBtn{
+    text-align: right;
+}
+#registrationBtn input{
+    background-color: #387392;
+    border-color: #387392;
+    color:white;
+    font-family: "ComfortaaB", Arial;
+}
+.registrationTitle{
+    font-family: "ComfortaaB", Arial;
+    font-size: 1.3em;
+    margin-bottom: 10%;
+    color:white
+}
+.facebook{
+    width:23%;
+}
+.loginSocialMedia{
+    margin: 0 2% 5% 2%;
+}
+
+@media screen and (min-width: 800px){
+    #registrationContainer{
+        text-align: center;
+        margin: 4% 4% 4% 4%;
+    }
+    #registrationSocialMedia{
+        margin-top: 5%;
+    }
+    .facebook{
+        width:15%;
+    }
+}
