@@ -9,10 +9,11 @@ body{
     background-color: #1B6084;
 }
 #project{
-    background-color: #1B6084;
+    background: #1B6084 url("../img/oiseau_projet.png") fixed;
+    background-size: cover;
     color:white;
     padding: 10%;
-    margin: 0 -17px 0 0;
+    margin: 0 -17px 0 2px;
 }
 #how{
     background-color: #63917F;
@@ -81,6 +82,8 @@ body{
     #project{
         padding-top:3%;
         margin: -27px 27px 0 -100px;
+        background: #1B6084 url("../img/oiseau_projet.png");
+        background-size: cover;
     }
     #how{
         padding: 1% 0 0 10%;

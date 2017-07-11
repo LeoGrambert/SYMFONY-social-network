@@ -7,7 +7,7 @@ form label{
     color:#1C5F83;
     font-family: "ComfortaaB", Arial;
 }
-#registrationContainer, #loginContainer{
+#registrationContainer, #loginContainer, #requestResetPasswordContainer, #resetPasswordContainer{
     background-color: rgba(126, 190, 165, 0.8);
     padding: 6%;
     margin:12% 2% 12% 2%;
@@ -16,10 +16,10 @@ form label{
 #registrationSocialMedia, #loginSocialMedia{
     margin-top: 15%;
 }
-#registrationBtn, #loginBtn{
+#registrationBtn, #loginBtn, #requestResetPasswordBtn, #resetPasswordBtn{
     text-align: right;
 }
-#registrationBtn input, #loginBtn input{
+#registrationBtn input, #loginBtn input, #requestResetPasswordBtn input, #resetPasswordBtn input{
     background-color: #387392;
     border-color: #387392;
     color:white;
@@ -35,7 +35,7 @@ form label{
     margin-bottom: 5%;
     margin-top: 8%;
 }
-.registrationTitle, .loginTitle{
+.registrationTitle, .loginTitle, .requestResetPasswordTitle, .resetPasswordTitle{
     font-family: "ComfortaaB", Arial;
     font-size: 1.3em;
     margin-bottom: 10%;
@@ -49,7 +49,7 @@ form label{
 }
 
 @media screen and (min-width: 800px){
-    #registrationContainer, #loginContainer{
+    #registrationContainer, #loginContainer, #requestResetPasswordContainer, #resetPasswordContainer{
         text-align: center;
         margin: 4% 4% 4% 4%;
     }

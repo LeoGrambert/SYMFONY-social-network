@@ -1,0 +1,11 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/registration.css') }}">{% endblock %}
+<div id="resetPasswordContainer">
+    <h1 class="resetPasswordTitle">Choisissez un nouveau mot de passe</h1>
+    {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+    {{ form_widget(form) }}
+    <div id="resetPasswordBtn">
+        <input class="btn btn-default" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+</div>

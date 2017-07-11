@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/registration.css') }}">{% endblock %}
+
+<div id="requestResetPasswordContainer">
+    <h1 class="requestResetPasswordTitle">Mot de passe oublié</h1>
+    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+        <div>
+            <label for="username">{{ 'resetting.request.username'|trans }}</label>
+            <input type="text" id="username" name="username" required="required" />
+        </div>
+        <div id="requestResetPasswordBtn" >
+            <input class="btn btn-default" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+        </div>
+    </form>
+</div>

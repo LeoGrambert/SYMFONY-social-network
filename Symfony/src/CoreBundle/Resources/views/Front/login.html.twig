@@ -17,9 +17,9 @@
             <h1 class="loginTitle">Se connecter</h1>
             <form action="{{ path('login_check') }}" method="post">
                 <label for="username">Nom d'utilisateur :</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" /><br>
+                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" /><br>
                 <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="_password" />
+                <input class="form-control" type="password" id="password" name="_password" />
                 <br />
                 <div id="loginBtn">
                     <input class="btn btn-default" type="submit" value="Se connecter" />
