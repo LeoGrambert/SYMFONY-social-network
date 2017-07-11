@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<link rel="stylesheet" href="{{ asset('bundles/core/css/registration.css') }}">
+
+<div class="row" id="registrationContainer">
+    <div class="col-md-6">
+        <h1 class="registrationTitle">S'inscrire</h1>
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            {{ form_widget(form) }}
+            <div  id="registrationBtn">
+                <input type="submit" class="btn btn-default" value="S'inscrire" />
+            </div>
+        {{ form_end(form) }}
+    </div>
+    <div class="col-md-6">
+        <h1 class="registrationTitle" id="registrationSocialMedia">S'inscrire avec</h1>
+        <a href="{{ path('hwi_oauth_connect') }}facebook"><img class="loginSocialMedia facebook" src="{{ asset('bundles/core/img/facebook-log.png') }}" alt="login_facebook"></a>
+        <a href="{{ path('hwi_oauth_connect') }}google"><img class="loginSocialMedia google" src="{{ asset('bundles/core/img/g+.png') }}" alt="login_google"></a>
+    </div>
+</div>

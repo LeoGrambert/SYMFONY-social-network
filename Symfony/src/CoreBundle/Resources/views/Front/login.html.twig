@@ -2,14 +2,9 @@
 
 {% block title %}Connexion{% endblock %}
 
-{% block body %}
-    Ici se trouvera un formulaire de connexion.
-    <br>
-    Une fois connecté, l'interface d'administration devient accessible.
-    <br>
-        Les utilisateurs pourront y modifier leur nom d'utilisateur, mot de passe et photo de profil.
-<hr>
+{% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/registration.css') }}">{% endblock %}
 
+{% block body %}
 
     {# First, if we've errors #}
     {% if error %}
@@ -17,19 +12,29 @@
     {% endif %}
 
     {# Then, we display login form #}
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" /><br>
-
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
-        <br />
-        <input type="submit" value="Connexion" />
-    </form>
-    <a href="{{ path('hwi_oauth_connect') }}facebook"><img src="{{ asset('bundles/core/img/facebook.png') }}" alt="login_facebook"></a>
-    <a href="{{ path('hwi_oauth_connect') }}google"><img src="{{ asset('bundles/core/img/g+.png') }}" alt="login_google"></a>
-    <br>
-    Pas encore de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous</a><br>
-    Mot de passe oublié ? <a href="{{ path('fos_user_resetting_request') }}">Cliquez-Ici</a>
+    <div class="row" id="loginContainer">
+        <div class="col-md-6">
+            <h1 class="loginTitle">Se connecter</h1>
+            <form action="{{ path('login_check') }}" method="post">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" /><br>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="_password" />
+                <br />
+                <div id="loginBtn">
+                    <input class="btn btn-default" type="submit" value="Se connecter" />
+                </div>
+            </form>
+            <p id="linkRegister">
+                Pas encore de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous</a><br>
+                <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h1 class="loginTitle" id="loginSocialMedia">Se connecter avec</h1>
+            <a href="{{ path('hwi_oauth_connect') }}facebook"><img class="loginSocialMedia facebook" src="{{ asset('bundles/core/img/facebook-log.png') }}" alt="login_facebook"></a>
+            <a href="{{ path('hwi_oauth_connect') }}google"><img class="loginSocialMedia google" src="{{ asset('bundles/core/img/g+.png') }}" alt="login_google"></a>
+        </div>
+    </div>
 
 {% endblock %}
