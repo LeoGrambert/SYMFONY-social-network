@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "comfortaa";
+    font-family: "ComfortaaB";
     src: url('../font/comfortaa/Comfortaa-Bold.ttf');
 }
 #imgHeaderMobile{
@@ -22,7 +22,7 @@ footer{
     border-color: #986A46;
     color: white;
     padding:4% 2% 4% 2%;
-    font-family: "comfortaa", Arial;
+    font-family: "ComfortaaB", Arial;
 }
 #imgHeaderDesktop{
     display: none;
@@ -79,7 +79,7 @@ footer{
     text-align: center;
 }
 #navbar a{
-    font-family: "comfortaa", Arial;
+    font-family: "ComfortaaB", Arial;
     color: #1B6084;
     margin-left: 7%;
 }

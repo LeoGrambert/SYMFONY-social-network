@@ -7,55 +7,66 @@
 {% endblock %}
 
 {% block body %}
-    <h1 id="project">Le projet</h1>
-    <p>L’idée animant notre projet est de fournir une application participative aux passionnés d’ornithologie.</p>
-    <p>Vous saisissez une observation d’oiseau sur notre application, et votre observation devient accessible sur notre
-        carte interactive. Sur cette dernière, vous avez également accès aux observations de nos autres membres.</p>
-    <p>En participant, vous prendrez part à un programme de recherche visant à étudier les effets du climat, de
-        l’urbanisation et de l’agriculture sur la biodiversité.</p>
-    <div class="row" id="btnProject">
-        <a href="{{ path('addPage') }}" class="btn btn-primary">Participer</a>
-    </div>
-    <hr>
-    <h1>Comment faire ?</h1>
     <div class="row">
-        <div class="col col-md-6">
-            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
-            <h4>Observez</h4>
+        <div id="project" class="col-xs-12 col-md-6">
+            <h1 id="projectTitle">Le projet</h1>
+            <p>L’idée animant notre projet est de fournir une application participative aux passionnés d’ornithologie.</p>
+            <p>Vous saisissez une observation d’oiseau sur notre application, et votre observation devient accessible sur notre
+                carte interactive. Sur cette dernière, vous avez également accès aux observations de nos autres membres.</p>
+            <p>En participant, vous prendrez part à un programme de recherche visant à étudier les effets du climat, de
+                l’urbanisation et de l’agriculture sur la biodiversité.</p>
+            <div class="row" id="btnProject">
+                <a href="{{ path('addPage') }}" class="btn btn-primary">Participer</a>
+            </div>
         </div>
-        <div class="col col-md-6">
-            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
-            <h4>Photographiez</h4>
+
+        <div id="how" class="col-xs-12 col-md-6">
+            <h1 id="howTitle">Comment faire ?</h1>
+            <div class="row">
+                <div class="col col-xs-6">
+                    <img class="howImg" src="{{ asset('bundles/core/img/add.png') }}" alt="logo"/>
+                    <p class="watch">Observez</p>
+                </div>
+                <div class="col col-xs-6">
+                    <img class="howImg" src="{{ asset('bundles/core/img/img.png') }}" alt="logo"/>
+                    <p>Photographiez</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-xs-6">
+                    <img class="howImg" src="{{ asset('bundles/core/img/validate.png') }}" alt="logo"/>
+                    <p>Partagez</p>
+                </div>
+                <div class="col col-xs-6">
+                    <img class="howImg" src="{{ asset('bundles/core/img/share.png') }}" alt="logo"/>
+                    <p>Faites valider</p>
+                </div>
+            </div>
+            <div class="row bonus">
+                <p>Le projet vous intéresse ?</p>
+                <p>Pour en savoir plus, <a>cliquez ici</a></p>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col col-md-6">
-            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
-            <h4>Partagez</h4>
-        </div>
-        <div class="col col-md-6">
-            <img src="{{ asset('bundles/core/img/logo.jpg') }}" width="25%" alt="logo"/>
-            <h4>Faites valider</h4>
-        </div>
+    <div id="last">
+    <h1 id="lastTitle">Dernières observations</h1>
+        {% if lastObservations == null %}
+            <p>Aucune observation n'a été publié. Soyez le premier : <a href="{{ path('addPage') }}">Participez</a> </p>
+        {% else %}
+            {% for lastObservation in lastObservations %}
+                <li>User : {{ lastObservation.user }} <br>
+                    Date d'ajout : {{ lastObservation.date|date('d/m/Y') }} <br>
+                    Latitude : {{ lastObservation.latitude }} Longitude : {{ lastObservation.longitude }}<br>
+                    Species : {{ lastObservation.bird.nomVern }}<br>
+                    Statut : {{ lastObservation.statut }}</li><br>
+                {% if lastObservation.picture is not null %}
+                    <img
+                            src="{{ asset(lastObservation.picture.webPath) }}"
+                            alt="{{ lastObservation.picture.alt }}"
+                            height="200"
+                    />
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     </div>
-    <hr>
-    <h1>Dernières observations</h1>
-    {% if lastObservations == null %}
-        <p>Aucune observation n'a été publié. Soyez le premier : <a href="{{ path('addPage') }}">Participez</a> </p>
-    {% else %}
-        {% for lastObservation in lastObservations %}
-            <li>User : {{ lastObservation.user }} <br>
-                Date d'ajout : {{ lastObservation.date|date('d/m/Y') }} <br>
-                Latitude : {{ lastObservation.latitude }} Longitude : {{ lastObservation.longitude }}<br>
-                Species : {{ lastObservation.bird.nomVern }}<br>
-                Statut : {{ lastObservation.statut }}</li><br>
-            {% if lastObservation.picture is not null %}
-                <img
-                        src="{{ asset(lastObservation.picture.webPath) }}"
-                        alt="{{ lastObservation.picture.alt }}"
-                        height="200"
-                />
-            {% endif %}
-        {% endfor %}
-    {% endif %}
 {% endblock %}

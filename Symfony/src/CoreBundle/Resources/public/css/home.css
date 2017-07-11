@@ -1,10 +1,113 @@
+@font-face {
+    font-family: "ComfortaaR";
+    src: url('../font/comfortaa/Comfortaa-Regular.ttf')
+}
+p{
+    font-family: "ComfortaaR", Arial;
+}
+body{
+    background-color: #1B6084;
+}
 #project{
-    font-family: "comfortaa", Arial;
+    background-color: #1B6084;
+    color:white;
+    padding: 10%;
+    margin: 0 -17px 0 0;
+}
+#how{
+    background-color: #63917F;
+    color:white;
+    padding: 10%;
+    margin: 0 0 -17px 0;
+    text-align: center;
+}
+#last{
+    background-color: #F3D6A8;
+    color:#986A46;
+    padding: 10%;
+    margin: 0 -17px 0 -17px;
+}
+#how p{
+    margin-top: 5%;
+}
+#how .watch{
+    margin-top: 0;
+}
+#projectTitle, #howTitle, #lastTitle{
+    font-family: "ComfortaaB", Arial;
+    padding-bottom: 10%;
+    font-size: 1.9em;
 }
 #btnProject{
+    padding-top: 10%;
+    padding-bottom: 10%;
     text-align: center;
 }
 #btnProject a{
     background-color: #7EBEA5;
     border-color: #7EBEA5;
+    padding: 3% 2% 3% 2%;
+    font-family: "ComfortaaR", Arial;
+}
+.howImg{
+    width:75%;
+}
+.bonus{
+    text-align: left;
+    margin-top: 5%;
+}
+.alert-info{
+    background-color: transparent;
+    border-color: transparent;
+    color:white;
+    text-align: center;
+    font-size: 1.4em;
+    font-family: "ComfortaaB", Arial;
+    margin-bottom: 4%;
+    width: 100%;
+
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+    #project, #how, #last{
+        margin: -16px -17px -17px -25px;
+    }
+}
+
+@media screen and (min-width: 800px){
+    body{
+        background-color: #63917F;
+    }
+    #project{
+        padding-top:3%;
+        margin: -27px 27px 0 -100px;
+    }
+    #how{
+        padding: 1% 0 0 10%;
+    }
+    #last{
+        padding-top:3%;
+        margin: 0 -110px 0 -110px;
+        -moz-margin-end: -42px;
+    }
+    .howImg{
+        width: 40%;
+        margin:5%;
+    }
+    #how p{
+        font-size: 1.3em;
+    }
+    #projectTitle, #howTitle, #lastTitle{
+        padding-bottom: 3%;
+    }
+    #btnProject a{
+        padding: 1% 5% 1% 5%;
+        font-size: 1.3em;
+    }
+    #project{
+        width: 60%;
+    }
+    #how{
+        width: 40%;
+    }
 }
