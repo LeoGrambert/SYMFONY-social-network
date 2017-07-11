@@ -1,19 +1,31 @@
 {% extends "CoreBundle::layout.html.twig" %}
 
-{% block title %}Ajout d'une observation{% endblock %}
 
 {% block body %}
 
-    <h1>Saisie d'une observation</h1>
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset('bundles/core/css/observation.css') }}"/>
+    {% endblock %}
 
+    <div class="container containerAdd">
 
     {{ form_start(form)}}
 
-    {{ form_widget(form)}}
+        {{ form_row(form.picture) }}
+
+        {{ form_row(form.bird) }}
+
+        {{ form_row(form.latitude) }}
+
+        {{ form_row(form.longitude) }}
+
+        {{ form_row(form.date) }}
+
+        {{ form_row(form.description) }}
 
     {{ form_end(form) }}
 
-
+    </div>
 
     <a href="{{ path('search_bird') }}" id="url-list" class="hidden"></a>
     <a href="{{ path('get_bird') }}" id ="url-get" class="hidden"></a>
