@@ -14,39 +14,11 @@
 
     <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Dev app</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                    <li><a href="{{ path('addPage') }}">Participer</a></li>
-                    <li><a href="{{ path('searchPage') }}">Rechercher</a></li>
-                    <li><a href="{{ path('associationPage') }}">Association/Contact</a></li>
-                    {% if is_granted('ROLE_USER') %}
-                        <li><a href="{{ path('adminPage') }}">Bonjour, {{ app.user.username }}</a></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-                    {% else %}
-                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                    <li><a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a></li>
-                    {% endif %}
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </nav>
-
     <header>
-        <img src="{{ asset('/bundles/core/img/background-header.png') }}" alt="header"/>
+        <img id="imgHeaderMobile" src="{{ asset('/bundles/core/img/background-header-mobile.png') }}" alt="header"/>
+        <img id="imgHeaderDesktop" src="{{ asset('/bundles/core/img/header_desktop.png') }}" alt="header"/>
         <a href="{{ path('homepage') }}"><img id="logo" src="{{ asset('bundles/core/img/logo.png') }}" alt="logo"/></a>
-        <h1 id="title">Nos amis les oiseaux</h1>
+        <a href="{{ path('homepage') }}"><img id="home" src="{{ asset('bundles/core/img/home.png') }}" alt="logo"/></a>
         {% if is_granted('ROLE_USER') %}
            {% if gravatar is defined and gravatar != null %}
                 <a href="{{ path('adminPage') }}"><img id="userGravatar" src="{{ gravatar }}" alt="profilePicture"/></a>
@@ -75,13 +47,46 @@
         {% endblock %}
 
         <hr>
-        <footer>
-            <a href="/">Retour à l'accueil</a> | <a href="{{ path('legalPage') }}">Mentions légales</a>
-            {% if is_granted('ROLE_USER') or is_granted('ROLE_PRO') or is_granted('ROLE_ADMIN') %}
-                | <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
-            {% endif %}
-        </footer>
     </div>
+    <footer>
+        <div class="container">
+            <div class="row" id="navbar">
+                <div class="col-xs-4">
+                    <a href="{{ path('addPage') }}"><img class="imgNav participate" src="{{ asset('bundles/core/img/add.jpg') }}" alt="participer">Participer</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="{{ path('searchPage') }}"><img class="imgNav search" src="{{ asset('bundles/core/img/search.jpg') }}" alt="participer">Rechercher</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="{{ path('associationPage') }}"><img class="imgNav association" src="{{ asset('bundles/core/img/logo.png') }}" alt="participer">L'association</a>
+                </div>
+            </div>
+            <div class="row" id="participate">
+                <a href="{{ path('addPage') }}"><button id="btnParticipate" class="btn btn-default">Participer au programme</button></a>
+            </div>
+            <div class="row" id="socialMedia">
+                <a href="https://facebook.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/facebook.png') }}" alt="facebook"></a>
+                <a href="https://instagram.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/instagram.png') }}" alt="instagram"></a>
+                <a href="https://twitter.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/twitter.png') }}" alt="twitter"></a>
+                <a href="https://pinterest.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/pinterest.png') }}" alt="pinterest"></a>
+            </div>
+            <img id="logoFooter" src="{{ asset('bundles/core/img/logo.png') }}" alt="logo"/>
+            <div class="row" id="links">
+                <div class="col-xs-5">
+                    <a href="{{ path('legalPage') }}">Mentions légales</a>
+                </div>
+                <div class="col-xs-4 homepage">
+                    <a href="{{ path('homepage') }}">Accueil</a>
+                </div>
+                <div class="col-xs-2">
+                    <a href="{{ path('associationPage') }}">Contact</a>
+                </div>
+            </div>
+            <div class="row" id="copyright">
+                <p>Copyright 2017 - nosamislesoiseaux@wagg.com - Site fictif dans le cadre d'un projet de formation</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

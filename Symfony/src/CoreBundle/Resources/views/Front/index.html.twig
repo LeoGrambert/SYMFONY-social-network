@@ -2,14 +2,20 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ asset('bundles/core/css/home.css') }}"
+{% endblock %}
+
 {% block body %}
-    <h1>Le projet</h1>
+    <h1 id="project">Le projet</h1>
     <p>L’idée animant notre projet est de fournir une application participative aux passionnés d’ornithologie.</p>
     <p>Vous saisissez une observation d’oiseau sur notre application, et votre observation devient accessible sur notre
         carte interactive. Sur cette dernière, vous avez également accès aux observations de nos autres membres.</p>
     <p>En participant, vous prendrez part à un programme de recherche visant à étudier les effets du climat, de
         l’urbanisation et de l’agriculture sur la biodiversité.</p>
-    <a href="{{ path('addPage') }}" class="btn btn-primary">Participer</a>
+    <div class="row" id="btnProject">
+        <a href="{{ path('addPage') }}" class="btn btn-primary">Participer</a>
+    </div>
     <hr>
     <h1>Comment faire ?</h1>
     <div class="row">

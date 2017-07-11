@@ -1,34 +1,188 @@
-header img{
-    /*background-size: cover;*/
+@font-face {
+    font-family: "comfortaa";
+    src: url('../font/comfortaa/Comfortaa-Bold.ttf');
+}
+#imgHeaderMobile{
     width: 100%;
     top:0;
     left:0;
 }
-#title{
+footer{
+    background-color: #7EBEA5;
+    width: 100%;
+    padding:2%;
+    margin-bottom: 10%;
+}
+#participate, #socialMedia{
     text-align: center;
-    margin-top:8%;
-    margin-bottom: 4%;
+    margin:2% 0 2% 0;
+}
+#btnParticipate{
+    background-color: #986A46;
+    border-color: #986A46;
+    color: white;
+    padding:4% 2% 4% 2%;
+    font-family: "comfortaa", Arial;
+}
+#imgHeaderDesktop{
+    display: none;
 }
 #logo{
     position:absolute;
     top:3%;
     left:39%;
-    width:20%;
+    width:22%;
 }
 #user, #userGravatar{
     position: absolute;
     left:85%;
     top:4%;
-    width:13%;
+    width:10%;
+}
+#home{
+    position: absolute;
+    left:73%;
+    top:4%;
+    width:10%;
 }
 #userGravatar{
     border-radius: 50%;
 }
-
+#logoFooter{
+    position: relative;
+   bottom: 50px;
+    left: 90%;
+}
+#copyright{
+    font-size: 0.8em;
+    text-align: center;
+    margin-top:5%;
+    margin-bottom: 15%;
+}
+#links{
+    margin-top:-10%;
+}
+#links a{
+    font-size: 0.8em;
+    color: #3D4753;
+}
+#links a:hover{
+    text-decoration: none;
+}
+#navbar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #7EBEA5;
+    z-index: 15;
+    padding: 2% 0 2% 0;
+    text-align: center;
+}
+#navbar a{
+    font-family: "comfortaa", Arial;
+    color: #1B6084;
+    margin-left: 7%;
+}
+#navbar a:hover{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+.imgSocial, #logoFooter{
+    width: 12%;
+    margin: 3% 2% 0 2%;
+}
 .input {
 background: red;
 }
 .containerBody{
     margin-top: 2%;
 }
+.imgNav{
+    width: 75%;
+}
+.participate{
+    margin-top: 15%;
+}
 
+@media screen and (min-width: 480px) and (max-width: 768px) {
+    #navbar a{
+        margin-left: -7%;
+    }
+    #navbar{
+        padding-left: 6%;
+    }
+}
+
+@media screen and (min-width: 800px){
+    footer{
+        margin-bottom: 0;
+    }
+    #imgHeaderDesktop{
+        display: block;
+        width: 100%;
+        top:0;
+        left:0;
+    }
+    #imgHeaderMobile{
+        display:none;
+    }
+    #copyright{
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    #navbar{
+        top:0;
+        height: 50px;
+        width: 101%;
+        text-align: center;
+        padding-bottom: 2.5%;
+    }
+    #btnParticipate{
+        padding:1%;
+    }
+    .imgNav{
+        width: 10%;
+        top: 2%;
+    }
+    #navbar .col-xs-4{
+        margin-top: -1%;
+    }
+    #participate{
+        margin: 0;
+    }
+    .participate{
+        margin-top: 2%;
+    }
+    #logo{
+        top:14%;
+        left:45%;
+        width: 8%;
+    }
+    #home{
+        top:15%;
+        width:6%;
+        left: 77%;
+    }
+    #user, #userGravatar{
+        top: 15%;
+        width: 6%;
+    }
+    #logoFooter{
+        width: 6%;
+        margin-top: -5%;
+    }
+    #links{
+        font-size: 1.5em;
+        margin-top: -45px;
+        margin-left:-15%;
+        text-align: center;
+    }
+    .homepage{
+        margin-left: -3%;
+        margin-right: 3%;
+    }
+    .imgSocial{
+        width:4%;
+        margin: 1% 2% 1% 2%;
+    }
+}
