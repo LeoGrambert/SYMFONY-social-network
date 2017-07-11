@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "ComfortaaR";
+    src: url('../font/comfortaa/Comfortaa-Regular.ttf')
+}
+body{
+    background-color: #F3D6A8;
+    font-family: "ComfortaaR", Arial;
+}
+h1{
+    font-family: "ComfortaaB", Arial;
+}
+h2{
+    font-size: 1.5em;
+}
+hr{
+    border:1px #986A46 solid
+}
