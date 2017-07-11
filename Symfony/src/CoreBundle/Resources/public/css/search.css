@@ -1,18 +1,98 @@
+@font-face {
+    font-family: "ComfortaaR";
+    src: url('../font/comfortaa/Comfortaa-Regular.ttf')
+}
+body{
+    background-color: #FFFFFF;
+}
 select{
     margin-bottom: 2%;
+}
+hr{
+    border: 2px #C5A077 solid;
+}
+label{
+    font-family: "ComfortaaR", Arial;
+}
+#titleFormSearch{
+    font-family: "ComfortaaB", Arial;
+    font-size: 1.8em;
+    color:#1C5F83;
+}
+#subTitleFormSearch{
+    font-family: "ComfortaaB", Arial;
+    font-size: 1em;
+    margin-bottom: 15%;
+    color:#1C5F83;
 }
 #mapid{
     height: 400px;
     margin-top: 2%;
     margin-bottom: 2%;
+    z-index:10;
 }
 #clearMap{
-    width: 20%;
+    width: 100%;
     margin-top: 1%;
+    margin-bottom: 3%;
+    font-family: "ComfortaaR", Arial;
 }
 #searchButton{
     margin-top:1%;
+    background-color: #7EBEA5;
+    border-color: #7EBEA5;
+    padding: 3% 2% 3% 2%;
+    font-family: "ComfortaaR", Arial;
+}
+#searchButtonDiv{
+    text-align: center;
+    margin: 5% 0 15% 0;
+}
+#mesange{
+    width: 200%;
+    margin-left: -70%;
+}
+#mapContainer{
+    background-color: #F3D6A8;
+    margin: 0 -15px -22px -17px;
+    padding:8%;
+}
+#birdField{
+    margin-bottom: 3%;
 }
 .alert-success_lat, .alert-success_lon{
     display: none;
+}
+
+@media screen and (min-width: 800px){
+    #mesange{
+        width:100%;
+        margin-left: -5%;
+        position: absolute;
+    }
+    #subTitleFormSearch{
+        margin-bottom:5%;
+    }
+    #searchButtonDiv{
+        text-align: left;
+        margin-bottom: 5%;
+        margin-top: 0;
+    }
+    #searchButton{
+        padding: 1% 1% 1% 1%;
+    }
+    #mapContainer{
+        margin: 0 -110px 0 -110px;
+        -moz-margin-end: -42px;
+        padding-top: 2%;
+    }
+    #clearMap{
+        width: 49%;
+    }
+    #birdField{
+        margin-bottom: 1%;
+    }
+    .form-control{
+        width:50%;
+    }
 }
