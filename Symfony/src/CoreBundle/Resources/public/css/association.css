@@ -1,0 +1,46 @@
+#titleAssociation {
+    font-family: "ComfortaaB", Arial;
+    font-size: 1.9em;
+    color:#1C5F83;
+}
+#titlePresentation {
+    font-family: "ComfortaaB", Arial;
+    font-size: 1.6em;
+    color:#1C5F83;
+
+
+}
+
+p{
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+    text-align: justify;
+
+}
+
+#ornithologue{
+
+    margin-top: +20%;
+    margin-left: -10%;
+    position: absolute;
+}
+
+input{
+    border: hidden;
+}
+
+
+
+@media screen and (min-width: 800px){
+    #titleAssociation {
+        margin-left: 50px;
+    }
+
+    #titlePresentation {
+        font-family: "ComfortaaB", Arial;
+        font-size: 1.8em;
+        color:#1C5F83;
+    }
+
+
+}

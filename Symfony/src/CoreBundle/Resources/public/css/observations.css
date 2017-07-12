@@ -1,0 +1,31 @@
+#observation {
+    width: 340px;
+    height: 300px;
+    background: #F3D6A8 url("../img/port.png") 0 0;
+    background-size: cover;
+    opacity:0.99;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-right: 2px;
+    margin-top: 2px;
+    margin-left: 2px;
+
+}
+
+.imgObservation{
+    width: 220px;
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;
+}
+
+
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+
+}
+
+@media screen and (min-width: 800px){
+
+
+}

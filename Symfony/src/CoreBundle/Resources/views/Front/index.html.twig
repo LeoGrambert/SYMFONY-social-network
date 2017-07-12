@@ -3,7 +3,8 @@
 {% block title %}Accueil{% endblock %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{{ asset('bundles/core/css/home.css') }}"
+    <link rel="stylesheet" href="{{ asset('bundles/core/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/core/css/observations.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -48,25 +49,19 @@
             </div>
         </div>
     </div>
-    <div id="last">
-    <h1 id="lastTitle">Dernières observations</h1>
-        {% if lastObservations == null %}
-            <p>Aucune observation n'a été publié. Soyez le premier : <a href="{{ path('addPage') }}">Participez</a> </p>
-        {% else %}
-            {% for lastObservation in lastObservations %}
-                <li>User : {{ lastObservation.user }} <br>
-                    Date d'ajout : {{ lastObservation.date|date('d/m/Y') }} <br>
-                    Latitude : {{ lastObservation.latitude }} Longitude : {{ lastObservation.longitude }}<br>
-                    Species : {{ lastObservation.bird.nomVern }}<br>
-                    Statut : {{ lastObservation.statut }}</li><br>
-                {% if lastObservation.picture is not null %}
-                    <img
-                            src="{{ asset(lastObservation.picture.webPath) }}"
-                            alt="{{ lastObservation.picture.alt }}"
-                            height="200"
-                    />
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+    <div class="row">
+
+        <h1 id="lastTitle">Dernières observations</h1>
+            {% if Observations == null %}
+                <p>Aucune observation n'a été publié. Soyez le premier : <a href="{{ path('addPage') }}">Participez</a> </p>
+            {% else %}
+
+                {% for Observation in Observations %}
+                    {#We include observations template#}
+                    {% include 'CoreBundle::observations.html.twig' %}
+                  {% endfor %}
+
+            {% endif %}
+
     </div>
 {% endblock %}

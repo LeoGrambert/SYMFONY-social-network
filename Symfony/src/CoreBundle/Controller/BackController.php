@@ -40,7 +40,7 @@ class BackController extends Controller
             return $this->redirectToRoute('login');
         } else {
             return $this->render('CoreBundle:Admin:index.html.twig', [
-                'listObservations'=>$listObservations,
+                'Observations'=>$listObservations,
                 'gravatar'=>$gravatar,
                 'howManyObservationToValidate'=>$howManyObservationToValidate
             ]);

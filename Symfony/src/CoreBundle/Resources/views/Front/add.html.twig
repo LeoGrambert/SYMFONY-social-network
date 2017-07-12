@@ -1,10 +1,11 @@
 {% extends "CoreBundle::layout.html.twig" %}
 
+{% block title %}Ajout d'une observation{% endblock %}
 
 {% block body %}
 
     {% block stylesheet %}
-        <link rel="stylesheet" href="{{ asset('bundles/core/css/observation.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/core/css/addObservation.css') }}"/>
     {% endblock %}
 
 
@@ -99,7 +100,7 @@
 
         getLatitude();
         getLongitude();
-        document.getElementById("observation_bird").add('required');
+
     </script>
 
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-select2.js') }}"></script>

@@ -2,7 +2,10 @@
 
 {% block title %}Administration{% endblock %}
 
-{% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/adminIndex.css') }}">{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ asset('bundles/core/css/adminIndex.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/core/css/observations.css') }}">
+{% endblock %}
 
 {% block body %}
     {% if is_granted('ROLE_PRO') %}
@@ -30,16 +33,19 @@
     </div>
     <hr>
     <h1 id="myMsg">Mes observations</h1>
-    {% if listObservations == null %}
+    {% if Observations == null %}
         <p>Vous n'avez fait aucune observation.</p>
     {% else %}
         {% set months = [] %}
-        {% for listObservation in listObservations %}
-            {% if listObservation.date|date('F Y') not in months %}
-                {% set months = months|merge([listObservation.date|date('F Y')]) %}
-                <p class="month"><strong>Observations du mois {% if listObservation.date|date('F')|trans == "Avril" or listObservation.date|date('F')|trans == 'Août' or listObservation.date|date('F')|trans == 'Octobre' %}d'{% else %}de {% endif %}{{ listObservation.date|date('F')|trans }} {{ listObservation.date|date('Y') }}</strong></p>
+        {% for Observation in Observations %}
+            {% if Observation.date|date('F Y') not in months %}
+                {% set months = months|merge([Observation.date|date('F Y')]) %}
+                <p class="month"><strong>Observations du mois {% if Observation.date|date('F')|trans == "Avril" or Observation.date|date('F')|trans == 'Août' or Observation.date|date('F')|trans == 'Octobre' %}d'{% else %}de {% endif %}{{ Observation.date|date('F')|trans }} {{ Observation.date|date('Y') }}</strong></p>
             {% endif %}
-            <p>Nom d'utilisateur : {{ app.user.username }} <br>
+
+            {#We include observations template#}
+            {% include 'CoreBundle::observations.html.twig' %}
+            {#<p>Nom d'utilisateur : {{ app.user.username }} <br>
                 Date d'observation : {{ listObservation.date|date('d/m/Y') }} <br>
                 Coordonnées : <a title="Cliquez pour accéder à la carte" href="{{ path('SearchGpsCoordinates', {'lat':listObservation.latitude, 'lon':listObservation.longitude}) }}">{{ listObservation.latitude }}, {{ listObservation.longitude }}</a><br>
                 Espèce : {{ listObservation.bird.nomVern }}<br>
@@ -47,7 +53,7 @@
                 {% if listObservation.picture != null %}
                     <img src="/uploads/img/{{ listObservation.picture.id }}.{{ listObservation.picture.ext }}" alt="{{ listObservation.picture.alt }}" height="200">
                 {% endif %}
-            </p><br>
+            </p><br>#}
         {% endfor %}
     {% endif %}
 {% endblock %}

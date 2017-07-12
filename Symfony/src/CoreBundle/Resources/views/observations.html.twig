@@ -1,0 +1,20 @@
+
+<div id="observation" class="col-md-4 col-xs-12">
+    <p>
+        User : {{ Observation.user }} <br>
+        Date d'ajout : {{ Observation.date|date('d/m/Y') }} <br>
+        Latitude : {{ Observation.latitude }} Longitude : {{ Observation.longitude }}<br>
+        Species : {{ Observation.bird.nomVern }}<br>
+        Statut : {{ Observation.statut }}<br>
+        {% if Observation.picture is not null %}
+            <img class="imgObservation"
+                 src="{{ asset(Observation.picture.webPath) }}"
+                 alt="{{ Observation.picture.alt }}"
+            />
+        {% elseif Observation.picture is null %}
+            <img  class="imgObservation" src="{{ asset('bundles/core/img/no-picture.png') }}" alt="no-picture"/>
+
+        {% endif %}
+    </p>
+</div>
+

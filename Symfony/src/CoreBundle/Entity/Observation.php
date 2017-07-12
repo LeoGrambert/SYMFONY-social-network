@@ -52,6 +52,7 @@ class Observation
      *
      * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Species", cascade={"persist"})
      * @ORM\JoinColumn(name="species_id", referencedColumnName="id", nullable=false)
+     * @Assert\NotBlank()
      */
     private $bird;
 
@@ -75,6 +76,7 @@ class Observation
      * @var float
      *
      * @ORM\Column(name="latitude", type="float")
+     * @Assert\NotBlank()
      */
     private $latitude;
 
@@ -82,6 +84,7 @@ class Observation
      * @var float
      *
      * @ORM\Column(name="longitude", type="float")
+     * @Assert\NotBlank()
      */
     private $longitude;
 

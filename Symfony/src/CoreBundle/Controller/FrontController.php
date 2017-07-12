@@ -33,7 +33,7 @@ class FrontController extends Controller
         $em = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Observation');
         $lastObservations = $em->findLastObservations();
         return $this->render('CoreBundle:Front:index.html.twig',[
-            'lastObservations'=>$lastObservations,
+            'Observations'=>$lastObservations,
             'gravatar'=>$gravatar
         ]);
     }
@@ -67,7 +67,7 @@ class FrontController extends Controller
 
         $form = $this->createForm(ObservationType::class, $observation, ['method'=>'PUT']);
 
-        if ($form->handleRequest($request)->isSubmitted() && $form->isValid() && ($form->get('bird')->getData()!= null)){
+        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
 
 
             $this->getDoctrine()->getRepository('CoreBundle:Observation')->add($observation);
@@ -79,10 +79,6 @@ class FrontController extends Controller
             }
 
             return $this->redirectToRoute('homepage');
-        }
-
-        elseif ($form->handleRequest($request)->isSubmitted() && $form->get('bird')->getData()==null){
-            $this->addFlash('info', 'Vous devez renseigner un nom d\'oiseau en utilisant le moteur de recherche !');
         }
 
         if(null === $user) {

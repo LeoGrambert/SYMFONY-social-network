@@ -22,23 +22,23 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname', TextType::class, array('attr' => array('placeholder' => 'Votre nom'),
+            ->add('lastname', TextType::class, array('attr' => array('placeholder' => 'Nom'),
                 'constraints' => array(
                     new NotBlank(array("message" => "Veuillez remplir le champ nom")),
                 )
             ))
-            ->add('firstname', TextType::class, array('attr' => array('placeholder' => 'Votre prénom'),
+            ->add('firstname', TextType::class, array('attr' => array('placeholder' => 'Prénom'),
                 'constraints' => array(
                     new NotBlank(array("message" => "Veuillez remplir le champ prénom")),
                 )
             ))
-            ->add('email', EmailType::class, array('attr' => array('placeholder' => 'Votre adresse email'),
+            ->add('email', EmailType::class, array('attr' => array('placeholder' => 'Mail'),
                 'constraints' => array(
                     new NotBlank(array("message" => "Veuillez remplir le champ email")),
                     new Email(array("message" => "Votre adresse email n'a pas un format valide")),
                 )
             ))
-            ->add('message', TextareaType::class, array('attr' => array('placeholder' => 'Votre message'),
+            ->add('message', TextareaType::class, array('attr' => array('label'=>'Message','placeholder' => 'Votre message'),
                 'constraints' => array(
                     new NotBlank(array("message" => "Veuillez inscrire un message")),
                 )
