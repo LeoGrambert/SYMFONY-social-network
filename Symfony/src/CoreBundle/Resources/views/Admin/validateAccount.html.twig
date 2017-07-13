@@ -2,6 +2,8 @@
 
 {% block title %}Valider un compte professionnel{% endblock %}
 
+{% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/validateAccount.css') }}" {% endblock %}
+
 {% block body %}
 
     {% if listUsers == null %}
@@ -24,7 +26,7 @@
                             <td>{{ listUser.email }}</td>
                             <td>
                                 <form action="{{ path('confirmAccount', {'userId' : listUser.id}) }}" method="post">
-                                    <button class="btn">Valider</button>
+                                    <button class="btn btn-info">Valider</button>
                                 </form>
                             </td>
                             <td>

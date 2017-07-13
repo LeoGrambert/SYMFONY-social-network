@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "ComfortaaR";
+    src: url('../font/comfortaa/Comfortaa-Regular.ttf')
+}
+body{
+    background-color: #F3D6A8;
+    font-family: "ComfortaaR", Arial;
+}
+@media screen and (max-width: 800px) {
+    thead{
+        display: none;
+    }
+    tbody{
+        display: block;
+        width: auto;
+        padding:5% 0 10% 0;
+    }
+}
