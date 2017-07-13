@@ -38,7 +38,8 @@ class ContactType extends AbstractType
                     new Email(array("message" => "Votre adresse email n'a pas un format valide")),
                 )
             ))
-            ->add('message', TextareaType::class, array('attr' => array('label'=>'Message','placeholder' => 'Votre message'),
+            ->add('message', TextareaType::class, array(
+                'label' => 'Message',
                 'constraints' => array(
                     new NotBlank(array("message" => "Veuillez inscrire un message")),
                 )

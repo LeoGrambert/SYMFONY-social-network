@@ -1,5 +1,5 @@
 #observation {
-    width: 340px;
+    width: 320px;
     height: 300px;
     background: #F3D6A8 url("../img/port.png") 0 0;
     background-size: cover;
@@ -9,11 +9,23 @@
     margin-right: 2px;
     margin-top: 2px;
     margin-left: 2px;
+    color: white;
 
 }
 
+#userGravatar{
+    border-radius: 50%;
+}
+
+#user, #userGravatar {
+    position: absolute;
+    left: 85%;
+    top: 4%;
+    width: 10%;
+}
+
 .imgObservation{
-    width: 220px;
+    width: 160px;
     -moz-border-radius:7px;
     -webkit-border-radius:7px;
     border-radius:7px;
