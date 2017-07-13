@@ -48,11 +48,9 @@ class ObservationType extends AbstractType
             ))
 
             ->add('description', TextareaType::class, array(
-                'label' => false,
+                'label' => 'Description',
                 'required' => false,
-                'attr'=> array(
-                    'placeholder' => 'Description',
-                  )
+
             ))
 
             ->add('picture',     PictureType::class, array(

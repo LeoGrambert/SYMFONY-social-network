@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
+
 /**
  * Class FrontController
  * @package CoreBundle\Controller
@@ -69,8 +70,8 @@ class FrontController extends Controller
 
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
 
-
             $this->getDoctrine()->getRepository('CoreBundle:Observation')->add($observation);
+
 
             if ($observation->getStatut() === 'accepted'){
                 $this->addFlash('info', 'Votre observation a été enregistrée.');

@@ -17,7 +17,8 @@ class PictureType extends AbstractType
                 'required' => false,
                 'attr' => array(
                     'accept' => 'image/*',
-                    'capture' => 'environment'
+                    'capture' => 'environment',
+                    'onchange' => 'updateFilename(this.value)'
                 )))
         ;
     }

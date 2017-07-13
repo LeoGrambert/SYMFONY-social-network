@@ -2,9 +2,68 @@ body{
     background-color: #f3d6a8;
 }
 
-.select2-container, .select2-drop, .select2-default, .select2-choice, .select2-no-results, .select2-search, .select2-search input {
+
+
+input[type="text"].form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+}
+
+input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+}
+input[type="text"]::-moz-placeholder { /* Firefox 19+ */
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+}
+input[type="text"]:-ms-input-placeholder{ /* IE 10+ */
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+}
+input[type="text"]:-moz-placeholder { /* Firefox 18- */
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+}
+
+input[type="text"], input[type="date"], input[type="time"] {
+    background-color: #f3d6a8;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    border-bottom: 1px solid #1C5F83;
+    margin-bottom: 20px;
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+
+}
+
+label{
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+}
+
+textarea.form-control {
+    height: 150px;
+    border-radius: 8px;
+    box-shadow: none;
+    border: 2px solid #7EBEA5;
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
     background-color: #f3d6a8;
 }
+
+
+.select2-container .select2-choice>.select2-chosen{
+    background-color: #f3d6a8;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+    border-bottom: 1px solid #f3d6a8;
+}
+
 
 
 
@@ -12,6 +71,8 @@ body{
     text-align: center;
     margin:2% 0 2% 0;
 }
+
+
 
 .btn-file {
     position: relative;
@@ -22,6 +83,7 @@ body{
     text-decoration:none;
     border-style: hidden;
     background-color: #f3d6a8;
+    margin-bottom: 20px;
 }
 
 .btn-file:hover{
@@ -29,7 +91,7 @@ body{
 }
 
 
-.btn-file input[type=file] {
+input[type=file] {
     position: absolute;
     top: 0;
     right: 0;
@@ -51,19 +113,36 @@ body{
     font-family: "ComfortaaB", Arial;
 }
 
+#getfilename{
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: "ComfortaaB", Arial;
+    color:#1C5F83;
+}
 
 @media screen and (min-width: 800px){
     .btn-file {
         position: relative;
         overflow: hidden;
         background:url('../img/importer-une-photo.png') no-repeat;
-        width: 122px;
-        height: 122px;
+        width: 120px;
+        height: 120px;
         text-decoration:none;
         border-style: hidden;
         background-color: #f3d6a8;
     }
     .btn-file:hover{
         background-color: #f3d6a8;
+    }
+
+    #description{
+        margin-top: -25px;
+    }
+
+    #getfilename{
+        margin-bottom: 30px;
+        text-align: center;
+        font-family: "ComfortaaB", Arial;
+        color:#1C5F83;
     }
 }
