@@ -7,6 +7,7 @@
               integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
               crossorigin=""/>
         <link rel="stylesheet" href="{{ asset('bundles/core/css/search.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/core/css/observations.css') }}"/>
     {% endblock %}
 
 {% block body %}
@@ -65,8 +66,12 @@
             <div class="alert alert-info">Vous n'êtes pas connecté, les résultats de recherche sont affichés par secteur géographique. Pour un résultat précis (coordonnées GPS), veuillez-vous connecter.</div>
         {% endif %}
         <div class="row">
-            <div class="col-md-6" id="colMap">
+            <div class="col-md-6">
                 <div id="mapid"></div>
+            </div>
+            <div class="col-md-6" >
+                <div class="row" id="colMap">
+                </div>
             </div>
         </div>
         <hr>

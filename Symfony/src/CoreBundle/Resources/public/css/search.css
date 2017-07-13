@@ -63,6 +63,10 @@ label{
 .alert-success_lat, .alert-success_lon{
     display: none;
 }
+#colMap #observation{
+    width: 270px;
+    margin: 1%;
+}
 
 @media screen and (min-width: 800px){
     #mesange{

@@ -101,9 +101,26 @@ $(function(){
                     date = (date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
                     if($('#isLogged').val() === "true"){
                         if(value.picture !== null) {
-                            $('#colMap').after('<div class="col-md-6"><p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p><img src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" height="200"/></div>');
+                            $('#colMap').append('<div id="observation" class="col-md-6 col-xs-12">' +
+                                '<p>' +
+                                'Utilisateur : '+value.user.username+'<br>' +
+                                'Date d\'ajout : <span id="date' + value.id + '">' + date + '</span><br>' +
+                                'Coordonnées : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br>' +
+                                'Espèce : ' +value.bird.nomVern +
+                                '<br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a>' +
+                                '</p>' +
+                                '<img class="imgObservation" src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" />' +
+                                '</div>');
                         } else {
-                            $('#colMap').after('<div class="col-md-6"><p>Observation de <strong>"'+value.bird.nomVern+'"</strong> le <span id="date' + value.id + '">' + date + '</span> par ' + value.user.username + ' aux coordonnées suivantes : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a></p></div>');
+                            $('#colMap').append('<div id="observation" class="col-md-6 col-xs-12">' +
+                                '<p>' +
+                                'Utilisateur : '+value.user.username+'<br>' +
+                                'Date d\'ajout : <span id="date' + value.id + '">' + date + '</span><br>' +
+                                'Coordonnées : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br>' +
+                                'Espèce : ' +value.bird.nomVern +
+                                '<br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a>' +
+                                '</p>' +
+                                '</div>');
                         }
                         var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
                         marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par "+value.user.username+"</b>");
