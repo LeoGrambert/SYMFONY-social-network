@@ -5,7 +5,7 @@
 {% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/validateAccount.css') }}" {% endblock %}
 
 {% block body %}
-
+    <a href="{{ path('adminPage') }}" class="btn btn-default return">Retour à l'interface d'administration</a>
     {% if listUsers == null %}
         <p>Vous n'avez plus de nouvelles inscriptions de professionnels à valider.</p>
     {% else %}

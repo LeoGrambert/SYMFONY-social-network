@@ -1,3 +1,43 @@
+@font-face {
+    font-family: "ComfortaaR";
+    src: url('../font/comfortaa/Comfortaa-Regular.ttf')
+}
+body{
+    background-color: #F3D6A8;
+    font-family: "ComfortaaR", Arial;
+}
+hr{
+    border: 2px #C5A077 solid;
+}
+input{
+    margin-bottom: 3%;
+}
+#title{
+    margin-top: 15%;
+    font-size: 1.5em;
+}
+#searchButton{
+    background-color: #7EBEA5;
+    border-color: #7EBEA5;
+}
+#clear{
+    background-color: #986A46;
+    border-color: #986A46;
+}
 .accept, .refuse{
     margin: 0.5% 0.5% 0.5% 1%;
+}
+.return{
+    background-color: #477E68;
+    border-color: #387392;
+    color:white;
+    font-family: "ComfortaaB", Arial;
+}
+@media screen and (min-width: 800px) {
+    #birdField{
+        width: 50%;
+    }
+    #title{
+        margin-top: 5%;
+    }
 }

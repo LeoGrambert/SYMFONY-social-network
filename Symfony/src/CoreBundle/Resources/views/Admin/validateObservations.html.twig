@@ -7,10 +7,12 @@
 {% endblock %}
 
 {% block body %}
-    <h3><strong>Liste des observations à valider</strong></h3>
+    <a href="{{ path('adminPage') }}" class="btn btn-default return">Retour à l'interface d'administration</a>
+    <h1 id="title"><strong>Liste des observations à valider</strong></h1>
     {% if observationsToValidate == null %}
         <p>Il n'y a aucune observation à valider.</p>
     {% else %}
+        <hr>
         <form method="get" onsubmit="return false">
             <label>Filtre par espèce</label>
             <input class="form-control" list="birds" id="birdField" autocomplete="off">
@@ -29,7 +31,7 @@
             <button class="btn btn-info" id="searchButton">Rechercher</button>
             <button id="clear" class="btn btn-warning">Toutes les observations</button>
         </form><br>
-
+        <hr>
         <div id="results">
             {% for observationToValidate in observationsToValidate %}
                 <p>"{{ observationToValidate.user.username }}" a observé <strong>"{{ observationToValidate.bird.nomVern }}"</strong> le {{ observationToValidate.date|date('d/m/Y') }} aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="{{ path('SearchGpsCoordinates', {'lat':observationToValidate.latitude, 'lon':observationToValidate.longitude}) }}">{{ observationToValidate.latitude }}, {{ observationToValidate.longitude }}</a></p>
