@@ -13,4 +13,10 @@ class UserTest extends TestCase
         $user->setEmail('test@gmail.com');
         $this->assertNotNull($user->getGravatarPicture());
     }
+
+    public function testNoAccreditDefault()
+    {
+        $user = new User();
+        $this->assertFalse($user->getIsAccredit());
+    }
 }
