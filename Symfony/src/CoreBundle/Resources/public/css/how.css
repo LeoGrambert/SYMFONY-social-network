@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "ComfortaaR";
+    src: url('../font/comfortaa/Comfortaa-Regular.ttf')
+}
+body{
+    background-color: #63917F;
+    font-family: "ComfortaaR", Arial;
+}
+h2{
+    font-family: "ComfortaaB", Arial;
+}
+h3{
+    font-size: 1.1em;
+    margin-bottom: 20%;
+}
+#congrats{
+    margin-bottom: 10%;
+}
+#title{
+    margin-bottom: 20%;
+}
+.containerBody{
+    color:white;
+    text-align: center;
+}
+.img{
+    width: 100px;
+}
+@media screen and (min-width: 800px) {
+    #title{
+        margin-bottom: 5%;
+    }
+    .containerBody{
+        padding: 0 5% 0 5%;
+    }
+}

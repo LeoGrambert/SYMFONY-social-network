@@ -136,6 +136,22 @@ class FrontController extends Controller
     }
 
     /**
+     * What do we do if we are on how to do page
+     * @route("/how", name="howPage")
+     */
+    public function howAction()
+    {
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+        return $this->render('CoreBundle:Front:how.html.twig', [
+            'gravatar'=>$gravatar
+        ]);
+    }
+
+    /**
      * What do we do if we are on association page
      * @route("/association", name="associationPage")
      * @param Request $request

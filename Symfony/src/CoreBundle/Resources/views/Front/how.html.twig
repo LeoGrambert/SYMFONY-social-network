@@ -1,0 +1,35 @@
+{% extends "CoreBundle::layout.html.twig" %}
+
+{% block title %}Comment faire{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/how.css') }}">{% endblock %}
+
+{% block body %}
+    <h1 id="title">Comment participer ?</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img" src="{{ asset('bundles/core/img/add.png') }}" alt="observer">
+            <h2 class="subtitle">Observez</h2>
+            <h3 class="subsubtitle">Vous observez une espèce d'oiseau.</h3>
+        </div>
+        <div class="col-md-6">
+            <img class="img" src="{{ asset('bundles/core/img/img.png') }}" alt="photographier">
+            <h2 class="subtitle">Photographiez</h2>
+            <h3 class="subsubtitle">Vous la prenez en photo.</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img" src="{{ asset('bundles/core/img/share.png') }}" alt="partager">
+            <h2 class="subtitle">Partagez</h2>
+            <h3 class="subsubtitle">Vous saisissez votre observation sur notre application.</h3>
+        </div>
+        <div class="col-md-6">
+            <img class="img" src="{{ asset('bundles/core/img/validate.png') }}" alt="valider">
+            <h2 class="subtitle">Faites valider</h2>
+            <h3 class="subsubtitle">Votre observation sera publiée et accessible dès qu'un ornithologue professionnel l'aura confirmé.</h3>
+        </div>
+    </div>
+    <p id="congrats">Félicitations ! <br>Votre observation a été publiée. Votre contribution nous aidera à étudier les effets du climat, de l'urbanisation et de l'agriculture sur la biodiversité.</p>
+{% endblock %}

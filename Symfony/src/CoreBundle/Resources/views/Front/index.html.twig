@@ -45,11 +45,11 @@
             </div>
             <div class="row bonus">
                 <p>Le projet vous intéresse ?</p>
-                <p>Pour en savoir plus, <a>cliquez ici</a></p>
+                <p>Pour en savoir plus, <a href="{{ path('howPage') }}">cliquez ici</a></p>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="last">
 
         <h1 id="lastTitle">Dernières observations</h1>
             {% if Observations == null %}
