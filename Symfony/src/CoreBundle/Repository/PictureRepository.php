@@ -2,6 +2,8 @@
 
 namespace CoreBundle\Repository;
 
+use CoreBundle\Eventviva\ImageResize;
+
 /**
  * PictureRepository
  *
@@ -10,4 +12,10 @@ namespace CoreBundle\Repository;
  */
 class PictureRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function resize(){
+
+
+    }
+
+
 }
