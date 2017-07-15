@@ -25,9 +25,7 @@ body{
 #last{
     background-color: #F3D6A8;
     color:#986A46;
-    padding: 10%;
-
-
+    padding: 10% 4% 10% 4%;
 }
 #how p{
     margin-top: 5%;
@@ -90,10 +88,8 @@ body{
         padding: 1% 0 0 10%;
     }
     #last{
-        padding-top:3%;
-        height: 450px;
+        padding:10%;
         margin: 0 -109px 0 -109px;
-
     }
     .howImg{
         width: 40%;

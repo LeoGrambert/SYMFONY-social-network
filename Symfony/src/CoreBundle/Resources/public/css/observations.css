@@ -1,27 +1,40 @@
-#observation {
-    width: 320px;
-    height: 300px;
-    background: #F3D6A8 url("../img/port.png") 0 0;
+@font-face {
+    font-family: "ComfortaaR";
+    src: url('../font/comfortaa/Comfortaa-Regular.ttf')
+}
+.observationContainer{
+    width: 310px;
+    height: 400px;
+    background: url("../img/port.png");
     background-size: cover;
-    opacity:0.99;
-    padding-right: 5px;
-    padding-left: 5px;
-    margin-right: 2px;
-    margin-top: 2px;
-    margin-left: 2px;
-    color: white;
-
+    margin: 2px 10px 30px 10px;
+    font-family: "ComfortaaB", Arial;
+    padding-bottom: 5px;
 }
-
-#userGravatar{
-    border-radius: 50%;
-}
-
-#user, #userGravatar {
+.layer{
+    background-color: rgba(243,214,168,0.7);
+    width: 100%;
+    height: 100%;
     position: absolute;
-    left: 85%;
-    top: 4%;
-    width: 10%;
+    top:0;
+    left:15px;
+    padding: 4%;
+}
+.contain{
+    margin-top: 35%;
+}
+.role, .user{
+    color:#824714;
+}
+.user{
+    font-size: 1.2em;
+}
+.role{
+    font-family: "ComfortaaR", Arial;
+}
+.profilePicture{
+    border-radius: 50%;
+    width: 100%;
 }
 
 .imgObservation{
@@ -30,14 +43,24 @@
     -webkit-border-radius:7px;
     border-radius:7px;
 }
-
-
-
-@media screen and (min-width: 480px) and (max-width: 768px) {
-
+.nameBird, .lat, .lon{
+    color: #195D83;
+    margin-left: 15px;
+}
+.nameBird{
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+.date{
+    font-size: 12px;
 }
 
 @media screen and (min-width: 800px){
-
-
+    .observationContainer {
+        width: 350px;
+        height: 350px;
+    }
+    .nameBird, .lat, .lon{
+        margin-left: 0;
+    }
 }

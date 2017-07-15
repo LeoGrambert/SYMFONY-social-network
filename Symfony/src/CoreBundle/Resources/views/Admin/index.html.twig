@@ -37,6 +37,7 @@
         <p>Vous n'avez fait aucune observation.</p>
     {% else %}
         {% set months = [] %}
+        <div class="row">
         {% for Observation in Observations %}
             {% if Observation.date|date('F Y') not in months %}
                 {% set months = months|merge([Observation.date|date('F Y')]) %}
@@ -55,5 +56,6 @@
                 {% endif %}
             </p><br>#}
         {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}

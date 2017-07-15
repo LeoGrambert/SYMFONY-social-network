@@ -1,29 +1,36 @@
-
-<div id="observation" class="col-md-4 col-xs-12">
-        <img  id="userGravatar" src="{{ Observation.user.gravatarPicture }}" alt="profilePicture"/>
-        {{ Observation.user }} <br>
-        <br>
-        <br>
-
-        <div class="col-xs-8 col-md-8">
-            {% if Observation.picture is not null %}
+    <div class="col-md-4 col-xs-12 observationContainer">
+        <div class="row layer">
+            <div class="col-xs-4">
+                <img  class="profilePicture" src="{{ Observation.user.gravatarPicture }}" alt="profilePicture"/>
+            </div>
+            <div class="col-xs-8">
+                <p class="user">{{ Observation.user }}</p>
+                {% if Observation.user.roles == ['ROLE_PRO', 'ROLE_USER'] %}
+                    <p class="role">Professionnel</p>
+                {% elseif Observation.user.roles == ['ROLE_ADMIN', 'ROLE_USER'] %}
+                    <p class="role">Administrateur</p>
+                {% else %}
+                    <p class="role">Amateur</p>
+                    <p class="role">{% if Observation.statut == "untreated" %}En attente{% else %}Publié{% endif %}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row contain">
+            <div class="col-xs-6">
+                {% if Observation.picture is not null %}
                 <img class="imgObservation"
                      src="{{ asset(Observation.picture.webPath) }}"
                      alt="{{ Observation.picture.alt }}"
                 />
-            {% elseif Observation.picture is null %}
-                <img  class="imgObservation" src="{{ asset('bundles/core/img/no-picture.png') }}" alt="no-picture"/>
-
-            {% endif %}
+                {% elseif Observation.picture is null %}
+                    <img  class="imgObservation" src="{{ asset('bundles/core/img/no-picture.png') }}" alt="no-picture"/>
+                {% endif %}
+            </div>
+            <div class="col-xs-6">
+                <p class="nameBird">{{ Observation.bird.nomVern }}<br>
+                    <span class="date">le {{ Observation.date|date('d/m/Y') }}</span></p>
+                <p class="lat">Latitude : {{ Observation.latitude }}</p>
+                <p class="lon">Longitude : {{ Observation.longitude }}</p>
+            </div>
         </div>
-
-        <div class="col-xs-4 col-md-4">
-            {{ Observation.bird.nomVern }}
-            le {{ Observation.date|date('d/m/Y') }}
-            {{ Observation.latitude }}
-            {{ Observation.longitude }}
-        </div>
-
-
-</div>
-
+    </div>
