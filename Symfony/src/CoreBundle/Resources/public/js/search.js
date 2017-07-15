@@ -100,28 +100,73 @@ $(function(){
                     var date = new Date(value.date.date);
                     date = (date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
                     if($('#isLogged').val() === "true"){
-                        if(value.picture !== null) {
-                            $('#colMap').append('<div id="observation" class="col-md-6 col-xs-12">' +
-                                '<p>' +
-                                'Utilisateur : '+value.user.username+'<br>' +
-                                'Date d\'ajout : <span id="date' + value.id + '">' + date + '</span><br>' +
-                                'Coordonnées : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br>' +
-                                'Espèce : ' +value.bird.nomVern +
-                                '<br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a>' +
-                                '</p>' +
-                                '<img class="imgObservation" src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" />' +
-                                '</div>');
-                        } else {
-                            $('#colMap').append('<div id="observation" class="col-md-6 col-xs-12">' +
-                                '<p>' +
-                                'Utilisateur : '+value.user.username+'<br>' +
-                                'Date d\'ajout : <span id="date' + value.id + '">' + date + '</span><br>' +
-                                'Coordonnées : <span id="lat' + value.id + '">' + value.latitude + '</span>, <span id="lat' + value.id + '">' + value.longitude + '</span><br>' +
-                                'Espèce : ' +value.bird.nomVern +
-                                '<br><a title="Cliquez pour accéder à la fiche espèce" href="'+value.bird.url+'">Lien fiche INPN</a>' +
-                                '</p>' +
-                                '</div>');
+                        //Get user picture
+                        var $gravatarUrl = "https://www.gravatar.com/avatar/"+md5(value.user.email)+"?default="+encodeURIComponent('https://leogrambert.fr/front/projets/blogEcrivain/blog/web/img/user.png');
+                        //Get user roles
+                        var $role = value.user.roles;
+                        var $roleString = "";
+                        if($.inArray("ROLE_ADMIN", $role)){
+                            if ($.inArray("ROLE_PRO", $role)){
+                                $roleString = 'Amateur';
+                            } else {
+                            $roleString = 'Professionnel';
+                            }
+                        } else{
+                            $roleString = 'Administrateur';
                         }
+                        //Display observation sheet
+                        if(value.picture !== null) {
+                            $('#colMap').append(
+                                '<div class="col-md-5 col-xs-12 observationContainer">' +
+                                    '<div class="row layer">' +
+                                        '<div class="col-xs-4">' +
+                                            '<img class="profilePicture" src="'+$gravatarUrl+'" alt="profilePicture"/> ' +
+                                        '</div>' +
+                                        '<div class="col-xs-8">' +
+                                            '<p class="user">'+value.user.username+'</p>' +
+                                            '<p class="role">'+$roleString+'</p>' +
+                                        '</div>'+
+                                    '</div>' +
+                                    '<div class="row contain">' +
+                                        '<div class="col-xs-6">' +
+                                        '<p class="link"><a href="'+value.bird.url+'">Lien fiche INPN</a></p>' +
+                                        '<img class="imgObservation" src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" />' +
+                                        '</div>' +
+                                        '<div class="col-xs-6">' +
+                                            '<p class="nameBird">'+value.bird.nomVern +'<br><span class="date">le ' + date + '</span></p>' +
+                                            '<p class="lat">Latitude : ' + value.latitude + '</p>' +
+                                            '<p class="lon">Longitude : ' + value.longitude + '</p>'+
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>'
+                               );
+                        } else {
+                            $('#colMap').append(
+                                '<div class="col-md-5 col-xs-12 observationContainer">' +
+                                    '<div class="row layer">' +
+                                        '<div class="col-xs-4">' +
+                                            '<img class="profilePicture" src="'+$gravatarUrl+'" alt="profilePicture"/> ' +
+                                        '</div>' +
+                                        '<div class="col-xs-8">' +
+                                            '<p class="user">'+value.user.username+'</p>' +
+                                            '<p class="role">'+$roleString+'</p>' +
+                                        '</div>'+
+                                    '</div>' +
+                                    '<div class="row contain">' +
+                                        '<div class="col-xs-6">' +
+                                            '<p class="link"><a href="'+value.bird.url+'">Lien fiche INPN</a></p>' +
+                                            '<img class="imgObservation" src="/bundles/core/img/no-picture.png" alt="no-picture" />' +
+                                        '</div>' +
+                                        '<div class="col-xs-6">' +
+                                            '<p class="nameBird">'+value.bird.nomVern +'<br><span class="date">le ' + date + '</span></p>' +
+                                            '<p class="lat">Latitude : ' + value.latitude + '</p>' +
+                                            '<p class="lon">Longitude : ' + value.longitude + '</p>'+
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>'
+                            );
+                        }
+                        //Add a marker on map
                         var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
                         marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par "+value.user.username+"</b>");
                     } else {

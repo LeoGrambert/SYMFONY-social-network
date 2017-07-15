@@ -17,6 +17,7 @@
         </div>
         <div class="row contain">
             <div class="col-xs-6">
+                <p class="link"><a href="{{ Observation.bird.url }}">Lien fiche INPN</a></p>
                 {% if Observation.picture is not null %}
                 <img class="imgObservation"
                      src="{{ asset(Observation.picture.webPath) }}"
@@ -25,7 +26,6 @@
                 {% elseif Observation.picture is null %}
                     <img  class="imgObservation" src="{{ asset('bundles/core/img/no-picture.png') }}" alt="no-picture"/>
                 {% endif %}
-                <p class="link"><a href="{{ Observation.bird.url }}">Lien fiche INPN</a></p>
             </div>
             <div class="col-xs-6">
                 <p class="nameBird">{{ Observation.bird.nomVern }}<br>

@@ -66,12 +66,8 @@
             <div class="alert alert-info">Vous n'êtes pas connecté, les résultats de recherche sont affichés par secteur géographique. Pour un résultat précis (coordonnées GPS), veuillez-vous connecter.</div>
         {% endif %}
         <div class="row">
-            <div class="col-md-6">
-                <div id="mapid"></div>
-            </div>
-            <div class="col-md-6" >
-                <div class="row" id="colMap">
-                </div>
+            <div id="colMap">
+                <div class="col-md-7" id="mapid"></div>
             </div>
         </div>
         <hr>
@@ -83,5 +79,6 @@
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
             integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
             crossorigin=""></script>
+    <script src="{{ asset('bundles/core/js/js-md5/js/md5.min.js') }}"></script>
     <script src="{{ asset('bundles/core/js/search.js') }}"></script>
 {% endblock %}

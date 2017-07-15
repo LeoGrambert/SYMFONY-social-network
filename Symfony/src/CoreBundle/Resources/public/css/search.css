@@ -90,6 +90,11 @@ label{
         -moz-margin-end: -42px;
         padding-top: 2%;
     }
+    #mapid{
+        height: 650px;
+        margin-right: 3%;
+        -moz-margin-start: 41px;
+    }
     #clearMap{
         width: 49%;
     }

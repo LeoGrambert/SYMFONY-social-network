@@ -125,7 +125,7 @@ class User extends BaseUser
             $email = md5($this->getEmail());
             $email = strtolower($email);
             $defaultPicture = urlencode('https://leogrambert.fr/front/projets/blogEcrivain/blog/web/img/user.png');
-            //todo Change url adress when website will be online
+            //todo Change url adress when website will be online + Do the same in search.js
             $gravatar = 'https://www.gravatar.com/avatar/'.$email.'?default='.$defaultPicture;
         } else {
             $gravatar = null;
