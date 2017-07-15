@@ -7,7 +7,7 @@
         <title>{% block title %}{% endblock %} - Nos amis les oiseaux</title>
         <link href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" rel="stylesheet">
         <link href="//cdn.rawgit.com/t0m/select2-bootstrap-css/bootstrap3/select2-bootstrap.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/core/css/bootstrap.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('bundles/core/css/layout.css') }}"/>
         <link rel="icon" type="image/png" href="{{ asset('bundles/core/img/logo.png') }}" />
         {% block stylesheet %}{% endblock %}
@@ -88,8 +88,8 @@
         </div>
     </footer>
 
-    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ asset('bundles/core/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/core/js/bootstrap.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
     {% block javascripts %}
     {% endblock %}
