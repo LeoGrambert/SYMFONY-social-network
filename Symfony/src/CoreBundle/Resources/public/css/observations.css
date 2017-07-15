@@ -11,6 +11,11 @@
     font-family: "ComfortaaB", Arial;
     padding-bottom: 5px;
 }
+.link{
+    padding: 4%;
+    font-size: 1.1em;
+    margin-top: 5%;
+}
 .layer{
     background-color: rgba(243,214,168,0.7);
     width: 100%;

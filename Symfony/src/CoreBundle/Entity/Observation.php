@@ -68,7 +68,6 @@ class Observation
 
     /**
      * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Picture", cascade={"persist", "remove"})
-     *
      */
     private $picture;
 

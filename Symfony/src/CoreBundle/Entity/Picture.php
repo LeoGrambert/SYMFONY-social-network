@@ -45,9 +45,11 @@ class Picture
      * @var UploadedFile
      * @Assert\Valid()
      * @Assert\Image(
+     *     mimeTypes={ "image/jpeg", "image/jpg", "image/png", "image/gif" },
      *     minWidth = 200,
      *     minHeight = 200,
-     *)
+     *     mimeTypesMessage = "This file is not a valid image."
+     * )
      */
     private $file;
 

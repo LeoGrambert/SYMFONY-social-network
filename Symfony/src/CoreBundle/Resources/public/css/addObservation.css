@@ -1,7 +1,9 @@
 body{
     background-color: #f3d6a8;
 }
-
+form{
+    margin-top:5%;
+}
 
 
 input[type="text"].form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -63,17 +65,13 @@ textarea.form-control {
     color:#1C5F83;
     border-bottom: 1px solid #f3d6a8;
 }
-
-
-
-
 #submitButton{
     text-align: center;
-    margin:2% 0 2% 0;
+    margin:2% 0 30% 0;
 }
-
-
-
+#submitButton button{
+    padding: 3%;
+}
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -119,7 +117,6 @@ input[type=file] {
     font-family: "ComfortaaB", Arial;
     color:#1C5F83;
 }
-
 @media screen and (min-width: 800px){
     .btn-file {
         position: relative;
