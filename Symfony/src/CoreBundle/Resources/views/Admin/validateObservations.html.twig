@@ -35,13 +35,23 @@
         <div id="results">
             {% for observationToValidate in observationsToValidate %}
                 <p>"{{ observationToValidate.user.username }}" a observé <strong>"{{ observationToValidate.bird.nomVern }}"</strong> le {{ observationToValidate.date|date('d/m/Y') }} aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="{{ path('SearchGpsCoordinates', {'lat':observationToValidate.latitude, 'lon':observationToValidate.longitude}) }}">{{ observationToValidate.latitude }}, {{ observationToValidate.longitude }}</a></p>
+                <p class="link"><a href="{{ observationToValidate.bird.url }}">Lien vers la fiche INPN</a></p>
                 {% if observationToValidate.picture is not null %}
                     <img
                             src="{{ asset(observationToValidate.picture.webPath) }}"
                             alt="{{ observationToValidate.picture.alt }}"
                             height="200"
                     />
+                {% else %}
+                    <p class="imgMsg">L'utilisateur n'a pas pris de photo de l'espèce observée.</p>
                 {% endif %}
+                 <p class="description">
+                    {% if observationToValidate.description is not null %}
+                        Description donnée : <em>{{ observationToValidate.description }}</em>
+                    {% else %}
+                        L'utilisateur n'a pas donné de description pour l'espèce observée.
+                    {% endif %}
+                 </p>
                 <form method="post" action="{{ path('confirmObservation', {'observationId':observationToValidate.id}) }}">
                     <input type="submit" class="btn btn-primary accept" value="Valider et Publier">
                 </form>

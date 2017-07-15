@@ -40,8 +40,17 @@ $(function(){
                      var $toAdd="<option value='"+value.famille+"'>"+value.famille+"</option>";
                      $('#familles').append($toAdd);
                  })
-             }).error(function(){
-                 console.log('Erreur ajax appel données table Species');
+             }).fail(function(jqXHR, exception){
+                 var msg = '';
+                 if (jqXHR.status === 404) {
+                     msg = 'Page not found 404';
+                 } else if (jqXHR.status === 500) {
+                     msg = 'Internal Server Error [500].';
+                 } else {
+                     msg = 'Une erreur s\'est produite. Veuillez réessayer.';
+                 }
+                 $('#errorMsg').remove();
+                 $('form').append('<div id="errorMsg" class="alert alert-warning">'+msg+'</div>');
              })
          };
          submit();
@@ -51,9 +60,7 @@ $(function(){
     $familyField.on('change', function (e) {
         e.preventDefault();
         var submit = function(){
-
             var $familyFieldUrl = '/search/family/'+$familyField.val();
-
             return $.ajax({
                 url: $familyFieldUrl,
                 method: 'GET'
@@ -67,14 +74,26 @@ $(function(){
                             console.log('Cet oiseau est déjà dans la liste');
                         } else {
                             $nameBirds.push(value.nomVern);
-                            var $toAdd="<option class='birdOption' value='"+value.nomVern+"'  id='"+value.id+"'>";
-                            $('#birds').append($toAdd);
+                            $('#birds').append(
+                                '<option class="birdOption" value="'+value.nomVern+'"  id="'+value.id+'">'
+                            );
+                            $('#'+value.id).append(
+                                '<input id="getUrl-'+value.id+'" type="hidden" value="'+value.url+'"/>'
+                            )
                         }
                     }
                 });
-                console.log($nameBirds);
-            }).error(function(){
-                console.log('Erreur ajax appel données table Species');
+            }).fail(function(jqXHR, exception){
+                var msg = '';
+                if (jqXHR.status === 404) {
+                    msg = 'Page not found 404';
+                } else if (jqXHR.status === 500) {
+                    msg = 'Internal Server Error [500].';
+                } else {
+                    msg = 'Une erreur s\'est produite. Veuillez réessayer.';
+                }
+                $('#errorMsg').remove();
+                $('form').append('<div id="errorMsg" class="alert alert-warning">'+msg+'</div>');
             })
         };
         submit();
@@ -155,7 +174,7 @@ $(function(){
                                     '<div class="row contain">' +
                                         '<div class="col-xs-6">' +
                                             '<p class="link"><a href="'+value.bird.url+'">Lien fiche INPN</a></p>' +
-                                            '<img class="imgObservation" src="/bundles/core/img/no-picture.png" alt="no-picture" />' +
+                                            '<img class="imgObservation" src="/bundles/core/img/logo.png" alt="no-picture" />' +
                                         '</div>' +
                                         '<div class="col-xs-6">' +
                                             '<p class="nameBird">'+value.bird.nomVern +'<br><span class="date">le ' + date + '</span></p>' +
@@ -200,7 +219,7 @@ $(function(){
     //Get gps coordinates from controller to display marker for an untreated observation
     var $latGPS = $('.alert-success_lat').html();
     var $lonGPS = $('.alert-success_lon').html();
-    if ($latGPS !== "" && $lonGPS !== ""){
+    if ($latGPS !== false && $lonGPS !== false){
         var marker = L.marker([$latGPS, $lonGPS]).addTo(mymap);
     }
 });

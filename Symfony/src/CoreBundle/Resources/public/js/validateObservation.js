@@ -30,10 +30,27 @@ $(function(){
                 $.each(response.observations, function(key, value){
                     var date = new Date(value.date.date);
                     date = (date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
-                    if(value.picture !== null){
-                        $('#results').append('<p id="observationDescription">"'+value.user.username+'" a observé <strong>"'+value.bird.nomVern+'"</strong> le '+date+' aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="/search/gps/'+value.latitude+'/'+value.longitude+'">'+value.latitude+', '+value.longitude+'</a></p><img src="/uploads/img/'+value.picture.id+'.'+value.picture.ext+'" alt="'+value.picture.alt+'" height="200"/>');
+                    //get description
+                    var $description = "";
+                    if (value.description !== null){
+                        $description = "Description donnée : "+value.description;
                     } else {
-                        $('#results').append('<p id="observationDescription">"'+value.user.username+'" a observé <strong>"'+value.bird.nomVern+'"</strong> le '+date+' aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="/search/gps/'+value.latitude+'/'+value.longitude+'">'+value.latitude+', '+value.longitude+'</a></p>');
+                        $description = "L'utilisateur n'a pas donné de description pour l'espèce observée."
+                    }
+                    if(value.picture !== null){
+                        $('#results').append(
+                            '<p id="observationDescription">"'+value.user.username+'" a observé <strong>"'+value.bird.nomVern+'"</strong> le '+date+' aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="/search/gps/'+value.latitude+'/'+value.longitude+'">'+value.latitude+', '+value.longitude+'</a></p>' +
+                            '<p class="link"><a href="value.bird.url">Lien vers la fiche INPN</a></p> ' +
+                            '<img src="/uploads/img/'+value.picture.id+'.'+value.picture.ext+'" alt="'+value.picture.alt+'" height="200"/>' +
+                            '<p class="description">'+$description+'</p> '
+                        );
+                    } else {
+                        $('#results').append(
+                            '<p id="observationDescription">"'+value.user.username+'" a observé <strong>"'+value.bird.nomVern+'"</strong> le '+date+' aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="/search/gps/'+value.latitude+'/'+value.longitude+'">'+value.latitude+', '+value.longitude+'</a></p>' +
+                            '<p class="link"><a href="value.bird.url">Lien vers la fiche INPN</a></p> ' +
+                            '<p class="imgMsg">L\'utilisateur n\'a pas pris de photo de l\'espèce observée.</p>' +
+                            '<p class="description">'+$description+'</p> '
+                        );
                     }
                     $('#results').append('<form method="post" action="/admin/validate/observations/confirm/'+value.id+'">' +
                         '<input type="submit" class="btn btn-primary accept" value="Valider et Publier"> ' +
