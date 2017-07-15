@@ -57,35 +57,20 @@
 
     <script>
 
-
-
         var lat = document.getElementById("observation_latitude");
-        var long = document.getElementById("observation_longitude");
+        var lon = document.getElementById("observation_longitude");
 
-        function getLatitude() {
+        function geolocalize(){
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showLatitude, showError);
+                navigator.geolocation.getCurrentPosition(showCoordinates, showError);
             } else {
                 alert ("La geolocation n'est pas supportée par votre navigateur.");
             }
         }
 
-        function getLongitude() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showLongitude, showError);
-            } else {
-                alert ("La geolocation n'est pas supportée par votre navigateur.");
-            }
-        }
-
-        function showLatitude(position) {
+        function showCoordinates(position) {
             lat.value =  position.coords.latitude;
-
-        }
-
-        function showLongitude(position) {
-            long.value = position.coords.longitude;
-
+            lon.value = position.coords.longitude;
         }
 
         function showError(error) {
@@ -105,8 +90,7 @@
             }
         }
 
-        getLatitude();
-        getLongitude();
+        geolocalize();
 
     </script>
 

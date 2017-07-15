@@ -72,7 +72,6 @@ class FrontController extends Controller
 
             $this->getDoctrine()->getRepository('CoreBundle:Observation')->add($observation);
 
-
             if ($observation->getStatut() === 'accepted'){
                 $this->addFlash('info', 'Votre observation a été enregistrée.');
             } elseif ($observation->getStatut() === 'untreated'){

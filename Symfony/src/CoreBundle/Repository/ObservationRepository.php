@@ -77,6 +77,7 @@ class ObservationRepository extends EntityRepository
             ->setParameter('birdId', $birdId)
             ->andWhere('o.statut = :statut')
             ->setParameter('statut', $statut)
+            ->orderBy('o.date', 'desc')
             ->leftJoin('o.bird', 's')
             ->addSelect('s')
             ->leftJoin('o.user', 'u')
