@@ -5,6 +5,7 @@ namespace CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use CoreBundle\Eventviva\ImageResize;
 
 /**
  * Picture
@@ -43,10 +44,8 @@ class Picture
     /**
      * @var UploadedFile
      * @Assert\Valid()
-     * @Assert\Image(
+     * @Assert\File(
      *     mimeTypes={ "image/jpeg", "image/jpg", "image/png", "image/gif" },
-     *     minWidth = 200,
-     *     minHeight = 200,
      *     mimeTypesMessage = "This file is not a valid image."
      * )
      */
@@ -87,11 +86,25 @@ class Picture
                 unlink($oldFile);
             }
         }
+
+
+        $image = new ImageResize($this->file);
+        $image->resizeToHeight(600);
+        $fileName = $this->id.'.'.$this->ext;
+        if ($this->ext = 'png') {
+            $image->save($this->getUploadDir() . '/' . $fileName, IMAGETYPE_PNG, 2);
+        } elseif ($this->ext = 'jpeg' || $this->ext = 'jpg' ) {
+            $image->save($this->getUploadDir() . '/' . $fileName, IMAGETYPE_JPEG, 75);
+        } elseif ($this->ext = 'gif') {
+            $image->save($this->getUploadDir() . '/' . $fileName,IMAGETYPE_GIF, 50);
+        }
+
+        /*
         // We move the file sent in the directory of our choice
         $this->file->move(
             $this->getUploadRootDir(), // The destination directory
             $this->id.'.'.$this->ext   // The name of the file to create, here "id.extension"
-        );
+        );*/
     }
 
     /**
