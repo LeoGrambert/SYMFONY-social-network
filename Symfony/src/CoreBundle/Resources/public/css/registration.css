@@ -44,6 +44,9 @@ form label{
 .facebook{
     width:23%;
 }
+.google{
+    width:35px;
+}
 .loginSocialMedia{
     margin: 0 2% 5% 2%;
 }
@@ -58,5 +61,8 @@ form label{
     }
     .facebook{
         width:15%;
+    }
+    .google{
+        width:40px;
     }
 }

@@ -1,0 +1,23 @@
+{% extends 'HWIOAuthBundle::layout.html.twig' %}
+
+{% block hwi_oauth_content %}
+<link rel="stylesheet" href="{{ asset('bundles/core/css/registration.css') }}">
+    <div class="row" id="registrationContainer">
+        <h1 class="registrationTitle">{{ 'header.register' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h1>
+        <div class="span6">
+            {% if userInformation.profilePicture is not empty %}
+                <img style="margin-bottom: 5%;" width="200" src="{{ userInformation.profilePicture }}" />
+            {% endif %}
+        </div>
+        <div class="span6">
+            {{ form_start(form, {'action': path('hwi_oauth_connect_registration', {'key': key}), 'attr': {'class': 'hwi_oauth_registration_register'}}) }}
+                {{ form_widget(form) }}
+                <div>
+                    <button type="submit" id="registrationBtn" class="btn btn-primary">{{ 'connect.registration.submit'|trans({}, 'HWIOAuthBundle') }}</button>
+                    <a href="{{ path('loginPage') }}" class="btn">{{ 'connect.registration.cancel' | trans({}, 'HWIOAuthBundle') }}</a>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock hwi_oauth_content %}

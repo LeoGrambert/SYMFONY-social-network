@@ -112,8 +112,8 @@ hwi_oauth:
             scope: "email"
         google:
             type: google
-            client_id: 587723959356-82qeb1oonmh4uol962u8upeq6t77on5m.apps.googleusercontent.com
-            client_secret: 9NOic8LddsQeObY7E_uqcnw7
+            client_id: 587723959356-0s31t4cs2pd50kikhil2egu9ltm8k2qo.apps.googleusercontent.com
+            client_secret: Y-P6ylDGtja3Ucv_giiGDXX1
             scope: "https://www.googleapis.com/auth/plus.login"
 
 assetic:

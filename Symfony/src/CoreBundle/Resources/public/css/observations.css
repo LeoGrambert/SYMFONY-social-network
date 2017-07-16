@@ -63,7 +63,7 @@
 @media screen and (min-width: 800px){
     .observationContainer {
         width: 350px;
-        height: 350px;
+        height: 500px;
     }
     .nameBird, .lat, .lon{
         margin-left: 0;
