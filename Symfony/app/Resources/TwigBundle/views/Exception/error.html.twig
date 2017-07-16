@@ -1,0 +1,11 @@
+{%  extends "CoreBundle::layout.html.twig" %}
+
+{% block title %}{{ status_text }}{% endblock %}
+
+{% block body %}
+    <div class="container marginBody" style="text-align: center;margin-top: 10%;margin-bottom: 10%;font-family: 'ComfortaaB', Arial;">
+        <h1>Oops, quelque chose ne va pas.</h1>
+        <h3>{{ status_code }} {{ status_text }}</h3>
+        <a href="/"><button style="padding:1.5%;color:white;background-color: #7EBEA5; border-color:#7EBEA5;" class="btn btn-default">Retour à l'accueil</button></a>
+    </div>
+{% endblock %}
