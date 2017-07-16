@@ -195,7 +195,7 @@ class BackController extends Controller
     /**
      * What do we do if we want to refuse an observation
      * @param $observationId
-     * @Route("/admin/validate/account/observations/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="refuseObservation")
+     * @Route("/admin/validate/observations/refuse/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="refuseObservation")
      * @Security("has_role('ROLE_PRO')")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */

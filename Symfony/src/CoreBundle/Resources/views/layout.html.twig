@@ -16,8 +16,8 @@
     <body>
 
     <header>
-        <img id="imgHeaderMobile" src="{{ asset('/bundles/core/img/background-header-mobile.png') }}" alt="header"/>
-        <img id="imgHeaderDesktop" src="{{ asset('/bundles/core/img/header_desktop.png') }}" alt="header"/>
+        <img id="imgHeaderMobile" src="{{ asset('bundles/core/img/background-header-mobile.png') }}" alt="header"/>
+        <img id="imgHeaderDesktop" src="{{ asset('bundles/core/img/header_desktop.png') }}" alt="header"/>
         <a href="{{ path('homepage') }}"><img id="logo" src="{{ asset('bundles/core/img/logo.png') }}" alt="logo"/></a>
         {% if app.request.uri != "http://127.0.0.1:8000/" %}
             <a href="{{ path('homepage') }}"><img id="home" src="{{ asset('bundles/core/img/home.png') }}" alt="logo"/></a>
@@ -65,10 +65,10 @@
                 <a href="{{ path('addPage') }}"><button id="btnParticipate" class="btn btn-default">Participer au programme</button></a>
             </div>
             <div class="row" id="socialMedia">
-                <a href="https://facebook.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/facebook.png') }}" alt="facebook"></a>
-                <a href="https://instagram.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/instagram.png') }}" alt="instagram"></a>
-                <a href="https://twitter.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/twitter.png') }}" alt="twitter"></a>
-                <a href="https://pinterest.com"><img class="imgSocial" src="{{ asset('/bundles/core/img/pinterest.png') }}" alt="pinterest"></a>
+                <a href="https://facebook.com"><img class="imgSocial" src="{{ asset('bundles/core/img/facebook.png') }}" alt="facebook"></a>
+                <a href="https://instagram.com"><img class="imgSocial" src="{{ asset('bundles/core/img/instagram.png') }}" alt="instagram"></a>
+                <a href="https://twitter.com"><img class="imgSocial" src="{{ asset('bundles/core/img/twitter.png') }}" alt="twitter"></a>
+                <a href="https://pinterest.com"><img class="imgSocial" src="{{ asset('bundles/core/img/pinterest.png') }}" alt="pinterest"></a>
             </div>
             <img id="logoFooter" src="{{ asset('bundles/core/img/logo.png') }}" alt="logo"/>
             <div class="row" id="links">

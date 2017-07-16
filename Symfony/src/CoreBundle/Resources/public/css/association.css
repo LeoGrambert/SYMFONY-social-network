@@ -22,7 +22,10 @@ p{
     text-align: justify;
 
 }
-
+#copyright p{
+    text-align: center;
+    color:inherit;
+}
 #ornithologue{
 
     margin-top: +20%;
