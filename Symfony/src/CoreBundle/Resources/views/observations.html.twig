@@ -19,10 +19,12 @@
             <div class="col-xs-6">
                 <p class="link"><a href="{{ Observation.bird.url }}">Lien fiche INPN</a></p>
                 {% if Observation.picture is not null %}
+                <a href="{{ asset(Observation.picture.webPath) }}" class="thumbnail" target=_blank>
                 <img class="imgObservation"
                      src="{{ asset(Observation.picture.webPath) }}"
                      alt="{{ Observation.picture.alt }}"
                 />
+                </a>
                 {% elseif Observation.picture is null %}
                     <img  class="imgObservation" src="{{ asset('bundles/core/img/logo.png') }}" alt="no-picture"/>
                 {% endif %}
