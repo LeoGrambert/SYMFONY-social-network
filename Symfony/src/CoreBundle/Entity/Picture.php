@@ -29,7 +29,6 @@ class Picture
      *
      * @ORM\Column(name="ext", type="string", length=255)
      * @Assert\Length(max=4)
-     * @Assert\NotBlank()
      */
     private $ext;
 

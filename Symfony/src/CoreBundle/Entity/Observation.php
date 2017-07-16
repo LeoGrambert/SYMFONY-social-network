@@ -68,6 +68,7 @@ class Observation
 
     /**
      * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Picture", cascade={"persist", "remove"})
+     * @assert\valid()
      */
     private $picture;
 
