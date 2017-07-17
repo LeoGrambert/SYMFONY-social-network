@@ -1,0 +1,25 @@
+{% extends "CoreBundle::layout.html.twig" %}
+
+{% block title %}{{ Observation.bird.nomVern }}{% endblock %}
+
+{% block stylesheet %}
+    <meta property="og:url"           content="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/web/sheet/{{ Observation.id }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{ Observation.bird.nomVern }} par {{ Observation.user.username }}" />
+    <meta property="og:description"   content="Nouvelle observation sur Nos Amis les Oiseaux ! Un {{ Observation.bird.nomVern }} a été observé par {{ Observation.user.username }} aux coordonnées suivantes : {{ Observation.latitude }}, {{ Observation.longitude }}" />
+    <meta property="og:image"         content="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/web/bundles/core/img/header_desktop.png" />
+    <link rel="stylesheet" href="{{ asset('bundles/core/css/observations.css') }}">
+    <style rel="stylesheet">
+       body{
+           background-color: #f3d6a8;
+       }
+       .observationContainer{
+           margin-left: 35%;
+       }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+        {% include 'CoreBundle::observations.html.twig' %}
+{% endblock %}

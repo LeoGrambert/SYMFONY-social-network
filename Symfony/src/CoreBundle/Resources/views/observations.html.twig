@@ -1,10 +1,11 @@
-    <div class="col-md-4 col-xs-12 observationContainer">
+    <div class="col-md-4 col-xs-12 observationContainer" id="observation-{{ Observation.id }}">
         <div class="row layer">
             <div class="col-xs-4">
                 <img  class="profilePicture" src="{{ Observation.user.gravatarPicture }}" alt="profilePicture"/>
             </div>
             <div class="col-xs-8">
                 <p class="user">{{ Observation.user }}</p>
+                <div class="fb-share-button" data-href="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/Symfony/web/sheet/{{ Observation.id }}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleogrambert.fr%2Ffront%2Fprojets%2FnosAmisLesOiseaux%2FSymfony%2Fweb%2Fsheet%2F{{ Observation.id }}&amp;src=sdkpreparse">Partager</a></div>
                 {% if Observation.user.roles == ['ROLE_PRO', 'ROLE_USER'] %}
                     <p class="role">Professionnel</p>
                 {% elseif Observation.user.roles == ['ROLE_ADMIN', 'ROLE_USER'] %}

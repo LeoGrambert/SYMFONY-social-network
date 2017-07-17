@@ -247,4 +247,27 @@ class FrontController extends Controller
         return $this->redirectToRoute('searchPage');
     }
 
+    /**
+     * What do we do if we are on sheet page.
+     * @param Request $request
+     * @route("/sheet/{id}", methods={"GET"}, requirements={"id" : "\d+"}, name="SearchGpsCoordinates")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function sheetAction(Request $request)
+    {
+        if($this->getUser()){
+            $gravatar = $this->getUser()->getGravatarPicture();
+        } else {
+            $gravatar = null;
+        }
+
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getRepository('CoreBundle:Observation');
+        $observation = $em->find($id);
+
+        return $this->render('CoreBundle:Front:sheet.html.twig', [
+            'Observation' => $observation
+        ]);
+    }
+
 }
