@@ -37,11 +37,9 @@
                 <p>"{{ observationToValidate.user.username }}" a observé <strong>"{{ observationToValidate.bird.nomVern }}"</strong> le {{ observationToValidate.date|date('d/m/Y') }} aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="{{ path('SearchGpsCoordinates', {'lat':observationToValidate.latitude, 'lon':observationToValidate.longitude}) }}">{{ observationToValidate.latitude }}, {{ observationToValidate.longitude }}</a></p>
                 <p class="link"><a href="{{ observationToValidate.bird.url }}">Lien vers la fiche INPN</a></p>
                 {% if observationToValidate.picture is not null %}
-                    <img
-                            src="{{ asset(observationToValidate.picture.webPath) }}"
-                            alt="{{ observationToValidate.picture.alt }}"
-                            height="200"
-                    />
+                <a href="{{ asset(observationToValidate.picture.webPath) }}" class="thumbnail" target="_blank" title="Ouvrir l'image dans un nouvel onglet">
+                    <img class="imgObservation" src="{{ asset(observationToValidate.picture.webPath) }}" alt="{{ observationToValidate.picture.alt }}"/>
+                </a>
                 {% else %}
                     <p class="imgMsg">L'utilisateur n'a pas pris de photo de l'espèce observée.</p>
                 {% endif %}

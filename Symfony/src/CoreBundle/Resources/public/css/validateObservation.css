@@ -36,6 +36,15 @@ input{
 .description, .imgMsg, .link{
     margin-top:2%;
 }
+.imgObservation{
+    width: 160px;
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;
+}
+.thumbnail{
+    width: 200px;
+}
 @media screen and (min-width: 800px) {
     #birdField{
         width: 50%;

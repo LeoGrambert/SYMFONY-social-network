@@ -41,7 +41,7 @@ $(function(){
                         $('#results').append(
                             '<p id="observationDescription">"'+value.user.username+'" a observé <strong>"'+value.bird.nomVern+'"</strong> le '+date+' aux coordonnées suivantes : <a title="Cliquez pour accéder à la carte" href="/search/gps/'+value.latitude+'/'+value.longitude+'">'+value.latitude+', '+value.longitude+'</a></p>' +
                             '<p class="link"><a href="value.bird.url">Lien vers la fiche INPN</a></p> ' +
-                            '<img src="/uploads/img/'+value.picture.id+'.'+value.picture.ext+'" alt="'+value.picture.alt+'" height="200"/>' +
+                            '<a href="/uploads/img/'+value.picture.id+'.'+value.picture.ext+'" class="thumbnail" target="_blank" title="Ouvrir l\'image dans un nouvel onglet"><img src="/uploads/img/'+value.picture.id+'.'+value.picture.ext+'" alt="'+value.picture.alt+'" height="200"/></a>' +
                             '<p class="description">'+$description+'</p> '
                         );
                     } else {

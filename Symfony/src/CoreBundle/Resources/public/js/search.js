@@ -149,7 +149,7 @@ $(function(){
                                     '<div class="row contain">' +
                                         '<div class="col-xs-6">' +
                                         '<p class="link"><a href="'+value.bird.url+'">Lien fiche INPN</a></p>' +
-                                        '<img class="imgObservation" src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" />' +
+                                        '<a href="/uploads/img/'+value.picture.id+'.'+value.picture.ext+'" class="thumbnail" target="_blank" title="Ouvrir l\'image dans un nouvel onglet"><img class="imgObservation" src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" /></a>' +
                                         '</div>' +
                                         '<div class="col-xs-6">' +
                                             '<p class="nameBird">'+value.bird.nomVern +'<br><span class="date">le ' + date + '</span></p>' +

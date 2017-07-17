@@ -46,7 +46,6 @@ class FrontController extends Controller
      */
     public function addAction(Request $request)
     {
-
         $user = $this->getUser();
 
         if($user){
