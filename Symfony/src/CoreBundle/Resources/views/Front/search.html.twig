@@ -23,7 +23,7 @@
     <form method="get" onsubmit="return false">
         <label for="ordres">Ordre</label>
         <select class="form-control" id="ordres" >
-            <option></option>
+            <option disabled selected value>Sélectionnez un ordre</option>
             {% for ordre in ordres %}
                 <option value="{{ ordre.ordre }}">{{ ordre.ordre }}</option>
             {% endfor %}
@@ -31,7 +31,7 @@
 
         <label for="familles">Famille</label>
         <select class="form-control" id="familles">
-            <option></option>
+            <option disabled selected value>Sélectionnez une famille</option>
             {% for famille in familles %}
                 <option value="{{ famille.famille }}">{{ famille.famille }}</option>
             {% endfor %}

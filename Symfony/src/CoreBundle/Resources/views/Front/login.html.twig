@@ -8,7 +8,7 @@
 
     {# First, if we've errors #}
     {% if error %}
-        <div class="alert alert-danger">{{ error.message }}</div>
+        <div class="alert alert-danger">{% trans %}Invalid credentials.{% endtrans %}</div>
     {% endif %}
 
     {# Then, we display login form #}
