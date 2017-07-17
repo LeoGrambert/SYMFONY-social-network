@@ -59,6 +59,10 @@
 .date{
     font-size: 12px;
 }
+.imgXpObservation{
+    width: 15%;
+    margin-top: -7px;
+}
 
 @media screen and (min-width: 800px){
     .observationContainer {

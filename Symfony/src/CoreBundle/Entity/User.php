@@ -37,6 +37,11 @@ class User extends BaseUser
      */
     protected $isAccredit;
 
+    /**
+     * @ORM\Column(name="xp", type="integer")
+     */
+    protected $xp;
+
     public function __construct()
     {
         parent::__construct();
@@ -131,5 +136,29 @@ class User extends BaseUser
             $gravatar = null;
         }
         return $gravatar;
+    }
+
+    /**
+     * Set xp
+     *
+     * @param integer $xp
+     *
+     * @return User
+     */
+    public function setXp($xp)
+    {
+        $this->xp = $xp;
+
+        return $this;
+    }
+
+    /**
+     * Get xp
+     *
+     * @return integer
+     */
+    public function getXp()
+    {
+        return $this->xp;
     }
 }

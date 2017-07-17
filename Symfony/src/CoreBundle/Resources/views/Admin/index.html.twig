@@ -15,6 +15,25 @@
     {% endif %}
     <div id="infos">
         <h1 id="welcomeMsg">Bonjour {{ app.user.username }}</h1>
+        <div id="xp">
+            {% if app.user.xp < 500 %}
+                <p class="title">Observateur débutant</p>
+                <p class="xpNb">Expérience : {{ app.user.xp }}/500</p>
+            {% elseif app.user.xp >= 500 and app.user.xp < 5000 %}
+                <img class="imgXp" src="{{ asset('bundles/core/img/bronze.png') }}" alt="trophee-bronze">
+                <p class="title">Observateur de bronze</p>
+                <p class="xpNb">Expérience : {{ app.user.xp }}/5000</p>
+            {% elseif app.user.xp >= 5000 and app.user.wp < 10000 %}
+                <img src="{{ asset('bundles/core/img/argent.png') }}" alt="trophee-argent">
+                <p class="title">Observateur d'argent</p>
+                <p class="xpNb">Expérience : {{ app.user.xp }}/10000</p>
+            {% elseif app.user.xp >= 10000 %}
+                <img src="{{ asset('bundles/core/img/or.png') }}" alt="trophee-or">
+                <p class="title">Observateur d'or</p>
+                <p class="xpNb">Expérience : {{ app.user.xp }}</p>
+            {% endif %}
+            <p class="infoXp">Chaque observation vous rapporte 100 points d'expérience</p>
+        </div>
         <h2 id="subInfos">{{ app.user.email }} - {% if is_granted('ROLE_ADMIN') %}Administrateur{% elseif is_granted('ROLE_PRO') %}Professionnel{% else %}Amateur{% endif %}</h2>
         {% if is_granted('ROLE_PRO') and app.user.isAccredit == false %}
             <div class="alert alert-warning">Veuillez faire confirmer votre compte professionnel en envoyant un justificatif (ex : contrat de travail) à <a href="mailto:contact@nao.fr">contact@nao.fr</a>.

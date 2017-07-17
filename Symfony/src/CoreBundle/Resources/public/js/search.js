@@ -133,6 +133,17 @@ $(function(){
                         } else{
                             $roleString = 'Administrateur';
                         }
+                        //Get user xp
+                        var $xp = value.user.xp;
+                        console.log($xp);
+                        var $xpHtml = "";
+                        if ($xp >= 500 && $xp < 5000){
+                            $xpHtml = "<img class='imgXpObservation' src='/bundles/core/img/bronze.png' alt='trophee-bronze'>";
+                        } else if ($xp >= 5000 && $xp < 10000){
+                            $xpHtml = "<img class='imgXpObservation' src='/bundles/core/img/argent.png' alt='trophee-argent'>";
+                        } else if ($xp >= 10000){
+                            $xpHtml = "<img class='imgXpObservation' src='/bundles/core/img/or.png' alt='trophee-or'>";
+                        }
                         //Display observation sheet
                         if(value.picture !== null) {
                             $('#colMap').append(
@@ -144,6 +155,7 @@ $(function(){
                                         '<div class="col-xs-8">' +
                                             '<p class="user">'+value.user.username+'</p>' +
                                             '<p class="role">'+$roleString+'</p>' +
+                                            $xpHtml +
                                         '</div>'+
                                     '</div>' +
                                     '<div class="row contain">' +
@@ -169,6 +181,7 @@ $(function(){
                                         '<div class="col-xs-8">' +
                                             '<p class="user">'+value.user.username+'</p>' +
                                             '<p class="role">'+$roleString+'</p>' +
+                                            $xpHtml +
                                         '</div>'+
                                     '</div>' +
                                     '<div class="row contain">' +

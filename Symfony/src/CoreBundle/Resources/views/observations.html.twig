@@ -13,6 +13,13 @@
                     <p class="role">Amateur</p>
                     <p class="role">{% if Observation.statut == "untreated" %}En attente{% else %}Publié{% endif %}</p>
                 {% endif %}
+                {% if Observation.user.xp >= 500 and Observation.user.xp < 5000 %}
+                    <img class="imgXpObservation" src="{{ asset('bundles/core/img/bronze.png') }}" alt="trophee-bronze">
+                {% elseif Observation.user.xp >= 5000 and Observation.user.xp < 10000 %}
+                    <img class="imgXpObservation" src="{{ asset('bundles/core/img/argent.png') }}" alt="trophee-argent">
+                {% elseif Observation.user.xp >= 10000 %}
+                    <img class="imgXpObservation" src="{{ asset('bundles/core/img/or.png') }}" alt="trophee-or">
+                {% endif %}
             </div>
         </div>
         <div class="row contain">

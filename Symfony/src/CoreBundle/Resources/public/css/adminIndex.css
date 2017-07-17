@@ -32,6 +32,27 @@ form label{
 #infos a:hover{
     text-decoration: none;
 }
+#xp{
+    float: right;
+    text-align: center;
+}
+#xp img{
+    width: 20%;
+}
+#xp .title{
+    font-weight: bold;
+    margin-top: 5px;
+}
+#xp .xpNb, #xp .infoXp{
+    margin-top: -2%;
+}
+#xp .infoXp{
+    margin-bottom: 10%;
+    font-size: 0.8em;
+}
+#xp .imgXp{
+    margin-top: 5%;
+}
 #modificationInfos, #changePassword{
     margin: 10% 0 10% 0;
 }

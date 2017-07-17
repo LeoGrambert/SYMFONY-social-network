@@ -41,8 +41,10 @@ class FrontController extends Controller
 
 
     /**
+     * @param Request $request
      * What do we do if we are on add an observation page
      * @route("/add", name="addPage")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Request $request)
     {
@@ -70,6 +72,13 @@ class FrontController extends Controller
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
 
             $this->getDoctrine()->getRepository('CoreBundle:Observation')->add($observation);
+
+            //Increment the user xp with each observation
+            $userXp = $user->getXp();
+            $user->setXp($userXp+100);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             if ($observation->getStatut() === 'accepted'){
                 $this->addFlash('info', 'Votre observation a été enregistrée.');
