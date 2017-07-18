@@ -58,18 +58,17 @@
         {% set months = [] %}
         <div class="row">
         {% for Observation in Observations %}
-            {% if Observation.date|date('F Y') not in months %}
-                {% set months = months|merge([Observation.date|date('F Y')]) %}
-                <p class="month"><strong>Observations du mois {% if Observation.date|date('F')|trans == "Avril" or Observation.date|date('F')|trans == 'Août' or Observation.date|date('F')|trans == 'Octobre' %}d'{% else %}de {% endif %}{{ Observation.date|date('F')|trans }} {{ Observation.date|date('Y') }}</strong></p>
-            {% endif %}
             {#We include observations template#}
             {% include 'CoreBundle::observations.html.twig' %}
         {% endfor %}
-            {#<div id="moreObservation">#}
-                {#<button class="btn btn-default">Observations plus anciennes</button>#}
-            {#</div>#}
         </div>
     {% endif %}
+    <div id="moreObservation">
+        {#<button class="btn btn-default">Observations plus anciennes</button>#}
+    </div>
 {% endblock %}
 
-{% block javascripts %}<script src="{{ asset('bundles/core/js/adminIndex.js') }}"></script>{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/core/js/js-md5/js/md5.min.js') }}"></script>
+    <script src="{{ asset('bundles/core/js/adminIndex.js') }}"></script>
+{% endblock %}

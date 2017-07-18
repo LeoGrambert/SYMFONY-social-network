@@ -79,6 +79,10 @@ form label{
     text-align: center;
     margin-bottom: 10%;
 }
+#errorMsg{
+    margin-left: 5%;
+    width: 90%;
+}
 .return{
     background-color: #477E68;
     border-color: #387392;

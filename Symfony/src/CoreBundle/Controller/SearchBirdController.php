@@ -128,18 +128,17 @@ class SearchBirdController extends Controller
     }
 
     /**
-     * @param Observation $observation
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response $response
      * What do we do if we want to get more user's observations
-     * @Route("/admin/more/{id}", requirements={"id" : "\d+"}, methods={"POST", "GET"}, name="moreObservationsPage")
-     * @ParamConverter("observations", options={"mapping": {"id": "id"}})
+     * @Route("/admin/more/{incre}", requirements={"incre" : "\d+"}, methods={"POST", "GET"}, name="moreObservationsPage")
      */
-    public function findMoreUserObservation(Observation $observation)
+    public function findMoreUserObservation(Request $request)
     {
+        $incre = $request->get('incre');
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
-        $observations = $em->getRepository('CoreBundle:Observation')->findByIdUserWithSpecies($user->getId(), 77);
-        dump($observations);
+        $observations = $em->getRepository('CoreBundle:Observation')->findMoreByIdUserWithSpecies($user->getId(), $incre);
         if ($observations == null){
             $response = new JsonResponse([], 422);
         }else{

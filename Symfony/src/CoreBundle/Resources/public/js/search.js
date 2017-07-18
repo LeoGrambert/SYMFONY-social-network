@@ -150,7 +150,7 @@ $(function(){
                                 $xpHtml = "<img class='imgXpObservation' src='/bundles/core/img/or.png' alt='trophee-or'>";
                             }
                             //Get facebook share button
-                            var $btnFacebook = '<div class="fb-share-button" data-href="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/Symfony/web/sheet/'+value.id+'" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleogrambert.fr%2Ffront%2Fprojets%2FnosAmisLesOiseaux%2FSymfony%2Fweb%2Fsheet%2F'+value.id+'&amp;src=sdkpreparse">Partager</a></div>';
+                            var $btnFacebook = '<div class="fb-share-button ajax" data-href="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/Symfony/web/sheet/'+value.id+'" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleogrambert.fr%2Ffront%2Fprojets%2FnosAmisLesOiseaux%2FSymfony%2Fweb%2Fsheet%2F'+value.id+'&amp;src=sdkpreparse">Partager</a></div>';
                             //Display observation sheet
                             if(value.picture !== null) {
                                 $('#colMap').append(

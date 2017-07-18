@@ -17,27 +17,55 @@ class ObservationRepository extends EntityRepository
     /**
      * Method to get all observations (for a user who is logged)
      * @param $userId
-     * @param $lastObservationId
      * @return array
      */
-    public function findByIdUserWithSpecies($userId, $lastObservationId = 0)
+    public function findByIdUserWithSpecies($userId)
     {
         $qb = $this->createQueryBuilder('o');
 
         $qb
             ->where('o.user = :userId')
-                ->setParameter('userId', $userId)
+            ->setParameter('userId', $userId)
             ->orderBy('o.date', 'desc')
             ->setMaxResults(9)
             ->setFirstResult(0)
             ->leftJoin('o.bird', 's')
             ->addSelect('s')
             ->leftJoin('o.picture', 'p')
-            ->addSelect('p');
+            ->addSelect('p')
+            ;
 
         return $qb
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * Method to get observation with pagination
+     * @param $userId
+     * @param $incre
+     * @return array
+     */
+    public function findMoreByIdUserWithSpecies($userId, $incre)
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb
+            ->where('o.user = :userId')
+            ->setParameter('userId', $userId)
+            ->orderBy('o.date', 'desc')
+            ->setMaxResults(9)
+            ->setFirstResult($incre*9 + 1)
+            ->leftJoin('o.bird', 's')
+            ->addSelect('s')
+            ->leftJoin('o.picture', 'p')
+            ->addSelect('p')
+            ->leftJoin('o.user', 'u')
+            ->addSelect('u');
+
+        return $qb
+            ->getQuery()
+            ->getArrayResult();
     }
 
     public function findLastObservations(){
