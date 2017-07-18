@@ -9,6 +9,7 @@
         <link href="//cdn.rawgit.com/t0m/select2-bootstrap-css/bootstrap3/select2-bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('bundles/core/css/bootstrap.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('bundles/core/css/layout.css') }}"/>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="{{ asset('bundles/core/img/logo.png') }}" />
         {% block stylesheet %}{% endblock %}
     </head>
@@ -55,6 +56,10 @@
 
         {% block body %}
         {% endblock %}
+        <p class="scrollToTop">
+            <a id="scroll-to-top" class="scroll-to" href="#"><i class="glyphicon glyphicon-chevron-up" ></i></a>
+        </p>
+
     </div>
     <footer>
         <div class="container">
@@ -99,6 +104,7 @@
     <script src="{{ asset('bundles/core/js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('bundles/core/js/bootstrap.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
+    <script src="{{ asset('bundles/core/js/scrolltotop.js') }}"></script>
     {% block javascripts %}
     {% endblock %}
 

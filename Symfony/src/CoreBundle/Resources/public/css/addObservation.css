@@ -5,7 +5,6 @@ form{
     margin-top:5%;
 }
 
-
 input[type="text"].form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     font-family: "ComfortaaB", Arial;
     color:#1C5F83;

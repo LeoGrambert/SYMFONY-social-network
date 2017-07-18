@@ -109,6 +109,33 @@ background: red;
     background-color: transparent;
 }
 
+#scroll-to-top {
+    right: 8px;
+    bottom: 100px;
+    padding: 8px 8px 8px 8px;
+    color: #fecb00;
+    font-size: 10px;
+}
+
+.scroll-to {
+    position: fixed;
+    z-index: 10;
+    display: none;
+    background-color: #3c765f;
+    color: #fecb00;
+    font-size: 15px;
+}
+
+.scroll-to i {
+    font-size: 2em;
+    color: rgba(255, 255, 255, 1);
+    transition: 0.2s;
+}
+.scroll-to:hover i {
+    color: #7ebea5;
+    transition: 0.5s;
+}
+
 @media screen and (min-width: 480px) and (max-width: 768px) {
     #navbar a{
         margin-left: -7%;
@@ -189,5 +216,13 @@ background: red;
     .imgSocial{
         width:4%;
         margin: 1% 2% 1% 2%;
+    }
+
+    #scroll-to-top {
+        right: 25px;
+        bottom: 25px;
+        padding: 10px 10px 10px 10px;
+        color: #fecb00;
+        font-size: 25px;
     }
 }
