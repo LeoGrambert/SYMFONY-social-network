@@ -134,7 +134,7 @@ $(function(){
                                 if ($.inArray("ROLE_PRO", $role)){
                                     $roleString = 'Amateur';
                                 } else {
-                                    $roleString = 'Professionnel';
+                                    $roleString = 'Naturaliste';
                                 }
                             } else{
                                 $roleString = 'Administrateur';
