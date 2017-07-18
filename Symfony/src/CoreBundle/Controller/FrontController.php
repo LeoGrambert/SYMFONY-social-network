@@ -250,7 +250,7 @@ class FrontController extends Controller
     /**
      * What do we do if we are on sheet page.
      * @param Request $request
-     * @route("/sheet/{id}", methods={"GET"}, requirements={"id" : "\d+"}, name="SearchGpsCoordinates")
+     * @route("/sheet/{id}", methods={"GET"}, requirements={"id" : "\d+"}, name="SheetPage")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function sheetAction(Request $request)
