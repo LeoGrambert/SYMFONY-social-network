@@ -150,12 +150,13 @@ $(function(){
                                 $xpHtml = "<img class='imgXpObservation' src='/bundles/core/img/or.png' alt='trophee-or'>";
                             }
                             //Get facebook share button
-                            var $btnFacebook = '<div class="fb-share-button ajax" data-href="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/Symfony/web/sheet/'+value.id+'" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleogrambert.fr%2Ffront%2Fprojets%2FnosAmisLesOiseaux%2FSymfony%2Fweb%2Fsheet%2F'+value.id+'&amp;src=sdkpreparse">Partager</a></div>';
+                            var $btnFacebook = '<div class="fb-share-button" data-href="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/Symfony/web/sheet/'+value.id+'" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleogrambert.fr%2Ffront%2Fprojets%2FnosAmisLesOiseaux%2FSymfony%2Fweb%2Fsheet%2F'+value.id+'&amp;src=sdkpreparse">Partager</a></div>';
                             //Display observation sheet
                             if(value.picture !== null) {
                                 $('#colMap').append(
                                     '<div class="col-md-5 col-xs-12 observationContainer">' +
                                     '<div class="row layer">' +
+                                    '<div class="sheet">' +
                                     '<div class="col-xs-4">' +
                                     '<img class="profilePicture" src="'+$gravatarUrl+'" alt="profilePicture"/> ' +
                                     '</div>' +
@@ -166,7 +167,8 @@ $(function(){
                                     $xpHtml +
                                     '</div>'+
                                     '</div>' +
-                                    '<div class="row contain">' +
+                                    '</div>' +
+                                    '<div class="row contain ajax">' +
                                     '<div class="col-xs-6">' +
                                     '<p class="link"><a href="'+value.bird.url+'">Lien fiche INPN</a></p>' +
                                     '<a href="/uploads/img/'+value.picture.id+'.'+value.picture.ext+'" class="thumbnail" target="_blank" title="Ouvrir l\'image dans un nouvel onglet"><img class="imgObservation" src="/uploads/img/' + value.picture.id + '.' + value.picture.ext + '" alt="' + value.picture.alt + '" /></a>' +
@@ -183,6 +185,7 @@ $(function(){
                                 $('#colMap').append(
                                     '<div class="col-md-5 col-xs-12 observationContainer">' +
                                     '<div class="row layer">' +
+                                    '<div class="sheet">' +
                                     '<div class="col-xs-4">' +
                                     '<img class="profilePicture" src="'+$gravatarUrl+'" alt="profilePicture"/> ' +
                                     '</div>' +
@@ -193,7 +196,8 @@ $(function(){
                                     $xpHtml +
                                     '</div>'+
                                     '</div>' +
-                                    '<div class="row contain">' +
+                                    '</div>' +
+                                    '<div class="row contain ajax">' +
                                     '<div class="col-xs-6">' +
                                     '<p class="link"><a href="'+value.bird.url+'">Lien fiche INPN</a></p>' +
                                     '<img class="imgObservation" src="/bundles/core/img/logo.png" alt="no-picture" />' +
@@ -207,6 +211,7 @@ $(function(){
                                     '</div>'
                                 );
                             }
+                            FB.XFBML.parse();
                             //Add a marker on map
                             var marker = L.marker([value.latitude, value.longitude]).addTo(mymap);
                             marker.bindPopup("<b>"+value.bird.nomVern+" observé le "+date+" par "+value.user.username+"</b>");
