@@ -1,13 +1,13 @@
 {% extends "CoreBundle::layout.html.twig" %}
 
-{% block title %}Valider un compte professionnel{% endblock %}
+{% block title %}Valider un compte naturaliste{% endblock %}
 
 {% block stylesheet %}<link rel="stylesheet" href="{{ asset('bundles/core/css/validateAccount.css') }}" {% endblock %}
 
 {% block body %}
     <a href="{{ path('adminPage') }}" class="btn btn-default return">Retour à l'interface d'administration</a>
     {% if listUsers == null %}
-        <p>Vous n'avez plus de nouvelles inscriptions de professionnels à valider.</p>
+        <p>Vous n'avez plus de nouvelles inscriptions de naturalistes à valider.</p>
     {% else %}
         <div class="table-responsive">
             <table class="table table-hover">
@@ -15,8 +15,8 @@
                     <tr>
                         <td>Nom d'utilisateur</td>
                         <td>Adresse email</td>
-                        <td>Confirmer compte professionnel</td>
-                        <td>Refuser compte professionnel</td>
+                        <td>Confirmer compte naturaliste</td>
+                        <td>Refuser compte naturaliste</td>
                     </tr>
                 </thead>
                 <tbody>

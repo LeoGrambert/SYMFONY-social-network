@@ -55,12 +55,14 @@
             {% if Observations == null %}
                 <p>Aucune observation n'a été publié. Soyez le premier : <a href="{{ path('addPage') }}">Participez</a> </p>
             {% else %}
-
+            <div class="row">
                 {% for Observation in Observations %}
-                    {#We include observations template#}
-                    {% include 'CoreBundle::observations.html.twig' %}
+                    <div class="col-md-4">
+                        {#We include observations template#}
+                        {% include 'CoreBundle::observations.html.twig' %}
+                    </div>
                   {% endfor %}
-
+            </div>
             {% endif %}
 
     </div>

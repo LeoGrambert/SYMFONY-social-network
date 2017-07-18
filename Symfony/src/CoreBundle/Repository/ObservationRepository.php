@@ -17,9 +17,10 @@ class ObservationRepository extends EntityRepository
     /**
      * Method to get all observations (for a user who is logged)
      * @param $userId
+     * @param $lastObservationId
      * @return array
      */
-    public function findByIdUserWithSpecies($userId)
+    public function findByIdUserWithSpecies($userId, $lastObservationId = 0)
     {
         $qb = $this->createQueryBuilder('o');
 
@@ -27,6 +28,8 @@ class ObservationRepository extends EntityRepository
             ->where('o.user = :userId')
                 ->setParameter('userId', $userId)
             ->orderBy('o.date', 'desc')
+            ->setMaxResults(9)
+            ->setFirstResult(0)
             ->leftJoin('o.bird', 's')
             ->addSelect('s')
             ->leftJoin('o.picture', 'p')

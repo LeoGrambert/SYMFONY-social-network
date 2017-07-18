@@ -67,6 +67,18 @@ form label{
     font-size: 1.3em;
     margin-bottom: 10%;
 }
+#moreObservation button{
+    background-color: #387392;
+    border-color: #387392;
+    color:white;
+    font-family: "ComfortaaB", Arial;
+    padding:2%;
+    width: 50%;
+}
+#moreObservation{
+    text-align: center;
+    margin-bottom: 10%;
+}
 .return{
     background-color: #477E68;
     border-color: #387392;
