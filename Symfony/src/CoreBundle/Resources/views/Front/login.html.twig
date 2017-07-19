@@ -21,6 +21,10 @@
                 <label for="password">Mot de passe :</label>
                 <input class="form-control" type="password" id="password" name="_password" />
                 <br />
+                {% if app.request.query.get("participate") == 1 %}
+                    <input type="hidden" name="_target_path" value="/add" />
+                    <input type="hidden" name="_failure_path" value="/login?participate=1" />
+                {% endif %}
                 <div id="loginBtn">
                     <input class="btn btn-default" type="submit" value="Se connecter" />
                 </div>

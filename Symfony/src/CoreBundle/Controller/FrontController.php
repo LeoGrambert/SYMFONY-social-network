@@ -89,8 +89,12 @@ class FrontController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
+        $participate = true;
+
         if(null === $user) {
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('login', [
+                'participate' => $participate
+            ]);
         } else {
             return $this->render('CoreBundle:Front:add.html.twig', array(
                 'form' => $form->createView(),
@@ -226,10 +230,13 @@ class FrontController extends Controller
         //We use this to get errors
         $authenticationUtils = $this->get('security.authentication_utils');
 
+        $participate = false;
+
         return $this->render('CoreBundle:Front:login.html.twig', [
             'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError(),
-            'gravatar'=>$gravatar
+            'gravatar'=>$gravatar,
+            'participate'=>$participate
         ]);
     }
 

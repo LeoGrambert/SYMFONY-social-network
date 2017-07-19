@@ -4,8 +4,10 @@
 $(function() {
     var $incre = 0;
     var $window = $(window);
+    //var $moreBtn = $('#moreObservation');
 
         $window.on('scroll', function () {
+        //$moreBtn.on('click', function () {
             if (($(window).scrollTop() > $(document).height() - $(window).height() - $('footer').height() - 20) && ($(window).scrollTop() < $(document).height() - $(window).height() - $('footer').height() + 20)) {
                 $incre = $incre + 1;
                 var submit = function () {

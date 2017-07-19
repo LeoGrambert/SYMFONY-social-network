@@ -27,11 +27,13 @@ security:
             form_login:
                 login_path: login
                 check_path: login_check
+                default_target_path: "/admin"
             oauth:
                 resource_owners:
                     facebook: "/connect/check-facebook"
                     google: "/connect/check-google"
                 login_path: /connect
+                default_target_path: "/admin"
                 failure_path: /connect
                 oauth_user_provider:
                     service: hwi_oauth.user.provider.fosub_bridge
