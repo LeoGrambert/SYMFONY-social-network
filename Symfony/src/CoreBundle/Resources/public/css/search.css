@@ -86,7 +86,7 @@ label{
         padding: 1% 1% 1% 1%;
     }
     #mapContainer{
-        margin: 0 -110px 0 -110px;
+        margin: 0 -110px -10px -110px;
         -moz-margin-end: -42px;
         padding-top: 2%;
     }

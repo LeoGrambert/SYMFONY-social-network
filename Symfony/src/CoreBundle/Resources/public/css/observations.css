@@ -74,6 +74,10 @@
 .sheet{
     margin-top: 15px;
 }
+.ajaxContainer{
+    margin-left: -6px;
+    margin-right: 27px;
+}
 @media screen and (min-width: 800px){
     .observationContainer {
         width: 350px;

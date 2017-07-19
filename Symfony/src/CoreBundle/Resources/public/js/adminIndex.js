@@ -47,7 +47,7 @@ $(function() {
                             //Display observation sheet
                             if (value.picture !== null) {
                                 $('#moreObservation').before(
-                                    '<div class="col-md-5 col-xs-12 observationContainer">' +
+                                    '<div class="col-md-5 col-xs-12 observationContainer ajaxContainer">' +
                                     '<div class="row layer">' +
                                     '<div class="sheet">' +
                                     '<div class="col-xs-4">' +
@@ -76,7 +76,7 @@ $(function() {
                                 );
                             } else {
                                 $('#moreObservation').before(
-                                    '<div class="col-md-5 col-xs-12 observationContainer">' +
+                                    '<div class="col-md-5 col-xs-12 observationContainer ajaxContainer">' +
                                     '<div class="row layer">' +
                                     '<div class="sheet">' +
                                     '<div class="col-xs-4">' +

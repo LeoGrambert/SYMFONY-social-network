@@ -12,6 +12,19 @@ $(function(){
         accessToken: 'pk.eyJ1IjoibGVvZ3JhbWJlcnQiLCJhIjoiY2o0bHFvZWZsMTR2czMxbXo1OWlvamw5cSJ9.H0OEY_8Tu0Me5hgunS7CQw'
     }).addTo(mymap);
 
+    mymap.scrollWheelZoom.disable();
+    mymap.tap.disable();
+    mymap.on('click', function() {
+        if (mymap.scrollWheelZoom.enabled() || mymap.tap.enable()) {
+            mymap.scrollWheelZoom.disable();
+            mymap.tap.disable();
+        }
+        else {
+            mymap.scrollWheelZoom.enable();
+            mymap.tap.enable();
+        }
+    });
+
     var $familyField = $('select#familles');
     var $orderField = $('select#ordres');
     var $birdField = $('#birdField');

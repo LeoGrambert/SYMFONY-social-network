@@ -36,7 +36,7 @@
         </div>
         <h2 id="subInfos">{{ app.user.email }} - {% if is_granted('ROLE_ADMIN') %}Administrateur{% elseif is_granted('ROLE_PRO') %}Naturaliste{% else %}Particulier{% endif %}</h2>
         {% if is_granted('ROLE_PRO') and app.user.isAccredit == false %}
-            <div class="alert alert-warning">Veuillez faire confirmer votre compte naturaliste en envoyant un justificatif (ex : contrat de travail) à <a href="mailto:contact@nao.fr">contact@nao.fr</a>.
+            <div id="toConfirm" class="alert alert-warning">Veuillez faire confirmer votre compte naturaliste en envoyant un justificatif (ex : contrat de travail) à <a href="mailto:contact@nao.fr">contact@nao.fr</a>.
             <br>En attente de confirmation, vous pouvez utiliser votre compte pour faire des observations. Mais vous ne pouvez pas valider les observations des profils particuliers.</div>
         {% endif %}
         <p><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations personnelles</a></p>
