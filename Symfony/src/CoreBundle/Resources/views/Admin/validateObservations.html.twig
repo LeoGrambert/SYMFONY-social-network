@@ -50,10 +50,11 @@
                         L'utilisateur n'a pas donné de description pour l'espèce observée.
                     {% endif %}
                  </p>
-                <form method="post" action="{{ path('confirmObservation', {'observationId':observationToValidate.id}) }}">
+                {% set page = app.request.requestUri|split('/') %}
+                <form method="post" action="{{ path('confirmObservation', {'page':page[page|length-1],'observationId':observationToValidate.id}) }}">
                     <input type="submit" class="btn btn-primary accept" value="Valider et Publier">
                 </form>
-                <form method="post" action="{{ path('refuseObservation', {'observationId':observationToValidate.id}) }}">
+                <form method="post" action="{{ path('refuseObservation', {'page':page[page|length-1],'observationId':observationToValidate.id}) }}">
                     <input type="submit" class="btn btn-danger refuse" value="Supprimer">
                 </form>
                 <hr>
@@ -62,7 +63,8 @@
         <nav>
             <ul class="pagination">
                 {% for i in 1..nbPages %}
-                    {% if app.request.requestUri == "/admin/validate/observations/"~i %}
+                    {% set page = app.request.requestUri|split('/') %}
+                    {% if page[page|length-1] == i %}
                         <li class="page-item active"><a class="page-link" href="{{ path('adminValidateObservationsPage', {'page' : i})  }}">{{ i }}</a></li>
                     {% else %}
                         <li class="page-item"><a class="page-link" href="{{ path('adminValidateObservationsPage', {'page' : i})  }}">{{ i }}</a></li>

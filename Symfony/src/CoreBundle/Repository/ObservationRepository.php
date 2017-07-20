@@ -174,7 +174,8 @@ class ObservationRepository extends EntityRepository
         $qb
             ->delete()
             ->where('o.id = :observationId')
-            ->setParameter('observationId', $observationId);
+            ->setParameter('observationId', $observationId)
+            ;
 
         $qb->getQuery()->getResult();
     }

@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Controller;
 
+use CoreBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -73,9 +74,8 @@ class BackController extends Controller
 
         $nbObservationsToValidate = count($howManyObservationsToValidate);
         $perPage = 10;
-        $nbPagesFloat = $nbObservationsToValidate / 10;
+        $nbPagesFloat = $nbObservationsToValidate / $perPage;
         $nbPages = ceil($nbPagesFloat);
-        dump($nbObservationsToValidate, $perPage, $nbPages, $page);
 
         if(null === $user){
             return $this->redirectToRoute('login');
@@ -180,11 +180,12 @@ class BackController extends Controller
     /**
      * What do we do if we want to confirm an observation
      * @param $observationId
-     * @Route("/admin/validate/observations/confirm/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="confirmObservation")
+     * @param Request $request
+     * @Route("/admin/validate/observations/{page}/confirm/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="confirmObservation")
      * @Security("has_role('ROLE_PRO')")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function confirmObservation($observationId)
+    public function confirmObservation(Request $request, $observationId)
     {
         $em = $this->getDoctrine()->getManager();
         $observation = $em->getRepository('CoreBundle:Observation')->find($observationId);
@@ -195,6 +196,8 @@ class BackController extends Controller
             );
         }
 
+        $currentPage = $request->get('page');
+
         $observation->setStatut("accepted");
         $em->flush();
         $this->addFlash(
@@ -202,17 +205,18 @@ class BackController extends Controller
             'L\'observation a été validée et publiée.'
         );
 
-        return $this->redirectToRoute('adminValidateObservationsPage');
+        return $this->redirectToRoute('adminValidateObservationsPage', ['page' => $currentPage]);
     }
 
     /**
      * What do we do if we want to refuse an observation
      * @param $observationId
-     * @Route("/admin/validate/observations/refuse/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="refuseObservation")
+     * @param Request $request
+     * @Route("/admin/validate/observations/{page}/refuse/{observationId}", methods={"POST", "GET"}, requirements={"observationId" = "\d+"}, name="refuseObservation")
      * @Security("has_role('ROLE_PRO')")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function refuseObservation($observationId)
+    public function refuseObservation(Request $request, $observationId)
     {
         $em = $this->getDoctrine()->getManager();
         if(!$observationId){
@@ -221,6 +225,8 @@ class BackController extends Controller
             );
         }
 
+        $currentPage = $request->get('page');
+
         $em->getRepository('CoreBundle:Observation')->deleteAnObservation($observationId);
 
         $this->addFlash(
@@ -228,6 +234,6 @@ class BackController extends Controller
             'L\'observation a été supprimée et ne sera pas publiée.'
         );
 
-        return $this->redirectToRoute('adminValidateObservationsPage');
+        return $this->redirectToRoute('adminValidateObservationsPage', ['page'=>$currentPage]);
     }
 }
