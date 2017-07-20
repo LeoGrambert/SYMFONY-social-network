@@ -13,17 +13,14 @@ $(function(){
     }).addTo(mymap);
 
     mymap.scrollWheelZoom.disable();
-    mymap.tap.disable();
     mymap.on('click', function() {
-        if (mymap.scrollWheelZoom.enabled() || mymap.tap.enable()) {
-            mymap.scrollWheelZoom.disable();
-            mymap.tap.disable();
-        }
-        else {
-            mymap.scrollWheelZoom.enable();
-            mymap.tap.enable();
-        }
-    });
+        if (mymap.scrollWheelZoom.enabled()) {
+             mymap.scrollWheelZoom.disable();
+         }
+         else {
+             mymap.scrollWheelZoom.enable();
+         }
+     });
 
     var $familyField = $('select#familles');
     var $orderField = $('select#ordres');

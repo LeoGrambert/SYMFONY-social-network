@@ -6,6 +6,8 @@
 
     {% block stylesheet %}
         <link rel="stylesheet" href="{{ asset('bundles/core/css/addObservation.css') }}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('bundles/core/css/buttonLoader.css') }}">
     {% endblock %}
 
 
@@ -34,12 +36,13 @@
         <div class="col-md-6 col-xs-12">
             <div id="description">
                 {{ form_row(form.description) }}
-            <div class="row" id="submitButton">
-                {{ form_row(form.save) }}
+                <div class="row" id="submitButton">
+                    {{ form_row(form.save) }}
+                </div>
             </div>
         </div>
-        </div>
     {{ form_end(form) }}
+
 
 
 
@@ -115,4 +118,6 @@
 
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-select2.js') }}"></script>
     <script src="{{ asset('bundles/core/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/core/js/jquery.buttonLoader.min.js') }}"></script>
+    <script src="{{ asset('bundles/core/js/loader.js') }}"></script>
 {% endblock %}
