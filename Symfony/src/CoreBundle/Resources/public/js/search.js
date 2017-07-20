@@ -36,6 +36,7 @@ $(function(){
     var filterOrder = function(){
         $orderField.on('change', function (e) {
             e.preventDefault();
+            $('#errorMsg').remove();
             var submit = function(){
                 var $orderFieldUrl = '/search/order/'+$orderField.val();
                 //returns an ajax call
@@ -44,7 +45,7 @@ $(function(){
                     method: 'GET'
                 }).done(function (response) {
                     //If it's a success, we clean family field before to add results in it
-                    $('#familles').empty();
+                    $('#familles').empty().append('<option></option>');
                     $('#birdField').val('');
                     $.each(response.families, function(key, value){
                         var $toAdd="<option value='"+value.famille+"'>"+value.famille+"</option>";
@@ -53,7 +54,7 @@ $(function(){
                 }).fail(function(jqXHR, exception){
                     var msg = '';
                     if (jqXHR.status === 404) {
-                        msg = 'Page not found 404';
+                        msg = 'Veuillez sélectionner un ordre';
                     } else if (jqXHR.status === 500) {
                         msg = 'Internal Server Error [500].';
                     } else {
@@ -72,6 +73,7 @@ $(function(){
      var filterFamily = function(){
         $familyField.on('change', function (e) {
             e.preventDefault();
+            $('#errorMsg').remove();
             var submit = function(){
                 var $familyFieldUrl = '/search/family/'+$familyField.val();
                 return $.ajax({
@@ -99,7 +101,7 @@ $(function(){
                 }).fail(function(jqXHR, exception){
                     var msg = '';
                     if (jqXHR.status === 404) {
-                        msg = 'Page not found 404';
+                        msg = 'Veuillez sélectionner une famille';
                     } else if (jqXHR.status === 500) {
                         msg = 'Internal Server Error [500].';
                     } else {

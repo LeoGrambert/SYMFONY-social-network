@@ -31,7 +31,7 @@
 
         <label for="familles">Famille</label>
         <select class="form-control" id="familles">
-            <option disabled selected value>Sélectionnez une famille</option>
+            <option selected value="">Sélectionnez une famille</option>
             {% for famille in familles %}
                 <option value="{{ famille.famille }}">{{ famille.famille }}</option>
             {% endfor %}
