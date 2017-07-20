@@ -86,12 +86,12 @@ label{
         padding: 1% 1% 1% 1%;
     }
     #mapContainer{
-        margin: 0 -110px -10px -110px;
+        margin: 0 -40px -10px -110px;
         -moz-margin-end: -42px;
         padding-top: 2%;
     }
     #mapid{
-        height: 420px;
+        height: 437px;
         margin-right: 3%;
         -moz-margin-start: 41px;
     }

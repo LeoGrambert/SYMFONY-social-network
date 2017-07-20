@@ -23,7 +23,7 @@
                 <img class="imgXp" src="{{ asset('bundles/core/img/bronze.png') }}" alt="trophee-bronze">
                 <p class="title">Observateur de bronze</p>
                 <p class="xpNb">Expérience : {{ app.user.xp }}/5000</p>
-            {% elseif app.user.xp >= 5000 and app.user.wp < 10000 %}
+            {% elseif app.user.xp >= 5000 and app.user.xp < 10000 %}
                 <img src="{{ asset('bundles/core/img/argent.png') }}" alt="trophee-argent">
                 <p class="title">Observateur d'argent</p>
                 <p class="xpNb">Expérience : {{ app.user.xp }}/10000</p>
@@ -43,7 +43,7 @@
         <p><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></p>
         <p><a href="https://fr.gravatar.com/">Changer votre photo de profil (généré par Gravatar)</a></p>
         {% if is_granted('ROLE_PRO') and app.user.isAccredit == true %}
-            <p><a href="{{ path('adminValidateObservationsPage') }}">Valider une observation</a></p>
+            <p><a href="{{ path('adminValidateObservationsPage', {'page' : 1})  }}">Valider une observation</a></p>
         {% endif %}
         {% if is_granted('ROLE_ADMIN') %}
             <p><a href="{{ path('adminValidateAccountPage') }}">Valider un compte naturaliste</a></p>

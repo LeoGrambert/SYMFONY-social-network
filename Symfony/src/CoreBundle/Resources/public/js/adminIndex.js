@@ -27,7 +27,11 @@ $(function() {
                             var $roleString = "";
                             if ($.inArray("ROLE_ADMIN", $role)) {
                                 if ($.inArray("ROLE_PRO", $role)) {
-                                    $roleString = 'Amateur';
+                                    if (value.statut === 'untreated'){
+                                        $roleString = '<p class="role">Amateur</p><p class="role">En attente</p>';
+                                    } else {
+                                        $roleString = '<p class="role">Amateur</p><p class="role">Publié</p>';
+                                    }
                                 } else {
                                     $roleString = 'Naturaliste';
                                 }

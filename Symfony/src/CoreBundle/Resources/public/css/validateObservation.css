@@ -27,6 +27,26 @@ input{
 .accept, .refuse{
     margin: 0.5% 0.5% 0.5% 1%;
 }
+.pagination>.active>a{
+    z-index: 3;
+    color: #fff;
+    background-color: #986A46;
+    border-color: #986A46;
+    cursor: default;
+}
+.pagination>.active>a:hover{
+    background-color: #986A46;
+}
+.pagination>li>a{
+    z-index: 3;
+    color: #fff;
+    background-color: #7EBEB0;
+    border-color: #7EBEB0;
+    cursor: default;
+}
+.pagination>li>a:hover{
+    cursor: pointer;
+}
 .return{
     background-color: #477E68;
     border-color: #387392;

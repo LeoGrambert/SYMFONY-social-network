@@ -55,7 +55,7 @@ class ObservationRepository extends EntityRepository
             ->setParameter('userId', $userId)
             ->orderBy('o.date', 'desc')
             ->setMaxResults(9)
-            ->setFirstResult($incre*9 + 1)
+            ->setFirstResult($incre*9)
             ->leftJoin('o.bird', 's')
             ->addSelect('s')
             ->leftJoin('o.picture', 'p')
@@ -68,6 +68,10 @@ class ObservationRepository extends EntityRepository
             ->getArrayResult();
     }
 
+    /**
+     * Method to get the 3 last observations
+     * @return array
+     */
     public function findLastObservations(){
         $qd = $this->createQueryBuilder('o');
         $statut = 'accepted';
@@ -124,9 +128,10 @@ class ObservationRepository extends EntityRepository
 
     /**
      * Method to get all amateur observations to validate
+     * @param $page
      * @return QueryBuilder
      */
-    public function findObservationsToValidate(){
+    public function findObservationsToValidate($page){
         $qb = $this->createQueryBuilder('o');
 
         $toValidate = "untreated";
@@ -135,6 +140,26 @@ class ObservationRepository extends EntityRepository
             ->where('o.statut = :toValidate')
             ->setParameter('toValidate', $toValidate)
             ->orderBy('o.date', 'desc')
+            ->setMaxResults(10)
+            ->setFirstResult($page * 10 - 10)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * Method to know the number
+     * @return array
+     */
+    public function howManyObservationsToValidate()
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $toValidate = "untreated";
+
+        $qb
+            ->where('o.statut = :toValidate')
+            ->setParameter('toValidate', $toValidate)
         ;
 
         return $qb->getQuery()->getResult();

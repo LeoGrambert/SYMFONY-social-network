@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use CoreBundle\Repository\ObservationRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
 
 class BackController extends Controller
 {
@@ -33,7 +34,7 @@ class BackController extends Controller
 
         $observationsToValidate = $em
             ->getRepository('CoreBundle:Observation')
-            ->findObservationsToValidate();
+            ->howManyObservationsToValidate();
         $howManyObservationToValidate = count($observationsToValidate);
 
         if(null === $user){
@@ -49,10 +50,12 @@ class BackController extends Controller
 
     /**
      * What do we do if we are on admin validate an observation page
-     * @Route("/admin/validate/observations", name="adminValidateObservationsPage")
+     * @param Request $request
+     * @Route("/admin/validate/observations/{page}", requirements={"page" = "\d+"}, name="adminValidateObservationsPage")
      * @Security("has_role('ROLE_PRO')")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function validateObservationsAction()
+    public function validateObservationsAction(Request $request)
     {
         $user = $this->getUser();
         if($user){
@@ -61,9 +64,18 @@ class BackController extends Controller
             $gravatar = null;
         }
 
+        $page = intval($request->get('page'));
+
         $em = $this->getDoctrine()->getManager();
-        $observationsToValidate = $em->getRepository('CoreBundle:Observation')->findObservationsToValidate();
+        $observationsToValidate = $em->getRepository('CoreBundle:Observation')->findObservationsToValidate($page);
+        $howManyObservationsToValidate = $em->getRepository('CoreBundle:Observation')->howManyObservationsToValidate();
         $birds = $em->getRepository('CoreBundle:Species')->getBirds();
+
+        $nbObservationsToValidate = count($howManyObservationsToValidate);
+        $perPage = 10;
+        $nbPagesFloat = $nbObservationsToValidate / 10;
+        $nbPages = ceil($nbPagesFloat);
+        dump($nbObservationsToValidate, $perPage, $nbPages, $page);
 
         if(null === $user){
             return $this->redirectToRoute('login');
@@ -73,7 +85,8 @@ class BackController extends Controller
             return $this->render('CoreBundle:Admin:validateObservations.html.twig', [
                 'gravatar'=>$gravatar,
                 'observationsToValidate'=>$observationsToValidate,
-                'birds'=>$birds
+                'birds'=>$birds,
+                'nbPages'=>$nbPages
             ]);
         }
     }
