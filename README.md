@@ -20,6 +20,6 @@ Website is alvaible at this adress : https://leogrambert.fr/front/projets/nosAmi
 <code>php bin/console doctrine:schema:update --force</code><br>
 <code>php bin/console assets:install</code><br></h5>
 
-<h5>6. Then launch the server with this command <code>php bin/console server:start</code> and go to this adress : http://127.0.0.1:8000</h5>
+<h5>6. Then launch the server with this command <code>php bin/console server:start</code> and go to this address : http://127.0.0.1:8000</h5>
 
 If you want to use some tests users, import <a href="https://leogrambert.fr/front/projets/nosAmisLesOiseaux/nos_amis_les_oiseaux_user.sql">user table<a> (for example, you'll be able to connect with 'MichouDujardin' 'demo')
