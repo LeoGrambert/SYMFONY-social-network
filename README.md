@@ -2,7 +2,7 @@
 
 Find instructions here : https://openclassrooms.com/projects/stage-ou-gestion-de-projet-en-equipe-specialite-developpement
 
-Website is alvaible at this adress : https://leogrambert.fr/front/projets/nosAmisLesOiseaux/Symfony/web/
+Website description is alvaible at this adress : https://leogrambert.fr/projets/nao.php
 
 <hr>
 
